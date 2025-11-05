@@ -13,14 +13,8 @@
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/crypto/</loc>
-  </url><url>
     <loc>http://localhost:1313/home/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/pwn/</loc>
-  </url><url>
     <loc>http://localhost:1313/tags/</loc>
-  </url><url>
-    <loc>http://localhost:1313/tags/web/</loc>
   </url>
 </urlset>
