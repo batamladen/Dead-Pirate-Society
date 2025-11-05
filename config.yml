@@ -1,4 +1,4 @@
-baseURL: "http://localhost:1313/"
+baseURL: "https://batamladen.github.io/Dead-Pirate-Society/"
 languageCode: "en-us"
 title: "Dead Pirate Society"
 theme: "PaperMod"
