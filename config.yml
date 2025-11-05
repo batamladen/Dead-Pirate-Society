@@ -5,7 +5,19 @@ theme: "PaperMod"
 
 menu:
   main:
-    - identifier: WriteUps
-      name: WriteUps
-      url: /WriteUps/
+    - identifier: writeups
+      name: Writeups
+      url: /writeup/
       weight: 1
+
+    - identifier: members
+      name: Members
+      url: /members/
+      weight: 2
+
+
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true

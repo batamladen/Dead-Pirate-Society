@@ -1,58 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ .Site.Title }}</title>
     <style>
       body {
-        background-color: #0a0a0a;
-        color: #f5f5f5;
-        font-family: 'JetBrains Mono', monospace;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background-color: #000;
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 100vh;
-        margin: 0;
-        text-align: center;
+        flex-direction: column;
+        color: white;
+        font-family: "JetBrains Mono", monospace;
       }
-      h1 {
-        font-size: 3rem;
-        margin-bottom: 0.5rem;
+
+      /* Top right navigation */
+      nav {
+        position: absolute;
+        top: 30px;
+        right: 50px;
       }
-      p {
+
+      nav a {
+        margin-left: 20px;
         color: #aaa;
-        margin-top: 0;
-        margin-bottom: 2rem;
-      }
-      .socials a {
-        margin: 0 10px;
-        color: #888;
         text-decoration: none;
-        transition: color 0.2s ease-in-out;
+        font-size: 0.9rem;
+        transition: color 0.2s ease;
       }
-      .socials a:hover {
-        color: #00ffff;
+
+      nav a:hover {
+        color: #fff;
       }
+
+      /* Center logo */
+      .logo {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background-image: url("/images/DPSlogo.webp"); /* Change filename if needed */
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+        margin-bottom: 20px;
+      }
+
+      /* Footer link */
       footer {
         position: absolute;
-        bottom: 20px;
-        font-size: 0.8rem;
-        color: #444;
+        bottom: 40px;
+        text-align: center;
+        width: 100%;
+      }
+
+      footer a {
+        color: #888;
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+
+      footer a:hover {
+        color: #00ffff;
       }
     </style>
   </head>
   <body>
-    <main>
-      <h1>☠️ Dead Pirate Society</h1>
-      <p>We hack not for fame, but for freedom.</p>
-      <div class="socials">
-        <a href="https://discord.gg/yourlink" target="_blank">Discord</a>
-        <a href="https://github.com/Dead-Pirate-Society" target="_blank">GitHub</a>
-        <a href="https://twitter.com/yourhandle" target="_blank">Twitter</a>
-      </div>
-    </main>
-    <footer>© {{ now.Year }} Dead Pirate Society</footer>
+    <nav>
+      <a href="/writeup/">Writeups</a>
+      <a href="/members/">Members</a>
+    </nav>
+
+    <div class="logo"></div>
+
+    <footer>
+      <a href="https://discord.gg/yourlink" target="_blank">Join our Discord ☠️</a>
+    </footer>
   </body>
 </html>
