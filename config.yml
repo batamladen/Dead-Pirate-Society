@@ -3,7 +3,7 @@ languageCode: "en-us"
 title: "Dead Pirate Society"
 theme: "PaperMod"
 publishDir: "docs"
-
+canonifyURLs: true
 
 menu:
   main:
