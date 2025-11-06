@@ -88,9 +88,10 @@
       margin-bottom: 30px;
       display: flex;
       flex-wrap: wrap;
-      gap: 15px;
+      gap: 30px;
       justify-content: center;
       align-items: center;
+
     }
 
     .filter-section label {
@@ -107,6 +108,7 @@
       font-family: 'Fira Mono', monospace;
       border-radius: 4px;
       cursor: pointer;
+      margin-left: -25px;
     }
 
     .filter-select:focus {
@@ -125,10 +127,11 @@
     }
 
     .ctf-card {
+      position: relative;
       background: var(--card-bg);
       border: 2px solid var(--card-border);
       border-radius: 8px;
-      padding: 20px;
+      padding: 30px;
       transition: all 0.3s ease;
       cursor: pointer;
       text-decoration: none;
@@ -143,9 +146,10 @@
 
     .ctf-name {
       font-family: 'Press Start 2P', cursive;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       color: var(--text);
       margin-bottom: 10px;
+      line-height: 1.8px;
     }
 
     .ctf-date {
@@ -177,6 +181,17 @@
       font-family: 'Fira Mono', monospace;
       font-size: 0.8rem;
     }
+
+    .ctf-placement {
+      position: absolute;
+      bottom: 10px;
+      left: 15px;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.6rem;
+      color: #dbceb4;
+      opacity: 0.8;
+    }
+
 
     .difficulty-easy { color: #4CAF50; }
     .difficulty-medium { color: #FF9800; }
@@ -277,6 +292,7 @@
         year: "2025",
         platform: "htb",
         difficulty: "medium",
+        placement: "32 / 500",
         tags: ["Forensics", "Web", "Pwn", "Crypto"],
         link: "/writeups/htb-holmes-2025.html"
       },
@@ -359,6 +375,8 @@
           <div class="ctf-difficulty ${'difficulty-' + ctf.difficulty}">
             DIFFICULTY: ${ctf.difficulty.toUpperCase()}
           </div>
+          <div class="ctf-placement">#${ctf.placement}</div>
+
         `;
         container.appendChild(card);
       });
