@@ -7,19 +7,29 @@ canonifyURLs: true
 
 menu:
   main:
+
+    - identifier: about
+      name: About
+      url: /about/
+      weight: 1
+
     - identifier: writeups
       name: Writeups
       url: /writeup/
-      weight: 1
+      weight: 2
 
     - identifier: members
       name: Members
       url: /members/
-      weight: 2
+      weight: 3
 
-
+    
 
 markup:
   goldmark:
     renderer:
       unsafe: true
+
+params:
+  customCSS:
+    - css/custom.css

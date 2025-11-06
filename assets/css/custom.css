@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* === Global Dead Pirate Society Theme === */
+:root {
+  --bg: #080908;
+  --text: #dbceb4;
+  --link: #b43f26;
+  --link-hover: #ff6347;
+}
+
+/* Base layout */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  font-family: 'Press Start 2P', cursive;
+  margin: 0;
+  text-align: center;
+  padding-top: 80px;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text);
+  text-transform: uppercase;
+}
+
+/* Navigation */
+header {
+  position: fixed;
+  top: 20px;
+  right: 40px;
+}
+
+header a {
+  margin-left: 15px;
+  color: var(--link);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.7rem;
+  transition: color 0.3s ease;
+}
+
+header a:hover {
+  color: var(--link-hover);
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 40px;
+  text-align: center;
+  font-size: 0.6rem;
+  width: 100%;
+}
+
+footer a {
+  color: var(--link);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--link-hover);
+}
+
+/* Logo animation */
+.logo-spin {
+  width: 30vw;
+  max-width: 320px;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  animation: spin 15s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Main content area */
+main {
+  max-width: 900px;
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 10px;
+  }
+}
