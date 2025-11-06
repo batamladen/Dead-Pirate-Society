@@ -1,231 +1,393 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto" data-theme="auto">
+<html lang="en">
+<head><script src="/Dead-Pirate-Society/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=Dead-Pirate-Society/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writeups | Dead Pirate Society</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
 
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>writeups | Dead Pirate Society</title>
-<meta name="keywords" content="">
-<meta name="description" content="writeups - Dead Pirate Society">
-<meta name="author" content="">
-<link rel="canonical" href="https://batamladen.github.io/Dead-Pirate-Society/writeups/">
-<link crossorigin="anonymous" href="https://batamladen.github.io/Dead-Pirate-Society/assets/css/stylesheet.fd5566c526ae48aadabd950798a2dc3568536401560eae5caac3765a42a9e7b5.css" integrity="sha256-/VVmxSauSKravZUHmKLcNWhTZAFWDq5cqsN2WkKp57U=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://batamladen.github.io/Dead-Pirate-Society/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://batamladen.github.io/Dead-Pirate-Society/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://batamladen.github.io/Dead-Pirate-Society/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://batamladen.github.io/Dead-Pirate-Society/apple-touch-icon.png">
-<link rel="mask-icon" href="https://batamladen.github.io/Dead-Pirate-Society/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://batamladen.github.io/Dead-Pirate-Society/writeups/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="https://batamladen.github.io/Dead-Pirate-Society/writeups/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-                color-scheme: dark;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .toc {
-                background: var(--entry);
-            }
-        }
-
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
-            }
-        }
-
-    </style>
-</noscript>
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else if (localStorage.getItem("pref-theme") === "light") {
-       document.querySelector("html").dataset.theme = 'light';
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else {
-        document.querySelector("html").dataset.theme = 'light';
+  <style>
+    :root {
+      --bg: #080908;
+      --text: #dbceb4;
+      --link: #b43f26;
+      --link-hover: #ff6347;
+      --card-bg: #1a1a1a;
+      --card-border: #333;
     }
 
-</script><meta property="og:url" content="https://batamladen.github.io/Dead-Pirate-Society/writeups/">
-  <meta property="og:site_name" content="Dead Pirate Society">
-  <meta property="og:title" content="writeups">
-  <meta property="og:locale" content="en-us">
-  <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="writeups">
-<meta name="twitter:description" content="">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "writeups",
-      "item": "https://batamladen.github.io/Dead-Pirate-Society/writeups/"
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      text-align: center;
+      padding-top: 80px;
     }
-  ]
-}
-</script>
+
+    h1, h2 {
+      font-family: 'Press Start 2P', cursive;
+      color: var(--text);
+    }
+
+    p, li {
+      font-family: 'Fira Mono', monospace;
+      color: var(--text);
+    }
+
+    h1 {
+      font-size: 1.2rem;
+      line-height: 1.5;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+    }
+
+     
+    header {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 0 40px;
+    }
+
+    .logo {
+      width: 80px;
+      height: auto;
+      animation: spin 15s linear infinite;
+    }
+
+    .nav-links {
+      display: flex;
+      margin-top: +6px;
+    }
+
+    .nav-links a {
+      margin-left: 19.3px;
+      color: var(--link);
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.7rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--link-hover);
+    }
+
+     
+    .filter-section {
+      margin-bottom: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .filter-section label {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.7rem;
+      margin-right: 10px;
+    }
+
+    .filter-select {
+      background: var(--card-bg);
+      color: var(--text);
+      border: 2px solid var(--card-border);
+      padding: 8px 15px;
+      font-family: 'Fira Mono', monospace;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .filter-select:focus {
+      outline: none;
+      border-color: var(--link);
+    }
+
+     
+    .writeups-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      width: 100%;
+      padding: 0 20px;
+    }
+
+    .ctf-card {
+      background: var(--card-bg);
+      border: 2px solid var(--card-border);
+      border-radius: 8px;
+      padding: 20px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+    }
+
+    .ctf-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--link);
+      box-shadow: 0 5px 15px rgba(180, 63, 38, 0.3);
+    }
+
+    .ctf-name {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .ctf-date {
+      font-family: 'Fira Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--link);
+      margin-bottom: 15px;
+    }
+
+    .ctf-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .ctf-tag {
+      background: var(--link);
+      color: var(--bg);
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-family: 'Fira Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: bold;
+    }
+
+    .ctf-difficulty {
+      margin-top: 10px;
+      font-family: 'Fira Mono', monospace;
+      font-size: 0.8rem;
+    }
+
+    .difficulty-easy { color: #4CAF50; }
+    .difficulty-medium { color: #FF9800; }
+    .difficulty-hard { color: #F44336; }
+
+    main {
+      max-width: 1200px;
+      padding: 20px;
+      flex: 1;
+    }
+
+    footer {
+      text-align: center;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.6rem;
+      width: 100%;
+      padding: 20px 0;
+      margin-top: auto;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+     
+    .no-results {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.8rem;
+      color: var(--link);
+      margin-top: 50px;
+    }
+  </style>
 </head>
-<body class="list" id="top">
-    <header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="https://batamladen.github.io/Dead-Pirate-Society/" accesskey="h" title="Dead Pirate Society (Alt + H)">Dead Pirate Society</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu">
-            <li>
-                <a href="https://batamladen.github.io/about/" title="About">
-                    <span>About</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://batamladen.github.io/writeups/" title="Writeups">
-                    <span>Writeups</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://batamladen.github.io/members/" title="Members">
-                    <span>Members</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main"> 
-<header class="page-header">
-  <h1>
-    writeups
-  </h1>
-</header>
-    </main>
+<body>
+  <header>
+    <a href="http://localhost:1313/Dead-Pirate-Society/" class="logo-link">
+      <img src="http://localhost:1313/Dead-Pirate-Society/images/DPSlogo.webp" alt="Logo" class="logo">
+    </a>
+    <div class="nav-links">
+      <a href="http://localhost:1313/Dead-Pirate-Society/about/index.html">ABOUT</a>
+      <a href="http://localhost:1313/Dead-Pirate-Society/writeup/">WRITEUPS</a>
+      <a href="http://localhost:1313/Dead-Pirate-Society/members/">MEMBERS</a>
+    </div>
+  </header>
+
+  <main>
+    <h1>CTF WRITEUPS</h1>
+
     
-<footer class="footer">
-        <span>&copy; 2025 <a href="https://batamladen.github.io/Dead-Pirate-Society/">Dead Pirate Society</a></span> · 
+    <div class="filter-section">
+      <label for="year-filter">YEAR:</label>
+      <select id="year-filter" class="filter-select">
+        <option value="all">ALL YEARS</option>
+        <option value="2025">2025</option>
+        <option value="2024">2024</option>
+        <option value="2023">2023</option>
+      </select>
 
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
+      <label for="platform-filter">PLATFORM:</label>
+      <select id="platform-filter" class="filter-select">
+        <option value="all">ALL PLATFORMS</option>
+        <option value="htb">HackTheBox</option>
+        <option value="thm">TryHackMe</option>
+        <option value="ctftime">CTFtime</option>
+      </select>
 
-<script>
-    let menu = document.getElementById('menu');
-    if (menu) {
-        
-        const scrollPosition = localStorage.getItem("menu-scroll-position");
-        if (scrollPosition) {
-            menu.scrollLeft = parseInt(scrollPosition, 10);
-        }
-        
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
+      <label for="difficulty-filter">DIFFICULTY:</label>
+      <select id="difficulty-filter" class="filter-select">
+        <option value="all">ALL LEVELS</option>
+        <option value="easy">EASY</option>
+        <option value="medium">MEDIUM</option>
+        <option value="hard">HARD</option>
+      </select>
+    </div>
+
+    
+    <div class="writeups-grid" id="writeups-container">
+      
+    </div>
+
+    <div class="no-results" id="no-results" style="display: none;">
+      NO WRITEUPS FOUND FOR SELECTED FILTERS
+    </div>
+  </main>
+
+  <footer>
+    <p>@ DEAD PIRATE SOCIETY</p>
+  </footer>
+
+  <script>
+    
+    const ctfData = [
+      {
+        id: "htb-holmes-2025",
+        name: "HTB HOLMES CTF 2025",
+        date: "2025-01-15",
+        year: "2025",
+        platform: "htb",
+        difficulty: "medium",
+        tags: ["Forensics", "Web", "Pwn", "Crypto"],
+        link: "/writeups/htb-holmes-2025.html"
+      },
+      {
+        id: "thm-beginner-2024",
+        name: "THM BEGINNER CTF 2024",
+        date: "2024-11-20",
+        year: "2024",
+        platform: "thm",
+        difficulty: "easy",
+        tags: ["Web", "OSINT", "Steganography"],
+        link: "/writeups/thm-beginner-2024.html"
+      },
+      {
+        id: "ctftime-midnight-2024",
+        name: "MIDNIGHT SUN CTF 2024",
+        date: "2024-06-10",
+        year: "2024",
+        platform: "ctftime",
+        difficulty: "hard",
+        tags: ["Pwn", "Reverse", "Crypto", "Web"],
+        link: "/writeups/midnight-sun-2024.html"
+      },
+      {
+        id: "htb-cyber-apocalypse-2023",
+        name: "HTB CYBER APOCALYPSE 2023",
+        date: "2023-04-22",
+        year: "2023",
+        platform: "htb",
+        difficulty: "hard",
+        tags: ["Web", "Pwn", "Hardware", "Mobile"],
+        link: "/writeups/htb-cyber-apocalypse-2023.html"
+      },
+      {
+        id: "thm-advent-2023",
+        name: "THM ADVENT OF CYBER 2023",
+        date: "2023-12-01",
+        year: "2023",
+        platform: "thm",
+        difficulty: "easy",
+        tags: ["Web", "Forensics", "OSINT", "Crypto"],
+        link: "/writeups/thm-advent-2023.html"
+      },
+      {
+        id: "ctftime-google-2023",
+        name: "GOOGLE CTF 2023",
+        date: "2023-06-23",
+        year: "2023",
+        platform: "ctftime",
+        difficulty: "hard",
+        tags: ["Pwn", "Reverse", "Web", "Crypto"],
+        link: "/writeups/google-ctf-2023.html"
+      }
+    ];
+
+    
+    function renderCTFCards(ctfs) {
+      const container = document.getElementById('writeups-container');
+      const noResults = document.getElementById('no-results');
+      
+      container.innerHTML = '';
+      
+      if (ctfs.length === 0) {
+        noResults.style.display = 'block';
+        return;
+      }
+      
+      noResults.style.display = 'none';
+      
+      ctfs.forEach(ctf => {
+        const card = document.createElement('a');
+        card.href = ctf.link;
+        card.className = 'ctf-card';
+        card.innerHTML = `
+          <div class="ctf-name">${ctf.name}</div>
+          <div class="ctf-date">${new Date(ctf.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+          <div class="ctf-tags">
+            ${ctf.tags.map(tag => `<span class="ctf-tag">${tag}</span>`).join('')}
+          </div>
+          <div class="ctf-difficulty ${'difficulty-' + ctf.difficulty}">
+            DIFFICULTY: ${ctf.difficulty.toUpperCase()}
+          </div>
+        `;
+        container.appendChild(card);
+      });
     }
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
+    
+    function filterCTFs() {
+      const yearFilter = document.getElementById('year-filter').value;
+      const platformFilter = document.getElementById('platform-filter').value;
+      const difficultyFilter = document.getElementById('difficulty-filter').value;
+      
+      const filteredCTFs = ctfData.filter(ctf => {
+        return (yearFilter === 'all' || ctf.year === yearFilter) &&
+               (platformFilter === 'all' || ctf.platform === platformFilter) &&
+               (difficultyFilter === 'all' || ctf.difficulty === difficultyFilter);
+      });
+      
+      renderCTFCards(filteredCTFs);
+    }
+
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCTFCards(ctfData);
+      
+      
+      document.getElementById('year-filter').addEventListener('change', filterCTFs);
+      document.getElementById('platform-filter').addEventListener('change', filterCTFs);
+      document.getElementById('difficulty-filter').addEventListener('change', filterCTFs);
     });
-
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        const html = document.querySelector("html");
-        if (html.dataset.theme === "dark") {
-            html.dataset.theme = 'light';
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            html.dataset.theme = 'dark';
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
+  </script>
 </body>
-
 </html>

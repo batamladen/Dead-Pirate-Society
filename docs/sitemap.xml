@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://batamladen.github.io/Dead-Pirate-Society/about/</loc>
+    <loc>http://localhost:1313/Dead-Pirate-Society/about/</loc>
   </url><url>
-    <loc>https://batamladen.github.io/Dead-Pirate-Society/categories/</loc>
+    <loc>http://localhost:1313/Dead-Pirate-Society/categories/</loc>
   </url><url>
-    <loc>https://batamladen.github.io/Dead-Pirate-Society/</loc>
+    <loc>http://localhost:1313/Dead-Pirate-Society/</loc>
   </url><url>
-    <loc>https://batamladen.github.io/Dead-Pirate-Society/home/</loc>
+    <loc>http://localhost:1313/Dead-Pirate-Society/home/</loc>
   </url><url>
-    <loc>https://batamladen.github.io/Dead-Pirate-Society/tags/</loc>
+    <loc>http://localhost:1313/Dead-Pirate-Society/tags/</loc>
   </url><url>
-    <loc>https://batamladen.github.io/Dead-Pirate-Society/writeups/</loc>
+    <loc>http://localhost:1313/Dead-Pirate-Society/writeups/</loc>
   </url>
 </urlset>

@@ -1,4 +1,5 @@
 ---
-title: "writeups"
-type: writeups
+title: "Writeups"
+layout: "writeups"
+type: "writeups"
 ---
