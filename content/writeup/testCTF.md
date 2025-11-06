@@ -1,5 +1,0 @@
----
-title: "TestCTF"
-date: 2023-02-06
-type: "writeup"
----

@@ -1,0 +1,4 @@
+---
+title: "writeups"
+type: writeups
+---
