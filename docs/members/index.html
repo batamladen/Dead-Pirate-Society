@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Members | Dead Pirate Society</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #080908;
+      --text: #dbceb4;
+      --link: #b43f26;
+      --link-hover: #ff6347;
+      --card-bg: #1a1a1a;
+      --card-border: #333;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      text-align: center;
+      padding-top: 80px;
+      min-height: 90vh;  
+      position: relative;  
+    }
+
+    h1, h2 {
+      font-family: 'Press Start 2P', cursive;
+      color: var(--text);
+    }
+
+    p, li {
+      font-family: 'Fira Mono', monospace;
+      color: var(--text);
+    }
+
+    h1 {
+      font-size: 1.2rem;
+      line-height: 1.5;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: 0.9rem;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+     
+    header {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 0 40px;
+    }
+
+    .logo {
+      width: 80px;
+      height: auto;
+      animation: spin 15s linear infinite;
+    }
+
+    .nav-links {
+      display: flex;
+      margin-top: +6px;
+    }
+
+    .nav-links a {
+      margin-left: 19.3px;
+      color: var(--link);
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.7rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--link-hover);
+    }
+
+     
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 25px;
+      max-width: 1000px;
+      width: 100%;
+      padding: 0 20px;
+    }
+
+    .member-card {
+      background: var(--card-bg);
+      border: 2px solid var(--card-border);
+      border-radius: 8px;
+      padding: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .member-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--link);
+      box-shadow: 0 5px 15px rgba(180, 63, 38, 0.3);
+    }
+
+    .member-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 0 auto 15px;
+      border: 2px solid var(--link);
+    }
+
+    .member-name {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.8rem;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .member-role {
+      font-family: 'Fira Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--link);
+      margin-bottom: 15px;
+    }
+
+    .member-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+
+    .skill-tag {
+      background: var(--link);
+      color: var(--bg);
+      padding: 3px 8px;
+      border-radius: 10px;
+      font-family: 'Fira Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: bold;
+    }
+
+    .member-links {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .member-link {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.3s ease;
+    }
+
+    .member-link:hover {
+      color: var(--link-hover);
+    }
+
+    main {
+      max-width: 1000px;
+      padding: 20px;
+      flex: 1;
+    }
+
+    footer {
+      text-align: center;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.6rem;
+      width: 100%;
+      padding: 20px 0;
+      margin-top: auto;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="https://batamladen.github.io/Dead-Pirate-Society/" class="logo-link">
+      <img src="https://batamladen.github.io/Dead-Pirate-Society/images/DPSlogo.webp" alt="Logo" class="logo">
+    </a>
+    <div class="nav-links">
+      <a href="https://batamladen.github.io/Dead-Pirate-Society/about/index.html">ABOUT</a>
+      <a href="https://batamladen.github.io/Dead-Pirate-Society/writeups/index.html">WRITEUPS</a>
+      <a href="https://batamladen.github.io/Dead-Pirate-Society/members/">MEMBERS</a>
+    </div>
+  </header>
+
+  <main>
+    <h1>CREW MEMBERS</h1>
+
+    <div class="members-grid" id="members-container">
+      
+    </div>
+  </main>
+
+  <footer>
+    <p>@ DEAD PIRATE SOCIETY</p>
+  </footer>
+
+  <script>
+    
+    const membersData = [
+      {
+        name: "Bata Mladen",
+        role: "Aspiring Security Analyst",
+        avatar: "../images/avatars/snoopy.webp",
+        skills: ["Web", "Pwn", "Binary Exploitation"],
+        links: [
+          { name: "GitHub", url: "https://github.com/batamladen" },
+          { name: "HTB", url: "https://app.hackthebox.com/profile/1801727" }
+        ]
+      }
+    ];
+
+    
+    function renderMemberCards() {
+      const container = document.getElementById('members-container');
+      
+      membersData.forEach(member => {
+        const card = document.createElement('div');
+        card.className = 'member-card';
+        card.innerHTML = `
+          <img src="${member.avatar}" alt="${member.name}" class="member-avatar" onerror="this.src='https://batamladen.github.io/Dead-Pirate-Society/images/avatars/default.webp'">
+          <div class="member-name">${member.name}</div>
+          <div class="member-role">${member.role}</div>
+          <div class="member-skills">
+            ${member.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+          </div>
+          <div class="member-links">
+            ${member.links.map(link => `<a href="${link.url}" target="_blank" class="member-link">${link.name}</a>`).join('')}
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    
+    document.addEventListener('DOMContentLoaded', renderMemberCards);
+  </script>
+</body>
+</html>
