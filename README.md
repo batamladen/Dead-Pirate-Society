@@ -20,8 +20,8 @@ We believe in sharing knowledge, solving challenges together, and having fun whi
 Everyone is welcome — no experience required.  
 Whether you're new to CTFs or a seasoned veteran, grab your gear and hop on board.
 
-💬 **Discord:** [Join on Discord](https://discord.gg/jYMuu6Buqe)
-⏰ **CTFtime:** [Join on CTFtime](https://ctftime.org/team/411988)
+- 💬 **Discord:** [Join on Discord](https://discord.gg/jYMuu6Buqe)
+- ⏰ **CTFtime:** [Join on CTFtime](https://ctftime.org/team/411988)
 
 ---
 
