@@ -1,62 +1,93 @@
 @media (max-width: 768px) {
-  /* Make header stack vertically and more accessible on mobile */
-  header {
-    position: static;
+  /* Prevent horizontal scrolling */
+  html, body {
+    overflow-x: hidden;
     width: 100%;
-    padding: 15px 0;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
+    max-width: 100vw;
   }
 
-  header a {
-    margin: 5px;
-    font-size: 0.6rem;
-  }
-
-  /* Adjust body layout for mobile */
+  /* Fix body layout */
   body {
     height: auto;
     min-height: 100vh;
-    padding: 10px;
+    padding: 0;
+    display: block;
   }
 
-  /* Make main content more mobile-friendly */
+  /* Make header fixed at top and prevent overlap */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 12px 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    background-color: var(--bg);
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  header a {
+    margin: 3px 5px;
+    font-size: 0.6rem;
+  }
+
+  /* Push main content below fixed header */
   main {
-    margin-top: 20px;
-    margin-bottom: 80px;
+    margin-top: 80px;
+    margin-bottom: 60px;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
-  /* Adjust heading size for mobile */
+  /* Adjust heading */
   h1 {
     font-size: 0.9rem;
     line-height: 1.4;
     padding: 0 15px;
+    word-wrap: break-word;
+    max-width: 100%;
   }
 
-  /* Make logo more prominent on mobile */
+  /* Logo sizing */
   img {
     width: 50vw;
     max-width: 200px;
     margin-bottom: 15px;
   }
 
-  /* Fix footer positioning on mobile */
+  /* Fix footer */
   footer {
     position: relative;
     bottom: auto;
-    margin-top: 40px;
+    margin-top: 30px;
     padding: 20px 0;
     font-size: 0.55rem;
+    width: 100%;
   }
 }
 
-/* Extra small devices (phones in portrait, less than 480px) */
+/* Extra small devices */
 @media (max-width: 480px) {
+  header {
+    padding: 10px 0;
+  }
+
   header a {
     font-size: 0.5rem;
-    margin: 3px;
+    margin: 2px 3px;
+  }
+
+  main {
+    margin-top: 70px;
+    padding: 15px 10px;
   }
 
   h1 {
