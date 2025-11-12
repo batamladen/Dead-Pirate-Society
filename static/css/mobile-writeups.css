@@ -15,7 +15,7 @@
     display: block;
   }
 
-  /* Make header fixed at top - FOR HOMEPAGE */
+  /* Make header fixed at top */
   header {
     position: fixed !important;
     top: 0 !important;
@@ -56,7 +56,7 @@
     padding: 5px !important;
   }
 
-  /* Push main content below fixed header - FOR HOMEPAGE */
+  /* Push main content below fixed header */
   main {
     margin-top: 80px !important;
     margin-bottom: 60px !important;
@@ -64,7 +64,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
   }
 
   /* Adjust heading */
@@ -77,20 +76,6 @@
     margin-bottom: 20px !important;
   }
 
-  h2 {
-    font-size: 0.7rem !important;
-    margin-top: 20px !important;
-  }
-
-  /* Logo on homepage */
-  img {
-    width: 50vw;
-    max-width: 180px;
-    margin-bottom: 15px;
-  }
-
-  /* WRITEUPS PAGE SPECIFIC */
-  
   /* Filter section */
   .filter-section {
     flex-direction: column !important;
@@ -139,6 +124,10 @@
     font-size: 0.7rem !important;
   }
 
+  .ctf-tags {
+    gap: 6px !important;
+  }
+
   .ctf-tag {
     font-size: 0.6rem !important;
     padding: 3px 6px !important;
@@ -157,69 +146,6 @@
   .no-results {
     font-size: 0.7rem !important;
     padding: 0 15px !important;
-  }
-
-  /* MEMBERS PAGE SPECIFIC */
-  
-  /* Members grid */
-  .members-grid {
-    grid-template-columns: 1fr !important;
-    gap: 20px !important;
-    padding: 0 15px !important;
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  /* Member cards */
-  .member-card {
-    padding: 20px !important;
-    width: 100% !important;
-    box-sizing: border-box;
-  }
-
-  .member-card:hover {
-    transform: translateY(-3px) !important;
-  }
-
-  /* Member avatar */
-  .member-avatar {
-    width: 70px !important;
-    height: 70px !important;
-    margin-bottom: 12px !important;
-  }
-
-  /* Member name */
-  .member-name {
-    font-size: 0.7rem !important;
-    line-height: 1.4 !important;
-    margin-bottom: 8px !important;
-  }
-
-  /* Member role */
-  .member-role {
-    font-size: 0.7rem !important;
-    margin-bottom: 12px !important;
-  }
-
-  /* Member skills */
-  .member-skills {
-    gap: 5px !important;
-    margin-bottom: 12px !important;
-  }
-
-  .skill-tag {
-    font-size: 0.6rem !important;
-    padding: 3px 6px !important;
-  }
-
-  /* Member links */
-  .member-links {
-    gap: 12px !important;
-    flex-wrap: wrap !important;
-  }
-
-  .member-link {
-    font-size: 0.7rem !important;
   }
 
   /* Fix footer */
@@ -268,16 +194,6 @@
     font-size: 0.7rem !important;
   }
 
-  h2 {
-    font-size: 0.65rem !important;
-  }
-
-  img {
-    width: 60vw;
-    max-width: 160px;
-  }
-
-  /* Writeups page - extra small */
   .filter-section label {
     font-size: 0.55rem !important;
   }
@@ -293,29 +209,6 @@
 
   .ctf-tag {
     font-size: 0.55rem !important;
-  }
-
-  /* Members page - extra small */
-  .member-avatar {
-    width: 60px !important;
-    height: 60px !important;
-  }
-
-  .member-name {
-    font-size: 0.65rem !important;
-  }
-
-  .member-role {
-    font-size: 0.65rem !important;
-  }
-
-  .skill-tag {
-    font-size: 0.55rem !important;
-    padding: 2px 5px !important;
-  }
-
-  .member-link {
-    font-size: 0.65rem !important;
   }
 
   footer {
