@@ -34,4 +34,4 @@ If you’ve written a CTF writeup and want to share it:
 
 ---
 
-**“Dead men tell no tales… but we still do?”** ☠️  
+*“Dead men tell no tales… but we still do?”* 
