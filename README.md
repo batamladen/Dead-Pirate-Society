@@ -10,8 +10,7 @@ We believe in sharing knowledge, solving challenges together, and having fun whi
 
 - 🧩 **Weekly CTFs** — Join us every week as we dive into challenges across all categories.  
 - 💬 **Active Discord Community** — A friendly crew of learners, veterans, and the occasional sleep-deprived pentester.  
-- 🏆 **Writeups & Knowledge Sharing** — Whether you host your writeups on your blog, GitHub, or a dusty `.txt` file on your desktop — we’d love to feature them on our website:  
-  👉 [deadpiratesociety.club](https://deadpiratesociety.club)  
+- 🏆 **Writeups & Knowledge Sharing** — Whether you host your writeups on your blog, GitHub, or a dusty `.txt` file on your desktop — we’d love to feature them on our website: [deadpiratesociety.club](https://deadpiratesociety.club)  
 - 🧠 **Collaborative Learning** — We help each other grow. Ask questions, share insights, and learn through real problem-solving.
 
 ---
@@ -22,7 +21,7 @@ Everyone is welcome — no experience required.
 Whether you're new to CTFs or a seasoned veteran, grab your gear and hop on board.
 
 💬 **Discord:** [Join on Discord](https://discord.gg/jYMuu6Buqe)
-⏰ **CTFtime:** [Join on CTFtime](1vJDr1:eE6sMR26E2wpmjp7UtQN6cx-s-o)
+⏰ **CTFtime:** [Join on CTFtime](https://ctftime.org/team/411988)
 
 ---
 
