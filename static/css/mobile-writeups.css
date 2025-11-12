@@ -46,6 +46,7 @@
     flex-wrap: wrap !important;
     margin: 0 !important;
     justify-content: flex-end !important;
+    transform: translateX(-10px) !important;
   }
 
   .nav-links a,
