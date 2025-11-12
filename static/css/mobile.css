@@ -1,0 +1,74 @@
+@media (max-width: 768px) {
+  /* Make header stack vertically and more accessible on mobile */
+  header {
+    position: static;
+    width: 100%;
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  header a {
+    margin: 5px;
+    font-size: 0.6rem;
+  }
+
+  /* Adjust body layout for mobile */
+  body {
+    height: auto;
+    min-height: 100vh;
+    padding: 10px;
+  }
+
+  /* Make main content more mobile-friendly */
+  main {
+    margin-top: 20px;
+    margin-bottom: 80px;
+  }
+
+  /* Adjust heading size for mobile */
+  h1 {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    padding: 0 15px;
+  }
+
+  /* Make logo more prominent on mobile */
+  img {
+    width: 50vw;
+    max-width: 200px;
+    margin-bottom: 15px;
+  }
+
+  /* Fix footer positioning on mobile */
+  footer {
+    position: relative;
+    bottom: auto;
+    margin-top: 40px;
+    padding: 20px 0;
+    font-size: 0.55rem;
+  }
+}
+
+/* Extra small devices (phones in portrait, less than 480px) */
+@media (max-width: 480px) {
+  header a {
+    font-size: 0.5rem;
+    margin: 3px;
+  }
+
+  h1 {
+    font-size: 0.75rem;
+  }
+
+  img {
+    width: 60vw;
+    max-width: 180px;
+  }
+
+  footer {
+    font-size: 0.5rem;
+  }
+}
