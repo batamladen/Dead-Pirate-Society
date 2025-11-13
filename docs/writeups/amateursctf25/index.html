@@ -181,6 +181,25 @@
         content.style.display = content.style.display === 'block' ? 'none' : 'block';
       });
     });
+
+    
+    const menuIcon = document.getElementById('menu-icon');
+    const navLinks = document.getElementById('nav-links');
+
+    menuIcon.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+    });
+
+    
+    document.querySelectorAll('.category h2').forEach(header => {
+        header.addEventListener('click', () => {
+        const category = header.parentElement;
+        const content = category.querySelector('.challenges');
+        category.classList.toggle('open');
+        content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+
   </script>
 </body>
 </html>
