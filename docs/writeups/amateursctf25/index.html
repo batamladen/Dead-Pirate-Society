@@ -8,40 +8,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --bg: #080908;
-      --text: #dbceb4;
-      --link: #b43f26;
-      --link-hover: #ff6347;
-      --card-bg: #1a1a1a;
-      --card-border: #333;
-    }
-
     body {
-      background-color: var(--bg);
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-family: system-ui, sans-serif;
+      background-color: #080908;
+      color: #dbceb4;
+      font-family: 'Fira Mono', monospace;
       margin: 0;
       text-align: center;
       padding-top: 80px;
-      min-height: 90vh;
-      position: relative;
+      min-height: 100vh;
     }
-
-    h1, h2 {
-      font-family: 'Press Start 2P', cursive;
-      color: var(--text);
-    }
-
-    p, li {
-      font-family: 'Fira Mono', monospace;
-      color: var(--text);
-    }
-
-     
     header {
       position: absolute;
       top: 20px;
@@ -53,15 +28,12 @@
       padding: 0 40px;
     }
 
-    .logo {
-      width: 80px;
-      height: auto;
-      animation: spin 15s linear infinite;
-    }
-
+    .logo { width: 80px; animation: spin 15s linear infinite; }
+    @keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+    
+     
     .nav-links {
       display: flex;
-      margin-top: +6px;
     }
 
     .nav-links a {
@@ -77,7 +49,7 @@
     .nav-links a:hover {
       color: var(--link-hover);
     }
-
+    
      
     .menu-icon {
       display: none;
@@ -148,8 +120,7 @@
       border: 2px solid #333;
       border-radius: 10px;
       margin: 20px auto;
-      width: 80%;
-      max-width: 90%;
+      max-width: 800px;
       padding: 15px;
       text-align: left;
     }
@@ -200,11 +171,6 @@
       width: 100%;
       padding: 20px 0;
       margin-top: auto;
-    }
-
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
     }
 
      
