@@ -6,8 +6,9 @@
   <title>AmateursCTF 2025 | Dead Pirate Society</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/mobile-writeups-individual.css">
 
-  <style>
+    <style>
     body {
       background-color: #080908;
       color: #dbceb4;
@@ -43,26 +44,15 @@
     }
     .nav-links a:hover { color: #ff6347; }
 
-    /* Hamburger Menu - Hidden on desktop */
+    /* Hamburger Menu - HIDDEN BY DEFAULT */
     .menu-icon {
       display: none;
-      flex-direction: column;
-      cursor: pointer;
-      width: 30px;
-      height: 24px;
-      position: relative;
-      z-index: 101;
-    }
-    .menu-icon span {
-      display: block;
-      height: 3px;
-      width: 100%;
-      background-color: #b43f26;
-      border-radius: 2px;
-      margin: 3px 0;
-      transition: all 0.3s ease;
     }
 
+    /* Mobile Navigation - HIDDEN BY DEFAULT */
+    .mobile-nav {
+      display: none;
+    }
 
     h1 {
       font-family: 'Press Start 2P', cursive;
@@ -127,121 +117,6 @@
       width: 100%;
       padding: 20px 0;
       margin-top: auto;
-    }
-
-    /* Mobile Styles */
-    @media (max-width: 768px) {
-      body {
-        padding-top: 120px;
-        font-size: 0.9rem;
-        text-align: center;
-        overflow-x: hidden;
-      }
-
-      header {
-        position: relative;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 10px 0;
-        top: 0;
-      }
-
-      .logo {
-        width: 60px;
-        margin-bottom: 0;
-      }
-
-      /* Show hamburger on mobile */
-      .menu-icon {
-        display: flex;
-      }
-
-      /* Hamburger animation when active */
-      .menu-icon.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-      }
-      .menu-icon.active span:nth-child(2) {
-        opacity: 0;
-      }
-      .menu-icon.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
-      }
-
-      /* Hide desktop navigation on mobile */
-      .nav-links {
-        display: none;
-      }
-
-      h1 {
-        font-size: 0.8rem;
-        margin: 20px 0;
-        line-height: 1.4;
-      }
-
-      .category {
-        width: 90%;
-        padding: 12px;
-        font-size: 0.9rem;
-      }
-
-      .category h2 {
-        font-size: 0.7rem;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      .arrow {
-        font-size: 0.8rem;
-      }
-
-      .challenges {
-        margin-top: 10px;
-        padding-left: 10px;
-      }
-
-      .challenges a {
-        font-size: 0.7rem;
-        line-height: 1.4;
-        word-break: break-word;
-      }
-
-      footer {
-        font-size: 0.55rem;
-        padding: 15px 0;
-      }
-
-      main {
-        padding: 0 10px;
-      }
-    }
-
-    /* For very small screens (under 400px) */
-    @media (max-width: 400px) {
-      body {
-        padding-top: 110px;
-      }
-      
-      .logo {
-        width: 50px;
-      }
-      
-      h1 {
-        font-size: 0.7rem;
-      }
-
-      .category h2 {
-        font-size: 0.6rem;
-      }
-
-      .challenges a {
-        font-size: 0.65rem;
-      }
-
-      .mobile-nav a {
-        font-size: 0.9rem;
-      }
     }
   </style>
 </head>
