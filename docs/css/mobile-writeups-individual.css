@@ -1,28 +1,28 @@
 @media (max-width: 768px) {
   body {
-    padding-top: 120px; /* Increased from 100px */
+    padding-top: 120px;
     font-size: 0.9rem;
     text-align: center;
     overflow-x: hidden;
   }
 
   header {
-    position: relative; /* Changed from absolute */
-    flex-direction: row; /* Changed from column */
-    justify-content: space-between; /* Added */
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    padding: 20px 10px 0; /* Updated */
-    top: 0; /* Changed from 10px */
+    padding: 20px 10px 0;
+    top: 0;
   }
 
   .logo {
     width: 60px;
-    margin-bottom: 0; /* Changed from 10px */
+    margin-bottom: 0;
   }
 
   /* Hamburger menu styles */
   .menu-icon {
-    display: flex; /* Show hamburger on mobile */
+    display: flex;
     flex-direction: column;
     cursor: pointer;
     width: 30px;
@@ -55,7 +55,7 @@
 
   /* Hide desktop navigation on mobile */
   .nav-links {
-    display: none; /* Changed from flex */
+    display: none;
   }
 
   /* Mobile navigation overlay */
@@ -152,11 +152,11 @@
 /* For very small screens (under 400px) */
 @media (max-width: 400px) {
   body {
-    padding-top: 110px; /* Slightly less padding on very small screens */
+    padding-top: 110px;
   }
   
   .logo {
-    width: 50px; /* Smaller logo on very small screens */
+    width: 50px;
   }
   
   h1 {
@@ -172,6 +172,6 @@
   }
 
   .mobile-nav a {
-    font-size: 0.9rem; /* Slightly smaller nav links on very small screens */
+    font-size: 0.9rem;
   }
 }
