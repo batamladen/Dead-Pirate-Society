@@ -7,6 +7,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/mobile-writeups-individual.css">
+  <link rel="icon" type="image/x-icon" href="/images/dps.ico">
+
 
   <style>
     body {
@@ -110,12 +112,16 @@
     <a href="/" class="logo-link">
       <img src="/images/DPSlogo.webp" alt="Logo" class="logo">
     </a>
+
+    <!-- Hamburger menu button -->
     <div class="menu-icon" id="menu-icon">
-        <span></span>
-        <span></span>
-        <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-    <div class="nav-links">
+
+    <!-- Navigation panel -->
+    <div class="nav-links" id="nav-links">
       <a href="/about/">ABOUT</a>
       <a href="/writeups/">WRITEUPS</a>
       <a href="/members/">MEMBERS</a>
@@ -165,7 +171,6 @@
         <a href="https://external-link.com">Challenge Name (by playername)</a>
       </div>
     </div>
-
   </main>
 
   <footer>
@@ -173,6 +178,15 @@
   </footer>
 
   <script>
+    // Hamburger toggle
+    const menuIcon = document.getElementById('menu-icon');
+    const navLinks = document.getElementById('nav-links');
+
+    menuIcon.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // Category dropdown toggle
     document.querySelectorAll('.category h2').forEach(header => {
       header.addEventListener('click', () => {
         const category = header.parentElement;
@@ -181,27 +195,6 @@
         content.style.display = content.style.display === 'block' ? 'none' : 'block';
       });
     });
-
   </script>
-
-  <script>
-    const menuIcon = document.getElementById('menu-icon');
-    const navLinks = document.getElementById('nav-links');
-
-    menuIcon.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
-    });
-
-    // Category toggle
-    document.querySelectorAll('.category h2').forEach(header => {
-        header.addEventListener('click', () => {
-        const category = header.parentElement;
-        const content = category.querySelector('.challenges');
-        category.classList.toggle('open');
-        content.style.display = content.style.display === 'block' ? 'none' : 'block';
-        });
-    });
-  </script>
-
 </body>
 </html>

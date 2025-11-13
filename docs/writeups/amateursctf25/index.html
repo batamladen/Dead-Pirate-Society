@@ -7,6 +7,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://batamladen.github.io/Dead-Pirate-Society/css/mobile-writeups-individual.css">
+  <link rel="icon" type="image/x-icon" href="https://batamladen.github.io/Dead-Pirate-Society/images/dps.ico">
+
 
   <style>
     body {
@@ -110,12 +112,16 @@
     <a href="https://batamladen.github.io/Dead-Pirate-Society/" class="logo-link">
       <img src="https://batamladen.github.io/Dead-Pirate-Society/images/DPSlogo.webp" alt="Logo" class="logo">
     </a>
+
+    
     <div class="menu-icon" id="menu-icon">
-        <span></span>
-        <span></span>
-        <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-    <div class="nav-links">
+
+    
+    <div class="nav-links" id="nav-links">
       <a href="https://batamladen.github.io/Dead-Pirate-Society/about/">ABOUT</a>
       <a href="https://batamladen.github.io/Dead-Pirate-Society/writeups/">WRITEUPS</a>
       <a href="https://batamladen.github.io/Dead-Pirate-Society/members/">MEMBERS</a>
@@ -165,7 +171,6 @@
         <a href="https://external-link.com">Challenge Name (by playername)</a>
       </div>
     </div>
-
   </main>
 
   <footer>
@@ -173,6 +178,15 @@
   </footer>
 
   <script>
+    
+    const menuIcon = document.getElementById('menu-icon');
+    const navLinks = document.getElementById('nav-links');
+
+    menuIcon.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    
     document.querySelectorAll('.category h2').forEach(header => {
       header.addEventListener('click', () => {
         const category = header.parentElement;
@@ -181,27 +195,6 @@
         content.style.display = content.style.display === 'block' ? 'none' : 'block';
       });
     });
-
   </script>
-
-  <script>
-    const menuIcon = document.getElementById('menu-icon');
-    const navLinks = document.getElementById('nav-links');
-
-    menuIcon.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
-    });
-
-    
-    document.querySelectorAll('.category h2').forEach(header => {
-        header.addEventListener('click', () => {
-        const category = header.parentElement;
-        const content = category.querySelector('.challenges');
-        category.classList.toggle('open');
-        content.style.display = content.style.display === 'block' ? 'none' : 'block';
-        });
-    });
-  </script>
-
 </body>
 </html>
