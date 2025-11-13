@@ -26,9 +26,15 @@
       display: flex;
       justify-content: space-between;
       padding: 0 40px;
+      align-items: center;
     }
     .logo { width: 80px; animation: spin 15s linear infinite; }
     @keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+    
+    /* Desktop Navigation */
+    .nav-links {
+      display: flex;
+    }
     .nav-links a {
       color: #b43f26;
       text-decoration: none;
@@ -37,6 +43,71 @@
       margin-left: 18px;
     }
     .nav-links a:hover { color: #ff6347; }
+
+    /* Hamburger Menu */
+    .menu-icon {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      width: 30px;
+      height: 24px;
+      position: relative;
+    }
+    .menu-icon span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: #b43f26;
+      border-radius: 2px;
+      margin: 3px 0;
+      transition: all 0.3s ease;
+    }
+    .menu-icon.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-icon.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-icon.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    /* Mobile Navigation */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(8, 9, 8, 0.95);
+      z-index: 100;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .mobile-nav.active {
+      display: flex;
+    }
+    .mobile-nav a {
+      color: #b43f26;
+      text-decoration: none;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 1rem;
+      margin: 15px 0;
+      padding: 10px;
+    }
+    .mobile-nav a:hover {
+      color: #ff6347;
+    }
+    .close-nav {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      color: #b43f26;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
 
     h1 {
       font-family: 'Press Start 2P', cursive;
@@ -122,6 +193,14 @@
     </div>
   </header>
 
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav" id="mobile-nav">
+    <span class="close-nav" id="close-nav">✕</span>
+    <a href="/about/">ABOUT</a>
+    <a href="/writeups/">WRITEUPS</a>
+    <a href="/members/">MEMBERS</a>
+  </div>
+
   <main>
     <h1>AmateursCTF 2025</h1>
 
@@ -182,8 +261,29 @@
       });
     });
 
+    // Hamburger menu functionality
+    const menuIcon = document.getElementById('menu-icon');
+    const mobileNav = document.getElementById('mobile-nav');
+    const closeNav = document.getElementById('close-nav');
+
+    menuIcon.addEventListener('click', () => {
+      menuIcon.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+    });
+
+    closeNav.addEventListener('click', () => {
+      menuIcon.classList.remove('active');
+      mobileNav.classList.remove('active');
+    });
+
+    // Close mobile nav when clicking on a link
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuIcon.classList.remove('active');
+        mobileNav.classList.remove('active');
+      });
+    });
   </script>
 
-  
 </body>
 </html>
