@@ -6,8 +6,9 @@
   <title>AmateursCTF 2025 | Dead Pirate Society</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://batamladen.github.io/Dead-Pirate-Society/css/mobile-writeups-individual.css">
 
-    <style>
+  <style>
     body {
       background-color: #080908;
       color: #dbceb4;
@@ -25,15 +26,9 @@
       display: flex;
       justify-content: space-between;
       padding: 0 40px;
-      align-items: center;
     }
     .logo { width: 80px; animation: spin 15s linear infinite; }
     @keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
-    
-     
-    .nav-links {
-      display: flex;
-    }
     .nav-links a {
       color: #b43f26;
       text-decoration: none;
@@ -42,16 +37,6 @@
       margin-left: 18px;
     }
     .nav-links a:hover { color: #ff6347; }
-
-     
-    .menu-icon {
-      display: none;
-    }
-
-     
-    .mobile-nav {
-      display: none;
-    }
 
     h1 {
       font-family: 'Press Start 2P', cursive;
@@ -117,6 +102,7 @@
       padding: 20px 0;
       margin-top: auto;
     }
+
   </style>
 </head>
 <body>
@@ -135,14 +121,6 @@
       <a href="https://batamladen.github.io/Dead-Pirate-Society/members/">MEMBERS</a>
     </div>
   </header>
-
-  
-  <div class="mobile-nav" id="mobile-nav">
-    <span class="close-nav" id="close-nav">✕</span>
-    <a href="https://batamladen.github.io/Dead-Pirate-Society/about/">ABOUT</a>
-    <a href="https://batamladen.github.io/Dead-Pirate-Society/writeups/">WRITEUPS</a>
-    <a href="https://batamladen.github.io/Dead-Pirate-Society/members/">MEMBERS</a>
-  </div>
 
   <main>
     <h1>AmateursCTF 2025</h1>
@@ -204,29 +182,8 @@
       });
     });
 
-    
-    const menuIcon = document.getElementById('menu-icon');
-    const mobileNav = document.getElementById('mobile-nav');
-    const closeNav = document.getElementById('close-nav');
-
-    menuIcon.addEventListener('click', () => {
-      menuIcon.classList.toggle('active');
-      mobileNav.classList.toggle('active');
-    });
-
-    closeNav.addEventListener('click', () => {
-      menuIcon.classList.remove('active');
-      mobileNav.classList.remove('active');
-    });
-
-    
-    mobileNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menuIcon.classList.remove('active');
-        mobileNav.classList.remove('active');
-      });
-    });
   </script>
 
+  
 </body>
 </html>
