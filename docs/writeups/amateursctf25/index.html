@@ -6,18 +6,50 @@
   <title>AmateursCTF 2025 | Dead Pirate Society</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://batamladen.github.io/Dead-Pirate-Society/css/mobile-writeups.css">
+  <link rel="stylesheet" href="https://batamladen.github.io/Dead-Pirate-Society/css/mobile-writeups-individual.css">
 
   <style>
+    :root {
+      --bg: #080908;
+      --text: #dbceb4;
+      --link: #b43f26;
+      --link-hover: #ff6347;
+      --card-bg: #1a1a1a;
+      --card-border: #333;
+    }
+
     body {
-      background-color: #080908;
-      color: #dbceb4;
-      font-family: 'Fira Mono', monospace;
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: system-ui, sans-serif;
       margin: 0;
       text-align: center;
       padding-top: 80px;
-      min-height: 100vh;
+      min-height: 90vh;
+      position: relative;
     }
+
+    h1, h2 {
+      font-family: 'Press Start 2P', cursive;
+      color: var(--text);
+    }
+
+    p, li {
+      font-family: 'Fira Mono', monospace;
+      color: var(--text);
+    }
+
+    h1 {
+      font-size: 1.2rem;
+      line-height: 1.5;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+    }
+
+     
     header {
       position: absolute;
       top: 20px;
@@ -25,24 +57,43 @@
       right: 0;
       display: flex;
       justify-content: space-between;
+      align-items: flex-start;
       padding: 0 40px;
     }
-    .logo { width: 80px; animation: spin 15s linear infinite; }
-    @keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+
+    .logo {
+      width: 80px;
+      height: auto;
+      animation: spin 15s linear infinite;
+    }
+
+    .nav-links {
+      display: flex;
+      margin-top: +6px;
+    }
+
     .nav-links a {
-      color: #b43f26;
+      margin-left: 19.3px;
+      color: var(--link);
       text-decoration: none;
+      font-weight: bold;
       font-family: 'Press Start 2P', cursive;
       font-size: 0.7rem;
-      margin-left: 18px;
+      transition: color 0.3s ease;
     }
-    .nav-links a:hover { color: #ff6347; }
 
-    h1 {
-      font-family: 'Press Start 2P', cursive;
-      text-transform: uppercase;
-      font-size: 1rem;
-      margin-bottom: 40px;
+    .nav-links a:hover {
+      color: var(--link-hover);
+    }
+
+     
+    .menu-icon {
+      display: none;
+    }
+
+     
+    .mobile-nav {
+      display: none;
     }
 
     .category {
@@ -96,13 +147,17 @@
 
     footer {
       text-align: center;
-      font-family: 'Fira Mono', monospace;
+      font-family: 'Press Start 2P', cursive;
       font-size: 0.6rem;
       width: 100%;
       padding: 20px 0;
-      margin-top: auto;
+      margin-top: 200px;
     }
 
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
   </style>
 </head>
 <body>
@@ -110,12 +165,25 @@
     <a href="https://batamladen.github.io/Dead-Pirate-Society/" class="logo-link">
       <img src="https://batamladen.github.io/Dead-Pirate-Society/images/DPSlogo.webp" alt="Logo" class="logo">
     </a>
+    <div class="menu-icon" id="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
     <div class="nav-links">
       <a href="https://batamladen.github.io/Dead-Pirate-Society/about/">ABOUT</a>
       <a href="https://batamladen.github.io/Dead-Pirate-Society/writeups/">WRITEUPS</a>
       <a href="https://batamladen.github.io/Dead-Pirate-Society/members/">MEMBERS</a>
     </div>
   </header>
+
+  
+  <div class="mobile-nav" id="mobile-nav">
+    <span class="close-nav" id="close-nav">✕</span>
+    <a href="https://batamladen.github.io/Dead-Pirate-Society/about/">ABOUT</a>
+    <a href="https://batamladen.github.io/Dead-Pirate-Society/writeups/">WRITEUPS</a>
+    <a href="https://batamladen.github.io/Dead-Pirate-Society/members/">MEMBERS</a>
+  </div>
 
   <main>
     <h1>AmateursCTF 2025</h1>
@@ -153,15 +221,13 @@
       </div>
     </div>
 
-        <div class="category">
+    <div class="category">
       <h2>PWN <span class="arrow">▶</span></h2>
       <div class="challenges">
         <a href="https://batamladen.github.io/Dead-Pirate-Society/writeups/amateursctf25/challenge-name/">Challenge Name (by playername)</a>
         <a href="https://external-link.com">Challenge Name (by playername)</a>
       </div>
     </div>
-
-
   </main>
 
   <footer>
@@ -175,6 +241,29 @@
         const content = category.querySelector('.challenges');
         category.classList.toggle('open');
         content.style.display = content.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+
+    
+    const menuIcon = document.getElementById('menu-icon');
+    const mobileNav = document.getElementById('mobile-nav');
+    const closeNav = document.getElementById('close-nav');
+
+    menuIcon.addEventListener('click', () => {
+      menuIcon.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+    });
+
+    closeNav.addEventListener('click', () => {
+      menuIcon.classList.remove('active');
+      mobileNav.classList.remove('active');
+    });
+
+    
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuIcon.classList.remove('active');
+        mobileNav.classList.remove('active');
       });
     });
   </script>
