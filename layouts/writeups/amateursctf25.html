@@ -43,6 +43,26 @@
     }
     .nav-links a:hover { color: #ff6347; }
 
+    /* Hamburger Menu - Hidden on desktop */
+    .menu-icon {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      width: 30px;
+      height: 24px;
+      position: relative;
+      z-index: 101;
+    }
+    .menu-icon span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: #b43f26;
+      border-radius: 2px;
+      margin: 3px 0;
+      transition: all 0.3s ease;
+    }
+
 
     h1 {
       font-family: 'Press Start 2P', cursive;
