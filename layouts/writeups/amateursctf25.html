@@ -90,11 +90,11 @@
         background: #1a1a1a;
         border: 2px solid #333;
         border-radius: 10px;
-        margin: 20px;
-        width: 70%; /* Full width minus margins */
+        margin: 20px auto; /* Changed from 20px to 20px auto */
+        width: 70%;
         padding: 15px;
         text-align: left;
-        box-sizing: border-box; /* Include padding in width calculation */
+        box-sizing: border-box;
     }
 
     main {
@@ -233,28 +233,6 @@
       });
     });
 
-    // Hamburger menu functionality
-    const menuIcon = document.getElementById('menu-icon');
-    const mobileNav = document.getElementById('mobile-nav');
-    const closeNav = document.getElementById('close-nav');
-
-    menuIcon.addEventListener('click', () => {
-      menuIcon.classList.toggle('active');
-      mobileNav.classList.toggle('active');
-    });
-
-    closeNav.addEventListener('click', () => {
-      menuIcon.classList.remove('active');
-      mobileNav.classList.remove('active');
-    });
-
-    // Close mobile nav when clicking on a link
-    mobileNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menuIcon.classList.remove('active');
-        mobileNav.classList.remove('active');
-      });
-    });
   </script>
 </body>
 </html>
