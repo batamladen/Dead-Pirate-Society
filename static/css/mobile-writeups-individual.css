@@ -1,100 +1,230 @@
+:root {
+  --bg: #080908;
+  --text: #dbceb4;
+  --link: #b43f26;
+  --link-hover: #ff6347;
+  --card-bg: #1a1a1a;
+  --border: #333;
+  --header-height: 60px;
+}
+
+/* ===== GENERAL LAYOUT ===== */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Fira Mono', monospace;
+  margin: 0;
+  text-align: center;
+  padding-top: var(--header-height);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+main {
+  padding: 20px 10px;
+}
+
+/* ===== HEADER ===== */
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: var(--header-height);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 100;
+  background-color: var(--bg);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+/* Logo hidden in mobile */
+.logo {
+  width: 50px;
+  display: none;
+  animation: spin 15s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Hamburger menu icon */
+.menu-icon {
+  width: 28px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.menu-icon span {
+  display: block;
+  height: 4px;
+  background-color: var(--link);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Navigation panel */
+.nav-links {
+  position: fixed;
+  top: var(--header-height);
+  right: -200px; /* hidden by default */
+  width: 180px;
+  background-color: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: right 0.3s ease;
+  z-index: 99;
+}
+
+.nav-links a {
+  color: var(--link);
+  text-decoration: none;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.7rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--link-hover);
+}
+
+/* Show nav panel when open */
+.nav-links.open {
+  right: 10px;
+}
+
+/* ===== MAIN HEADING ===== */
+h1 {
+  font-family: 'Press Start 2P', cursive;
+  text-transform: uppercase;
+  font-size: 1rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* ===== CATEGORY BOXES ===== */
+.category {
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  margin: 20px auto;
+  max-width: 800px;
+  padding: 15px 20px;
+  text-align: left;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.category:hover {
+  border-color: var(--link);
+  transform: translateY(-2px);
+}
+
+.category h2 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: var(--text);
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+}
+
+.category.open .arrow {
+  transform: rotate(90deg);
+}
+
+/* ===== CHALLENGE LINKS ===== */
+.challenges {
+  display: none;
+  margin-top: 10px;
+  padding-left: 10px;
+}
+
+.challenges a {
+  display: block;
+  color: var(--link);
+  text-decoration: none;
+  margin: 6px 0;
+  font-family: 'Fira Mono', monospace;
+  font-size: 0.85rem;
+}
+
+.challenges a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.6rem;
+  width: 100%;
+  padding: 20px 0;
+  margin-top: 50px;
+  color: var(--text);
+  opacity: 0.85;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
 
   body {
-    padding-top: 100px;
-    font-size: 0.9rem;
-    text-align: center;
-    overflow-x: hidden;
-  }
-
-  header {
-    flex-direction: column;
-    align-items: center;
-    padding: 0 10px;
-    top: 10px;
-  }
-
-  .logo {
-    width: 60px;
-    margin-bottom: 10px;
-  }
-
-  .nav-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-  }
-
-  .nav-links a {
-    font-size: 0.55rem;
-    margin: 0;
+    padding-top: var(--header-height);
   }
 
   h1 {
-    font-size: 0.8rem;
-    margin: 20px 0;
-    line-height: 1.4;
+    font-size: 0.85rem;
+    margin-bottom: 25px;
   }
 
   .category {
     width: 90%;
     padding: 12px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   .category h2 {
-    font-size: 0.7rem;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .arrow {
-    font-size: 0.8rem;
-  }
-
-  .challenges {
-    margin-top: 10px;
-    padding-left: 10px;
+    font-size: 0.75rem;
   }
 
   .challenges a {
     font-size: 0.7rem;
-    line-height: 1.4;
-    word-break: break-word;
-  }
-
-  footer {
-    font-size: 0.55rem;
-    padding: 15px 0;
-  }
-
-  /* Prevent zooming text overflow */
-  * {
-    box-sizing: border-box;
-  }
-
-  main {
-    padding: 0 10px;
   }
 }
 
 /* For very small screens (under 400px) */
 @media (max-width: 400px) {
   h1 {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
   }
 
   .category h2 {
-    font-size: 0.6rem;
+    font-size: 0.65rem;
   }
 
   .challenges a {
     font-size: 0.65rem;
   }
 
-  .nav-links a {
-    font-size: 0.5rem;
+  .menu-icon {
+    width: 24px;
+    height: 18px;
   }
 }
