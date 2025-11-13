@@ -8,15 +8,40 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --bg: #080908;
+      --text: #dbceb4;
+      --link: #b43f26;
+      --link-hover: #ff6347;
+      --card-bg: #1a1a1a;
+      --card-border: #333;
+    }
+
     body {
-      background-color: #080908;
-      color: #dbceb4;
-      font-family: 'Fira Mono', monospace;
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: system-ui, sans-serif;
       margin: 0;
       text-align: center;
       padding-top: 80px;
-      min-height: 100vh;
+      min-height: 90vh;
+      position: relative;
     }
+
+    h1, h2 {
+      font-family: 'Press Start 2P', cursive;
+      color: var(--text);
+    }
+
+    p, li {
+      font-family: 'Fira Mono', monospace;
+      color: var(--text);
+    }
+
+    /* Header with logo on left and nav on right - SAME AS WRITEUPS */
     header {
       position: absolute;
       top: 20px;
@@ -24,24 +49,34 @@
       right: 0;
       display: flex;
       justify-content: space-between;
+      align-items: flex-start;
       padding: 0 40px;
-      align-items: center;
     }
-    .logo { width: 80px; animation: spin 15s linear infinite; }
-    @keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
-    
-    /* Desktop Navigation */
+
+    .logo {
+      width: 80px;
+      height: auto;
+      animation: spin 15s linear infinite;
+    }
+
     .nav-links {
       display: flex;
+      margin-top: +6px;
     }
+
     .nav-links a {
-      color: #b43f26;
+      margin-left: 19.3px;
+      color: var(--link);
       text-decoration: none;
+      font-weight: bold;
       font-family: 'Press Start 2P', cursive;
       font-size: 0.7rem;
-      margin-left: 18px;
+      transition: color 0.3s ease;
     }
-    .nav-links a:hover { color: #ff6347; }
+
+    .nav-links a:hover {
+      color: var(--link-hover);
+    }
 
     /* Hamburger Menu - Hidden on desktop */
     .menu-icon {
@@ -164,6 +199,11 @@
       width: 100%;
       padding: 20px 0;
       margin-top: auto;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
     /* Mobile Styles */
