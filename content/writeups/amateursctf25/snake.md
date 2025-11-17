@@ -1,4 +1,4 @@
 ---
 title: "Snake"
-layout: "Snake"
+layout: "snake"
 ---
