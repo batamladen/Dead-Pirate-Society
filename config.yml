@@ -17,11 +17,16 @@ menu:
       name: Writeups
       url: /writeups/
       weight: 2
+    
+    - identifier: achievements
+      name: Achievements
+      url: /achievements/
+      weight: 3
 
     - identifier: members
       name: Members
       url: /members/
-      weight: 3
+      weight: 4
 
     
 
