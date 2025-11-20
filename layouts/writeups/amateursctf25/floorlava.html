@@ -160,6 +160,7 @@
       <a href="/about/">ABOUT</a>
       <a href="/writeups/">WRITEUPS</a>
       <a href="/members/">MEMBERS</a>
+      <a href="/achievements/">ACHIEVEMENTS</a>
     </div>
   </header>
 
@@ -191,13 +192,11 @@
     </p>
 
     <pre><code>srand(4919 * i - 559038737);
-    if ((unsigned char)rand() != byte_4010[i]) fail;
-    </code></pre>
+    if ((unsigned char)rand() != byte_4010[i]) fail;</code></pre>
 
     <p><strong>Output:</strong></p>
 
-    <pre><code>e1 e7 a2 d1 b6 e1 ca c4
-    </code></pre>
+    <pre><code>e1 e7 a2 d1 b6 e1 ca c4</code></pre>
 
     <h3>Bit-Difference Mapping</h3>
     <p>
@@ -214,8 +213,7 @@
 
     <p><strong>Resulting WASD path:</strong></p>
 
-    <pre><code>dsddwwawddwddwwddsdddwdwdwwd
-    </code></pre>
+    <pre><code>dsddwwawddwddwwddsdddwdwdwwd</code></pre>
 
     <h3>Final Decryption</h3>
     <p>
@@ -223,19 +221,16 @@
     </p>
 
     <pre><code>v13 = 0x00ef04f3c3efccc3
-    seed = v13 ^ (v13 &gt;&gt; 32) = 0xc300c830
-    </code></pre>
+    seed = v13 ^ (v13 &gt;&gt; 32) = 0xc300c830</code></pre>
 
     <p>
     Using glibc’s <code>rand()</code> and XOR on <code>byte_4020</code> yields plaintext:
     </p>
 
-    <pre><code>l4va_r3v_05f0d4ff51fb
-    </code></pre>
+    <pre><code>l4va_r3v_05f0d4ff51fb</code></pre>
 
     <h3>Final Flag</h3>
-    <pre><code>amateursCTF{l4va_r3v_05f0d4ff51fb}
-    </code></pre>
+    <pre><code>amateursCTF{l4va_r3v_05f0d4ff51fb}</code></pre>
 
   </main>
 
