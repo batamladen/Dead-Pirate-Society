@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://batamladen.github.io/Dead-Pirate-Society/css/mobile.css">
+  <link rel="icon" type="image/x-icon" href="https://batamladen.github.io/Dead-Pirate-Society/images/dps.ico">
 
   
   <style>
@@ -67,6 +68,28 @@
 
     a:hover {
       color: var(--link-hover);
+    }
+
+    code {
+      background-color: #f4f4f4;
+      color: #333;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+    }
+        
+    pre {
+      background-color: #f4f4f4;
+      color: #333;
+      padding: 15px;
+      border-radius: 4px;
+      border-left: 4px solid #007acc;
+      overflow-x: auto;
+    }
+        
+    pre code {
+      background-color: transparent;
+      padding: 0;
     }
 
      
@@ -145,19 +168,17 @@
   <main>
     
     <p style="text-align: center;">
-        Writeup by 
-        <a href="https://github.com/username" style="color: var(--link);">
-            name
-        </a>
+        Writeup by Arad
     </p>
 
-    <h1 style="text-align: center;">Desafe</h1>
+    <h1 style="text-align: center;">Flor Is Lava</h1>
 
     <h2>Description</h2>
     <p>
       dont touch the floor <br>
     </p>
 
+    <h2>Solution</h2>
     <p>Simulated 8×8 Grid</p>
     <p>
     The player moves using WASD. Each move toggles a bit in a global 8-byte array
