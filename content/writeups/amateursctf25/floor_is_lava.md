@@ -1,4 +1,4 @@
 ---
 title: "Floor Is Lava"
-layout: "floor-is-lava"
+layout: "floor_is_lava"
 ---
