@@ -155,6 +155,28 @@
     pre { background-color: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 4px; border-left: 4px solid #ff6347; }
     pre code { background-color: transparent; padding: 0; }
 
+
+    #img-lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    #img-lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 10px;
+        cursor: zoom-out;
+    }
+
+
     footer {
       text-align: center;
       font-family: 'Press Start 2P', cursive;
