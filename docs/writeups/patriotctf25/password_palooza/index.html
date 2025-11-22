@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Writeups | Dead Pirate Society</title>
+  <title>Password Palooza | Dead Pirate Society</title>
+
+  
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://batamladen.github.io/Dead-Pirate-Society/css/mobile-writeups.css">
+  <link rel="stylesheet" href="https://batamladen.github.io/Dead-Pirate-Society/css/mobile.css">
   <link rel="icon" type="image/x-icon" href="https://batamladen.github.io/Dead-Pirate-Society/images/dps.ico">
 
   <style>
@@ -15,8 +17,6 @@
       --text: #dbceb4;
       --link: #b43f26;
       --link-hover: #ff6347;
-      --card-bg: #1a1a1a;
-      --card-border: #333;
     }
 
     body {
@@ -25,12 +25,11 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: flex-start;
       font-family: system-ui, sans-serif;
       margin: 0;
-      text-align: center;
-      padding-top: 80px;
-      min-height: 90vh;  
-      position: relative;  
+      padding-top: 80px;  
+      position: relative;
     }
 
     h1, h2 {
@@ -46,8 +45,30 @@
     h1 {
       font-size: 1.2rem;
       line-height: 1.5;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: 0.9rem;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--link-hover);
     }
 
      
@@ -70,7 +91,8 @@
 
     .nav-links {
       display: flex;
-      margin-top: +6px;
+      margin-top: +6px;  
+
     }
 
     .nav-links a {
@@ -87,124 +109,64 @@
       color: var(--link-hover);
     }
 
-     
-    .filter-section {
-      margin-bottom: 30px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: center;
-      align-items: center;
-
-    }
-
-    .filter-section label {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.7rem;
-      margin-right: 10px;
-    }
-
-    .filter-select {
-      background: var(--card-bg);
-      color: var(--text);
-      border: 2px solid var(--card-border);
-      padding: 8px 15px;
-      font-family: 'Fira Mono', monospace;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-left: -25px;
-    }
-
-    .filter-select:focus {
-      outline: none;
-      border-color: var(--link);
-    }
-
-     
-    .writeups-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 25px;
-      max-width: 1200px;
-      width: 100%;
-      padding: 0 20px;
-    }
-
-    .ctf-card {
-      position: relative;
-      background: var(--card-bg);
-      border: 2px solid var(--card-border);
-      border-radius: 8px;
-      padding: 30px;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      text-decoration: none;
-      display: block;
-    }
-
-    .ctf-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--link);
-      box-shadow: 0 5px 15px rgba(180, 63, 38, 0.3);
-    }
-
-    .ctf-name {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.8rem;
-      color: var(--text);
-      margin-bottom: 10px;
-      line-height: 1.8px;
-    }
-
-    .ctf-date {
-      font-family: 'Fira Mono', monospace;
-      font-size: 0.8rem;
-      color: var(--link);
-      margin-bottom: 15px;
-    }
-
-    .ctf-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: center;
-    }
-
-    .ctf-tag {
-      background: var(--link);
-      color: var(--bg);
-      padding: 4px 8px;
-      border-radius: 12px;
-      font-family: 'Fira Mono', monospace;
-      font-size: 0.7rem;
-      font-weight: bold;
-    }
-
-    .ctf-difficulty {
-      margin-top: 10px;
-      font-family: 'Fira Mono', monospace;
-      font-size: 0.8rem;
-    }
-
-    .ctf-placement {
-      position: absolute;
-      bottom: 10px;
-      left: 15px;
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.6rem;
-      color: #dbceb4;
-      opacity: 0.8;
-    }
-
-
-    .difficulty-easy { color: #4CAF50; }
-    .difficulty-medium { color: #FF9800; }
-    .difficulty-hard { color: #F44336; }
-
     main {
-      max-width: 1200px;
+      max-width: 70%;
+      width: 55%;
       padding: 20px;
-      flex: 1;
+      margin-bottom: 60px; 
+      text-align: left;
+    }
+
+    main img {
+        display: block;
+        max-width: 100%;
+        width: 65%;
+        margin: 15px auto;
+        border-radius: 8px;
+        cursor: zoom-in;
+        transition: 0.2s ease;
+    }
+
+     
+    #img-lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+     
+    #img-lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 10px;
+        cursor: zoom-out;
+    }
+
+    code {
+        background-color: #2d2d2d;
+        color: #f8f8f2;
+        padding: 2px 6px;
+        border-radius: 3px;
+    }
+
+    pre {
+        background-color: #2d2d2d;
+        color: #f8f8f2;
+        padding: 15px;
+        border-radius: 4px;
+        border-left: 4px solid #ff6347;
+    }
+        
+    pre code {
+      background-color: transparent;
+      padding: 0;
     }
 
     footer {
@@ -213,210 +175,77 @@
       font-size: 0.6rem;
       width: 100%;
       padding: 20px 0;
-      margin-top: 200px;
+      margin-top: auto; 
     }
 
     @keyframes spin {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
-
-     
-    .no-results {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.8rem;
-      color: var(--link);
-      margin-top: 50px;
-    }
   </style>
 </head>
+
 <body>
-  <header>
+
+<header>
     <a href="https://batamladen.github.io/Dead-Pirate-Society/" class="logo-link">
       <img src="https://batamladen.github.io/Dead-Pirate-Society/images/DPSlogo.webp" alt="Logo" class="logo">
     </a>
+    
+    
     <div class="nav-links">
       <a href="https://batamladen.github.io/Dead-Pirate-Society/about/">ABOUT</a>
       <a href="https://batamladen.github.io/Dead-Pirate-Society/writeups/">WRITEUPS</a>
       <a href="https://batamladen.github.io/Dead-Pirate-Society/members/">MEMBERS</a>
       <a href="https://batamladen.github.io/Dead-Pirate-Society/achievements/">ACHIEVEMENTS</a>
     </div>
-  </header>
-
-  <main>
-    <h1>CTF WRITEUPS</h1>
 
     
-    <div class="filter-section">
-      <label for="year-filter">YEAR:</label>
-      <select id="year-filter" class="filter-select">
-        <option value="all">ALL YEARS</option>
-        <option value="2025">2025</option>
-        <option value="2024">2024</option>
-        <option value="2023">2023</option>
-      </select>
-
-      <label for="platform-filter">PLATFORM:</label>
-      <select id="platform-filter" class="filter-select">
-        <option value="all">ALL PLATFORMS</option>
-        <option value="htb">HackTheBox</option>
-        <option value="thm">TryHackMe</option>
-        <option value="ctftime">CTFtime</option>
-        <option value="AmateursCTF">AmateursCTF</option>
-      </select>
-
-      <label for="difficulty-filter">DIFFICULTY:</label>
-      <select id="difficulty-filter" class="filter-select">
-        <option value="all">ALL LEVELS</option>
-        <option value="easy">EASY</option>
-        <option value="medium">MEDIUM</option>
-        <option value="hard">HARD</option>
-      </select>
+    <div class="menu-icon" id="menu-icon">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
+</header>
 
-    
-    <div class="writeups-grid" id="writeups-container">
-      
-    </div>
+<main>
 
-    <div class="no-results" id="no-results" style="display: none;">
-      NO WRITEUPS FOUND FOR SELECTED FILTERS
-    </div>
-  </main>
+  <p style="text-align: center;">
+    Writeup by <a href="Playername">Playername</a>
+  </p>
 
-  <footer>
-    <p>@ DEAD PIRATE SOCIETY</p>
-  </footer>
+  <h1 style="text-align: center;">Password Palooza</h1>
 
-  <script>
-    
-    const ctfData = [
-      {
-        id: "0001",
-        name: "AmateursCTF",
-        date: "2025-11-15",
-        year: "2025",
-        platform: "AmateursCTF",
-        difficulty: "easy",
-        placement: "84/853",
-        tags: ["Misc", "Web", "Pwn", "Crypto" , "Rev"],
-        link: "/writeups/amateursctf25"
-      },
-      {
-        id: "0002",
-        name: "PatriotCTF",
-        date: "2025-11-22",
-        year: "2025",
-        platform: "PatriotCTF",
-        difficulty: "easy",
-        placement: "#undefined",
-        tags: ["Pwn", "OSINT", "Crypto", "Web", "Rev", "Forensics"],
-        link: "/writeups/patriotctf25"
-      },
-      {
-        id: "undefined",
-        name: "undefined",
-        date: "1999-11-11",
-        year: "undefined",
-        platform: "undefined",
-        difficulty: "hard",
-        placement: "#undefined",
-        tags: ["Pwn", "Reverse", "Crypto", "Web"],
-        link: "/writeups/undefined.html"
-      },
-      {
-        id: "undefined",
-        name: "undefined",
-        date: "1999-11-11",
-        year: "undefined",
-        platform: "undefined",
-        difficulty: "hard",
-        placement: "#undefined",
-        tags: ["Web", "Pwn", "Hardware", "Mobile"],
-        link: "/writeups/undefined.html"
-      },
-      {
-        id: "undefined",
-        name: "undefined",
-        date: "undefined",
-        year: "undefined",
-        platform: "undefined",
-        difficulty: "easy",
-        placement: "#undefined",
-        tags: ["Web", "Forensics", "OSINT", "Crypto"],
-        link: "/writeups/undefined"
-      },
-      {
-        id: "undefined",
-        name: "undefined",
-        date: "undefined",
-        year: "undefined",
-        platform: "undefined",
-        difficulty: "hard",
-        placement: "#undefined",
-        tags: ["Pwn", "Reverse", "Web", "Crypto"],
-        link: "/writeups/undefined.htmll"
-      }
-    ];
+  
+  
 
-    
-    function renderCTFCards(ctfs) {
-      const container = document.getElementById('writeups-container');
-      const noResults = document.getElementById('no-results');
-      
-      container.innerHTML = '';
-      
-      if (ctfs.length === 0) {
-        noResults.style.display = 'block';
-        return;
-      }
-      
-      noResults.style.display = 'none';
-      
-      ctfs.forEach(ctf => {
-        const card = document.createElement('a');
-        card.href = ctf.link;
-        card.className = 'ctf-card';
-        card.innerHTML = `
-          <div class="ctf-name">${ctf.name}</div>
-          <div class="ctf-date">${new Date(ctf.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
-          <div class="ctf-tags">
-            ${ctf.tags.map(tag => `<span class="ctf-tag">${tag}</span>`).join('')}
-          </div>
-          <div class="ctf-difficulty ${'difficulty-' + ctf.difficulty}">
-            DIFFICULTY: ${ctf.difficulty.toUpperCase()}
-          </div>
-          <div class="ctf-placement">#${ctf.placement}</div>
+</main>
 
-        `;
-        container.appendChild(card);
-      });
-    }
+<footer>
+  <p>@ DEAD PIRATE SOCIETY</p>
+</footer>
 
-    
-    function filterCTFs() {
-      const yearFilter = document.getElementById('year-filter').value;
-      const platformFilter = document.getElementById('platform-filter').value;
-      const difficultyFilter = document.getElementById('difficulty-filter').value;
-      
-      const filteredCTFs = ctfData.filter(ctf => {
-        return (yearFilter === 'all' || ctf.year === yearFilter) &&
-               (platformFilter === 'all' || ctf.platform === platformFilter) &&
-               (difficultyFilter === 'all' || ctf.difficulty === difficultyFilter);
-      });
-      
-      renderCTFCards(filteredCTFs);
-    }
 
-    
-    document.addEventListener('DOMContentLoaded', () => {
-      renderCTFCards(ctfData);
-      
-      
-      document.getElementById('year-filter').addEventListener('change', filterCTFs);
-      document.getElementById('platform-filter').addEventListener('change', filterCTFs);
-      document.getElementById('difficulty-filter').addEventListener('change', filterCTFs);
+<div id="img-lightbox">
+    <img src="" alt="Expanded Image">
+</div>
+
+<script>
+    const images = document.querySelectorAll("main img");
+    const lightbox = document.getElementById("img-lightbox");
+    const lightboxImg = lightbox.querySelector("img");
+
+    images.forEach(img => {
+        img.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightbox.style.display = "flex";
+        });
     });
-  </script>
+
+    lightbox.addEventListener("click", () => {
+        lightbox.style.display = "none";
+    });
+</script>
+
 </body>
 </html>
