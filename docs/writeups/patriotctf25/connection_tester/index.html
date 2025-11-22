@@ -121,9 +121,33 @@
     main img {
         display: block;
         max-width: 100%;
-        width: 70%;          
-        margin: 15px auto;   
-        border-radius: 8px;  
+        width: 65%;
+        margin: 15px auto;
+        border-radius: 8px;
+        cursor: zoom-in;
+        transition: 0.2s ease;
+    }
+
+     
+    #img-lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+     
+    #img-lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 10px;
+        cursor: zoom-out;
     }
 
     footer {
@@ -132,7 +156,7 @@
       font-size: 0.6rem;
       width: 100%;
       padding: 20px 0;
-      margin-top: auto;  
+      margin-top: auto; 
     }
 
     @keyframes spin {
@@ -179,7 +203,7 @@
     Upon reaching the website we are presented with this login page.
     Using the following credentials I got from Burp AI, we get logged in as admin: <br>
     (admin:changeme)
-    <br>
+    
     <img src="https://batamladen.github.io/Dead-Pirate-Society/images/material/CT2.webp" alt="Logged in"> <br>
 
     Upon reaching the "Connectivity Tool", we can see that we have the option to test host connectivity.
@@ -201,5 +225,27 @@
   <footer>
     <p>@ DEAD PIRATE SOCIETY</p>
   </footer>
+
+    <div id="img-lightbox">
+        <img src="" alt="Expanded Image">
+    </div>
+
+    <script>
+    const images = document.querySelectorAll("main img");
+    const lightbox = document.getElementById("img-lightbox");
+    const lightboxImg = lightbox.querySelector("img");
+
+    images.forEach(img => {
+        img.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightbox.style.display = "flex";
+        });
+    });
+
+    lightbox.addEventListener("click", () => {
+        lightbox.style.display = "none";
+    });
+    </script>
+
 </body>
 </html>
