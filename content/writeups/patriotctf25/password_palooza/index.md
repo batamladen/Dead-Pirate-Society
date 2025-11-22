@@ -1,6 +1,6 @@
 ---
 title: "Password Palooza"
-author: "Playername"
+author: "Playernamee"
 layout: "single"
 ---
 
