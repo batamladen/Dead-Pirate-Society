@@ -207,7 +207,7 @@
 <main>
 
   <p style="text-align: center;">
-    Writeup by <a href="{{ .Params.author }}">{{ .Params.author }}</a>
+    Writeup by <a href="{{ .Params.author }}" style="color: var(--link);">{{ .Params.author }}</a>
   </p>
 
   <h1 style="text-align: center;">{{ .Title }}</h1>
@@ -222,9 +222,9 @@
 </footer>
 
 <!-- JS for image expansion -->
-<div id="img-lightbox">
-  <img src="" alt="Expanded Image">
-</div>
+    <div id="img-lightbox">
+        <img src="" alt="Expanded Image">
+    </div>
 
 <script>
   const images = document.querySelectorAll("main img");
