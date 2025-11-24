@@ -48,4 +48,4 @@ Kinda a guessy challenge because if you are not in the cybersecurity community f
 
 Anyways here is the picture, the flag is the text on the image. 🐱
 
-![kittiez](/images/kittiez.webp)
+![kittiez](/images/material/kittiez.webp)
