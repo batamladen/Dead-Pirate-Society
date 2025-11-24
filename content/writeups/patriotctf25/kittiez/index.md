@@ -9,7 +9,7 @@ github: "https://github.com/batamladen/"
 
 ## Walkthrough
 
-We are provided with a [text file](/files/Challenge.txt) that says:
+We are provided with a text file that says:
 
 ```
 I lost it all in one bad tick—

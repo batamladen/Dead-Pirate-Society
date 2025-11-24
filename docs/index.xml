@@ -107,7 +107,7 @@ Log messages matching the user’s session ID are read back from /var/log/app/ap
       <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/kittiez/</guid>
       <description>&lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&#34;walkthrough&#34;&gt;Walkthrough&lt;/h2&gt;
-&lt;p&gt;We are provided with a &lt;a href=&#34;https://batamladen.github.io/Dead-Pirate-Society/files/Challenge.txt&#34;&gt;text file&lt;/a&gt; that says:&lt;/p&gt;
+&lt;p&gt;We are provided with a text file that says:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;I lost it all in one bad tick—
 my feline Vault, gone *way* too quick.
 A virus on my janky ’puter

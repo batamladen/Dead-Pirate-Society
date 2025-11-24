@@ -12,6 +12,3 @@ Each of these curl requests returns some data, though this data is just random g
 Each curl request has a mangled TTL value which is a decimal encoded character of the flag. These packets are in order, so once you notice this pattern you can extract all the TTL bytes and convert them from hex to recover the flag. 
 
 The challenge name is meant to be a hint as CURL and gym go hand in hand, i.e. Bicep Curl exercises.
-
-
-[The PCAP file](/files/wegogym.7z)
