@@ -31,5 +31,15 @@
       <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/trust_vault/</guid>
       <description></description>
     </item>
+    <item>
+      <title>We Go Gym</title>
+      <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/we_go_gym/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/we_go_gym/</guid>
+      <description>&lt;h1 id=&#34;walkthrough&#34;&gt;Walkthrough&lt;/h1&gt;
+&lt;p&gt;Within this pcap file there are a series of curl requests.
+Each of these curl requests returns some data, though this data is just random gibberish. However, you will notice there are 22 curl requests, this is the length of the flag.
+Each curl request has a mangled TTL value which is a decimal encoded character of the flag. These packets are in order, so once you notice this pattern you can extract all the TTL bytes and convert them from hex to recover the flag.&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>
