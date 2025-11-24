@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>We Go Gym | Dead Pirate Society</title>
+  <title>Space Pirates | Dead Pirate Society</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://batamladen.github.io/Dead-Pirate-Society/css/mobile.css">
@@ -231,19 +231,34 @@
   <p style="text-align: center;">
     Writeup by 
     <a href="https://pointerpointer.com/" target="_blank" style="color: var(--link);">
-      Salochi
+      PlayerX
     </a>
   </p>
 
-  <h1 style="text-align: center;">We Go Gym</h1>
+  <h1 style="text-align: center;">Space Pirates</h1>
 
   
   <h2 id="walkthrough">Walkthrough</h2>
-<p>Within this pcap file there are a series of curl requests.
-Each of these curl requests returns some data, though this data is just random gibberish. However, you will notice there are 22 curl requests, this is the length of the flag.
-Each curl request has a mangled TTL value which is a decimal encoded character of the flag. These packets are in order, so once you notice this pattern you can extract all the TTL bytes and convert them from hex to recover the flag.</p>
-<p>The challenge name is meant to be a hint as CURL and gym go hand in hand, i.e. Bicep Curl exercises.</p>
-<p><a href="https://batamladen.github.io/Dead-Pirate-Society/files/capture.pcap">The PCAP file</a></p>
+<p>TARGET = [
+0x5A,0x3D,0x5B,0x9C,0x98,0x73,0xAE,0x32,0x25,0x47,
+0x48,0x51,0x6C,0x71,0x3A,0x62,0xB8,0x7B,0x63,0x57,
+0x25,0x89,0x58,0xBF,0x78,0x34,0x98,0x71,0x68,0x59
+]</p>
+<p>XOR_KEY = [0x42, 0x73, 0x21, 0x69, 0x37]
+MAGIC_ADD = 0x2A
+FLAG_LEN = 30</p>
+<h3 id="step-1-reverse-xor-with-rotating-key">Step 1 (reverse): XOR with rotating key</h3>
+<p>for i in range(FLAG_LEN):
+buffer[i] ^= XOR_KEY[i % 5]</p>
+<h3 id="step-2-reverse-swap-adjacent-bytes">Step 2 (reverse): swap adjacent bytes</h3>
+<p>for i in range(0, FLAG_LEN, 2):
+buffer[i], buffer[i+1] = buffer[i+1], buffer[i]</p>
+<h3 id="step-3-reverse-subtract-magic_add-modulo-256">Step 3 (reverse): subtract MAGIC_ADD modulo 256</h3>
+<p>buffer = [(b - MAGIC_ADD) % 256 for b in buffer]</p>
+<h3 id="step-4-reverse-xor-with-position">Step 4 (reverse): XOR with position</h3>
+<p>buffer = [(b ^ i) for i, b in enumerate(TARGET)]</p>
+<p>flag = &lsquo;&rsquo;.join(chr(b) for b in buffer)
+print(flag)</p>
 
 
 </main>

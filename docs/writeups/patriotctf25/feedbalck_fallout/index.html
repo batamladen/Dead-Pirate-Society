@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>We Go Gym | Dead Pirate Society</title>
+  <title>Feedbalck Fallout | Dead Pirate Society</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://batamladen.github.io/Dead-Pirate-Society/css/mobile.css">
@@ -235,15 +235,31 @@
     </a>
   </p>
 
-  <h1 style="text-align: center;">We Go Gym</h1>
+  <h1 style="text-align: center;">Feedbalck Fallout</h1>
 
   
   <h2 id="walkthrough">Walkthrough</h2>
-<p>Within this pcap file there are a series of curl requests.
-Each of these curl requests returns some data, though this data is just random gibberish. However, you will notice there are 22 curl requests, this is the length of the flag.
-Each curl request has a mangled TTL value which is a decimal encoded character of the flag. These packets are in order, so once you notice this pattern you can extract all the TTL bytes and convert them from hex to recover the flag.</p>
-<p>The challenge name is meant to be a hint as CURL and gym go hand in hand, i.e. Bicep Curl exercises.</p>
-<p><a href="https://batamladen.github.io/Dead-Pirate-Society/files/capture.pcap">The PCAP file</a></p>
+<h4 id="inspect-the-front-end">Inspect the Front End:</h4>
+<p>The single-page form in index.html submits feedback via AJAX to /feedback and renders the success or status value returned by the servlet. No page navigation occurs, so monitoring network traffic in the browser dev tools (Network tab) is the easiest way to view responses.</p>
+<h4 id="review-the-backend">Review the Backend:</h4>
+<p>FeedbackServlet logs the submitted feedback with Log4j:</p>
+<p>logger.info(&quot;[SESSION:{}] User feedback: {}&quot;, sessionId, input);
+Log messages matching the user’s session ID are read back from /var/log/app/app.log, escaped, and included in the JSON response. This means any string that Log4j writes will be reflected to the client.</p>
+<h4 id="spot-the-vulnerability">Spot the Vulnerability:</h4>
+<p>Log4j 2.14.1 still resolves lookups such as ${env:VAR_NAME} inside log messages by default. When the attacker submits ${env:SECRET_FLAG}, Log4j will replace it with the process environment variable SECRET_FLAG before writing to the log file.</p>
+<h4 id="exploit-steps">Exploit Steps:</h4>
+<p>Open browser developer tools (Network tab) or use a proxy like Burp/ZAP.
+Submit the following feedback payload (URL-encoded if necessary):
+feedback=${env:SECRET_FLAG}
+The servlet logs the message, Log4j expands ${env:SECRET_FLAG} to the actual flag, and the file append operation writes the resolved value.
+The servlet immediately filters the log file for the active session and returns it inside the JSON response.
+Retrieve the Flag:</p>
+<p>Observe the AJAX response payload in the Network tab. The logs field contains the log line with the resolved flag:
+{
+&ldquo;status&rdquo;: &ldquo;success&rdquo;,
+&ldquo;logs&rdquo;: &ldquo;[2025-02-01 12:34:56] [SESSION:ABC123] User feedback: FLAG{…}&rdquo;
+}
+Extract the value shown in place of ${env:SECRET_FLAG}—that is the secret flag</p>
 
 
 </main>

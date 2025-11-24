@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>We Go Gym | Dead Pirate Society</title>
+  <title>Vibe Bank Vault | Dead Pirate Society</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://batamladen.github.io/Dead-Pirate-Society/css/mobile.css">
@@ -231,20 +231,41 @@
   <p style="text-align: center;">
     Writeup by 
     <a href="https://pointerpointer.com/" target="_blank" style="color: var(--link);">
-      Salochi
+      Phil
     </a>
   </p>
 
-  <h1 style="text-align: center;">We Go Gym</h1>
+  <h1 style="text-align: center;">Vibe Bank Vault</h1>
 
   
   <h2 id="walkthrough">Walkthrough</h2>
-<p>Within this pcap file there are a series of curl requests.
-Each of these curl requests returns some data, though this data is just random gibberish. However, you will notice there are 22 curl requests, this is the length of the flag.
-Each curl request has a mangled TTL value which is a decimal encoded character of the flag. These packets are in order, so once you notice this pattern you can extract all the TTL bytes and convert them from hex to recover the flag.</p>
-<p>The challenge name is meant to be a hint as CURL and gym go hand in hand, i.e. Bicep Curl exercises.</p>
-<p><a href="https://batamladen.github.io/Dead-Pirate-Society/files/capture.pcap">The PCAP file</a></p>
-
+<h3 id="core-bug">Core bug</h3>
+<p>vibe_hash only hashes payload[: len(payload) % 256] and then bcrypt truncates the input to 72 bytes. With the static salt, any two inputs that share the same first min(len(payload) % 256, 72) bytes collide. Lengths that are multiples of 256 hash the empty string.</p>
+<h3 id="level-by-level">Level-by-level</h3>
+<ul>
+<li>
+<p>Level 1: The secret is 140 chars, but bcrypt only sees the first 72. The first 70 are leaked. Brute-forced the remaining 2 base62 chars (62^2 = 3844 options) with multiprocessing until <code>bcrypt.checkpw</code> matched the provided hash.</p>
+</li>
+<li>
+<p>Level 2: Pick two different strings that start with the given prefix and have lengths that are multiples of 256/512. The hash portion is empty in both cases, so the hashes match.</p>
+</li>
+<li>
+<p>Level 3: Target length 300–500 means the hash depends on <code>remainder = target_len % 256</code>, truncated to 72. Sent <code>&quot;B&quot;*min(remainder, 72)</code> (length different from the target) to collide.</p>
+</li>
+<li>
+<p>Level 4: Target is <code>C... + fire emojis</code>. When the total byte length exceeds 72, bcrypt only sees the first 72 bytes. Sent the target truncated to 72 bytes (all Cs plus as many full fire emojis as fit) so the hash matched while staying under the 72-byte input limit.</p>
+</li>
+<li>
+<p>Level 5: Let <code>r = (len(prefix) + admin_pw_len) % 256</code>. The hashed portion is <code>(prefix + &quot;X&quot;... )[:r]</code> (truncated again to 72 if needed). If <code>r &lt; len(prefix)</code>, sent any string of length <code>r + 239</code> so the portion is just the first r bytes of the prefix. Otherwise sent <code>&quot;X&quot; * (r - len(prefix))</code> so the portion matches the admin’s prefix + X padding.</p>
+</li>
+</ul>
+<h3 id="automation">Automation</h3>
+<p><code>solve.py</code> implements the above logic and uses a parallel brute-force for level 1:
+<code>python solve.py --workers 16</code></p>
+<p>Successful run returns the flag after clearing all five layers.</p>
+<h3 id="flag">Flag</h3>
+<pre tabindex="0"><code>PCTF{g00d_v1b3s_b4d_3ntropy_sync72_b4ck1ng}
+</code></pre>
 
 </main>
 

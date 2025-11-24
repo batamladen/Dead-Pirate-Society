@@ -2,10 +2,10 @@
 title: "We Go Gym"
 author: "Salochi"
 layout: "single"
-github: "https://github.com/batamladen"
+github: "https://pointerpointer.com/"
 ---
 
-# Walkthrough 
+## Walkthrough 
 
 Within this pcap file there are a series of curl requests. 
 Each of these curl requests returns some data, though this data is just random gibberish. However, you will notice there are 22 curl requests, this is the length of the flag. 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>We Go Gym | Dead Pirate Society</title>
+  <title>Are You Pylingual? | Dead Pirate Society</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://batamladen.github.io/Dead-Pirate-Society/css/mobile.css">
@@ -231,20 +231,45 @@
   <p style="text-align: center;">
     Writeup by 
     <a href="https://pointerpointer.com/" target="_blank" style="color: var(--link);">
-      Salochi
+      weed
     </a>
   </p>
 
-  <h1 style="text-align: center;">We Go Gym</h1>
+  <h1 style="text-align: center;">Are You Pylingual?</h1>
 
   
   <h2 id="walkthrough">Walkthrough</h2>
-<p>Within this pcap file there are a series of curl requests.
-Each of these curl requests returns some data, though this data is just random gibberish. However, you will notice there are 22 curl requests, this is the length of the flag.
-Each curl request has a mangled TTL value which is a decimal encoded character of the flag. These packets are in order, so once you notice this pattern you can extract all the TTL bytes and convert them from hex to recover the flag.</p>
-<p>The challenge name is meant to be a hint as CURL and gym go hand in hand, i.e. Bicep Curl exercises.</p>
-<p><a href="https://batamladen.github.io/Dead-Pirate-Society/files/capture.pcap">The PCAP file</a></p>
+<pre tabindex="0"><code>with open(&#34;output.txt&#34;) as f:
+    data = f.read().strip()
 
+start = data.find(&#39;[&#39;)
+end = data.rfind(&#39;]&#39;) + 1
+list_str = data[start:end]
+
+nums = list(map(int, list_str[1:-1].split(&#34;, &#34;)))
+unsigned = [(x + 256) if x &lt; 0 else x for x in nums]
+
+# Try only keys 249 and 250
+for key in [249, 250]:
+    decoded = &#34;&#34;.join(chr(b ^ key) for b in unsigned)
+
+    print(f&#34;Key {key} (0x{key:02x}):&#34;)
+    print(&#34;=&#34; * 80)
+
+# Save to file
+    with open(f&#34;decodedkey{key}.txt&#34;, &#34;w&#34;) as f:
+        f.write(decoded)
+
+# Show first 20 lines
+    lines = decoded.split(&#39;\n&#39;)
+    for i, line in enumerate(lines[:20]):
+        print(f&#34;{i:2}: {line}&#34;)
+
+    print(f&#34;\nSaved to: decodedkey{key}.txt&#34;)
+    print(&#34;=&#34; * 80)
+    print()
+</code></pre><pre tabindex="0"><code class="language-Copy" data-lang="Copy">pctf{obFusc4ti0n_i5n&#39;t_EncRypt1oN}
+</code></pre>
 
 </main>
 

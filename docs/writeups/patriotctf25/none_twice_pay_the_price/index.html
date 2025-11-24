@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>We Go Gym | Dead Pirate Society</title>
+  <title>Nonce Twice, Pay the Price | Dead Pirate Society</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://batamladen.github.io/Dead-Pirate-Society/css/mobile.css">
@@ -231,20 +231,70 @@
   <p style="text-align: center;">
     Writeup by 
     <a href="https://pointerpointer.com/" target="_blank" style="color: var(--link);">
-      Salochi
+      Phil
     </a>
   </p>
 
-  <h1 style="text-align: center;">We Go Gym</h1>
+  <h1 style="text-align: center;">Nonce Twice, Pay the Price</h1>
 
   
   <h2 id="walkthrough">Walkthrough</h2>
-<p>Within this pcap file there are a series of curl requests.
-Each of these curl requests returns some data, though this data is just random gibberish. However, you will notice there are 22 curl requests, this is the length of the flag.
-Each curl request has a mangled TTL value which is a decimal encoded character of the flag. These packets are in order, so once you notice this pattern you can extract all the TTL bytes and convert them from hex to recover the flag.</p>
-<p>The challenge name is meant to be a hint as CURL and gym go hand in hand, i.e. Bicep Curl exercises.</p>
-<p><a href="https://batamladen.github.io/Dead-Pirate-Society/files/capture.pcap">The PCAP file</a></p>
+<h3 id="approach">Approach</h3>
+<ul>
+<li>Parsed two ECDSA signatures that reused the same nonce k on secp256k1. With the formula k = (z1 - z2)/(s1 - s2) mod n and d = (s1*k - z1)/r mod n, recovered the private key.</li>
+<li>Confirmed the derived public key matched pub.pem, proving the key was correct.</li>
+<li>The ciphertext secret_blob.bin was a stream XOR: keystream blocks are SHA256(priv || counter) with a 4-byte big-endian counter starting at 0. XORing that keystream with the blob produced the flag.</li>
+</ul>
+<h3 id="reproduction">Reproduction</h3>
+<p>Run the provided solve script from the challenge directory:</p>
+<pre tabindex="0"><code>from hashlib import sha256
 
+def modinv(a: int, n: int) -&gt; int:
+    return pow(a, -1, n)
+
+
+def derive_priv_from_reused_nonce():
+    # Values taken from sig1.txt and sig2.txt
+    r = int(&#34;288b415d6703ba7a2487681b10da092d991a2ef7d10de016daea4444523dc792&#34;, 16)
+    s1 = int(&#34;fc00f6d1c8e93beb4c983104f1991e6d1951aa729004b7a1e841f29d12797f4&#34;, 16)
+    s2 = int(&#34;693ee365dd7307a44fddbdd81c0059b5b5f7ef419beee7aaada3c37798e270c5&#34;, 16)
+    z1 = int(&#34;9f9b697baa97445b19c6552e13b3a796ec9b76d6d95190a0c7fab01cce59b7fd&#34;, 16)
+    z2 = int(&#34;465e2cf6b15b701b2d40cac239ab4d50388cd3e0ca54621cff58308f7c9a226b&#34;, 16)
+
+    # secp256k1 group order
+    n = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141
+
+    k = (z1 - z2) * modinv(s1 - s2, n) % n
+    d = (s1 * k - z1) * modinv(r, n) % n
+    return k, d
+
+
+def decrypt_blob(priv_key: int, blob_path: str) -&gt; bytes:
+    blob = bytearray(open(blob_path, &#34;rb&#34;).read())
+
+    # XOR stream derived from SHA256(priv || counter)
+    key_bytes = priv_key.to_bytes(32, &#34;big&#34;)
+    keystream = bytearray()
+    counter = 0
+    while len(keystream) &lt; len(blob):
+        keystream.extend(sha256(key_bytes + counter.to_bytes(4, &#34;big&#34;)).digest())
+        counter += 1
+
+    return bytes(b ^ keystream[i] for i, b in enumerate(blob))
+
+
+if __name__ == &#34;__main__&#34;:
+    k, priv = derive_priv_from_reused_nonce()
+    print(f&#34;Recovered k = {k:#x}&#34;)
+    print(f&#34;Recovered priv = {priv:#x}&#34;)
+
+    plaintext = decrypt_blob(priv, &#34;secret_blob.bin&#34;)
+    print(&#34;Plaintext:&#34;, plaintext.decode(errors=&#34;replace&#34;))
+</code></pre><h3 id="output">Output:</h3>
+<pre tabindex="0"><code>Recovered k = 0xbcaa6b25e44bf83b5fc38873820cc423c720160e3e3a9ad7f4f4dc2a371051fe
+Recovered priv = 0x3d5d238dfd8ccd1472cd22f80e22ae57e9ad79d779f4630930efb5cc21977ce7
+Plaintext: pctf{ecdsa_n0nc3_r3us7e_get!s_y0u8_0wn1ed}
+</code></pre>
 
 </main>
 

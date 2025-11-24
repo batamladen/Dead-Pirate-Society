@@ -8,11 +8,104 @@
     <language>en-us</language>
     <atom:link href="https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Are You Pylingual?</title>
+      <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/are_you_pylingual/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/are_you_pylingual/</guid>
+      <description>&lt;h2 id=&#34;walkthrough&#34;&gt;Walkthrough&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;with open(&amp;#34;output.txt&amp;#34;) as f:
+    data = f.read().strip()
+
+start = data.find(&amp;#39;[&amp;#39;)
+end = data.rfind(&amp;#39;]&amp;#39;) + 1
+list_str = data[start:end]
+
+nums = list(map(int, list_str[1:-1].split(&amp;#34;, &amp;#34;)))
+unsigned = [(x + 256) if x &amp;lt; 0 else x for x in nums]
+
+# Try only keys 249 and 250
+for key in [249, 250]:
+    decoded = &amp;#34;&amp;#34;.join(chr(b ^ key) for b in unsigned)
+
+    print(f&amp;#34;Key {key} (0x{key:02x}):&amp;#34;)
+    print(&amp;#34;=&amp;#34; * 80)
+
+# Save to file
+    with open(f&amp;#34;decodedkey{key}.txt&amp;#34;, &amp;#34;w&amp;#34;) as f:
+        f.write(decoded)
+
+# Show first 20 lines
+    lines = decoded.split(&amp;#39;\n&amp;#39;)
+    for i, line in enumerate(lines[:20]):
+        print(f&amp;#34;{i:2}: {line}&amp;#34;)
+
+    print(f&amp;#34;\nSaved to: decodedkey{key}.txt&amp;#34;)
+    print(&amp;#34;=&amp;#34; * 80)
+    print()
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-Copy&#34; data-lang=&#34;Copy&#34;&gt;pctf{obFusc4ti0n_i5n&amp;#39;t_EncRypt1oN}
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    <item>
       <title>Connection Tester</title>
       <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/connection_tester/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/connection_tester/</guid>
       <description></description>
+    </item>
+    <item>
+      <title>Feedbalck Fallout</title>
+      <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/feedbalck_fallout/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/feedbalck_fallout/</guid>
+      <description>&lt;h2 id=&#34;walkthrough&#34;&gt;Walkthrough&lt;/h2&gt;
+&lt;h4 id=&#34;inspect-the-front-end&#34;&gt;Inspect the Front End:&lt;/h4&gt;
+&lt;p&gt;The single-page form in index.html submits feedback via AJAX to /feedback and renders the success or status value returned by the servlet. No page navigation occurs, so monitoring network traffic in the browser dev tools (Network tab) is the easiest way to view responses.&lt;/p&gt;
+&lt;h4 id=&#34;review-the-backend&#34;&gt;Review the Backend:&lt;/h4&gt;
+&lt;p&gt;FeedbackServlet logs the submitted feedback with Log4j:&lt;/p&gt;
+&lt;p&gt;logger.info(&amp;quot;[SESSION:{}] User feedback: {}&amp;quot;, sessionId, input);
+Log messages matching the user’s session ID are read back from /var/log/app/app.log, escaped, and included in the JSON response. This means any string that Log4j writes will be reflected to the client.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Matrix Reconstruction</title>
+      <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/matrix_reconstruction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/matrix_reconstruction/</guid>
+      <description>&lt;h2 id=&#34;walkthrough&#34;&gt;Walkthrough&lt;/h2&gt;
+&lt;p&gt;Had to go different direction to get this one, so i had to run a python script. Where i had to use the cipher.txt n keystream_leaks.txt. The keystream_leak are the states, need to use some math.&lt;/p&gt;
+&lt;h3 id=&#34;step-1---open-the-ciphertxt&#34;&gt;Step 1 - Open the cipher.txt&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;with open(r&amp;#34;File directory\cipher.txt&amp;#34;, &amp;#34;rb&amp;#34;) as f:
+    ciphertext = f.read()
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;step-2---leaked-states&#34;&gt;Step 2 - Leaked states&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;states = [  2694419740,2430555337,3055882924,228605358,4055459295,676741477,1030306057,1320993926,2317712498,3680836913,1922319333,1836782265,1490734773,218490631,4065897775,3125259028,189241330,1710684784,2355890305,95797196,813001417,1021781706,3522243094,1603928614,
+1122416469,4125638785,2423341845,3666529189,61609182,2391267942,
+148130332,4246509548,3552866507,1487751530,1895017353,327726050,
+4251037246,22647618,3958787364,227107204]
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;step-3---build-keystream-from-lowest-byte-of-each-state&#34;&gt;Step 3 - Build keystream from lowest byte of each state&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;keystream_bytes = bytes([s &amp;amp; 0xff for s in states])
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;step-4---decrypt-by-xor&#34;&gt;Step 4 - Decrypt by XOR&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;plaintext = bytes([c ^ keystream_bytes[i % len(keystream_bytes)] for i, c in enumerate(ciphertext)])
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;step-5---print-decrypted-text&#34;&gt;Step 5 - Print decrypted text&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;try:
+    print(&amp;#34;Decrypted flag:&amp;#34;, plaintext.decode(&amp;#39;ascii&amp;#39;))
+except UnicodeDecodeError:
+    print(&amp;#34;Decrypted bytes contain non-ASCII characters. Raw bytes:&amp;#34;)
+    print(plaintext)
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    <item>
+      <title>Nonce Twice, Pay the Price</title>
+      <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/none_twice_pay_the_price/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/none_twice_pay_the_price/</guid>
+      <description>&lt;h2 id=&#34;walkthrough&#34;&gt;Walkthrough&lt;/h2&gt;
+&lt;h3 id=&#34;approach&#34;&gt;Approach&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Parsed two ECDSA signatures that reused the same nonce k on secp256k1. With the formula k = (z1 - z2)/(s1 - s2) mod n and d = (s1*k - z1)/r mod n, recovered the private key.&lt;/li&gt;
+&lt;li&gt;Confirmed the derived public key matched pub.pem, proving the key was correct.&lt;/li&gt;
+&lt;li&gt;The ciphertext secret_blob.bin was a stream XOR: keystream blocks are SHA256(priv || counter) with a 4-byte big-endian counter starting at 0. XORing that keystream with the blob produced the flag.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;reproduction&#34;&gt;Reproduction&lt;/h3&gt;
+&lt;p&gt;Run the provided solve script from the challenge directory:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Password Palooza</title>
@@ -25,6 +118,48 @@
 &lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     <item>
+      <title>Space Pirates</title>
+      <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/space_pirates/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/space_pirates/</guid>
+      <description>&lt;h2 id=&#34;walkthrough&#34;&gt;Walkthrough&lt;/h2&gt;
+&lt;p&gt;TARGET = [
+0x5A,0x3D,0x5B,0x9C,0x98,0x73,0xAE,0x32,0x25,0x47,
+0x48,0x51,0x6C,0x71,0x3A,0x62,0xB8,0x7B,0x63,0x57,
+0x25,0x89,0x58,0xBF,0x78,0x34,0x98,0x71,0x68,0x59
+]&lt;/p&gt;
+&lt;p&gt;XOR_KEY = [0x42, 0x73, 0x21, 0x69, 0x37]
+MAGIC_ADD = 0x2A
+FLAG_LEN = 30&lt;/p&gt;
+&lt;h3 id=&#34;step-1-reverse-xor-with-rotating-key&#34;&gt;Step 1 (reverse): XOR with rotating key&lt;/h3&gt;
+&lt;p&gt;for i in range(FLAG_LEN):
+buffer[i] ^= XOR_KEY[i % 5]&lt;/p&gt;
+&lt;h3 id=&#34;step-2-reverse-swap-adjacent-bytes&#34;&gt;Step 2 (reverse): swap adjacent bytes&lt;/h3&gt;
+&lt;p&gt;for i in range(0, FLAG_LEN, 2):
+buffer[i], buffer[i+1] = buffer[i+1], buffer[i]&lt;/p&gt;
+&lt;h3 id=&#34;step-3-reverse-subtract-magic_add-modulo-256&#34;&gt;Step 3 (reverse): subtract MAGIC_ADD modulo 256&lt;/h3&gt;
+&lt;p&gt;buffer = [(b - MAGIC_ADD) % 256 for b in buffer]&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Space Pirates 2</title>
+      <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/space_pirates2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/space_pirates2/</guid>
+      <description>&lt;p&gt;TARGET = [
+0x15, 0x5A, 0xAC, 0xF6, 0x36, 0x22, 0x3B, 0x52,
+0x6C, 0x4F, 0x90, 0xD9, 0x35, 0x63, 0xF8, 0x0E,
+0x02, 0x33, 0xB0, 0xF1, 0xB7, 0x69, 0x42, 0x67,
+0x25, 0xEA, 0x96, 0x63, 0x1B, 0xA7, 0x03, 0x0B
+]&lt;/p&gt;
+&lt;p&gt;XOR_KEY = [0x7E, 0x33, 0x91, 0x4C, 0xA5]
+ROTATION_PATTERN = [1, 3, 5, 7, 2, 4, 6]
+MAGIC_SUB = 0x5D
+CHUNK_SIZE = 5
+LENGTH = 32&lt;/p&gt;
+&lt;p&gt;def rotate_right(byte, n):
+return ((byte &amp;raquo; n) | ((byte &amp;laquo; (8 - n)) &amp;amp; 0xFF)) &amp;amp; 0xFF&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Trust Vault</title>
       <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/trust_vault/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -32,11 +167,24 @@
       <description></description>
     </item>
     <item>
+      <title>Vibe Bank Vault</title>
+      <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/vibe_bank_vault/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/vibe_bank_vault/</guid>
+      <description>&lt;h2 id=&#34;walkthrough&#34;&gt;Walkthrough&lt;/h2&gt;
+&lt;h3 id=&#34;core-bug&#34;&gt;Core bug&lt;/h3&gt;
+&lt;p&gt;vibe_hash only hashes payload[: len(payload) % 256] and then bcrypt truncates the input to 72 bytes. With the static salt, any two inputs that share the same first min(len(payload) % 256, 72) bytes collide. Lengths that are multiples of 256 hash the empty string.&lt;/p&gt;
+&lt;h3 id=&#34;level-by-level&#34;&gt;Level-by-level&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Level 1: The secret is 140 chars, but bcrypt only sees the first 72. The first 70 are leaked. Brute-forced the remaining 2 base62 chars (62^2 = 3844 options) with multiprocessing until &lt;code&gt;bcrypt.checkpw&lt;/code&gt; matched the provided hash.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>We Go Gym</title>
       <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/we_go_gym/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/we_go_gym/</guid>
-      <description>&lt;h1 id=&#34;walkthrough&#34;&gt;Walkthrough&lt;/h1&gt;
+      <description>&lt;h2 id=&#34;walkthrough&#34;&gt;Walkthrough&lt;/h2&gt;
 &lt;p&gt;Within this pcap file there are a series of curl requests.
 Each of these curl requests returns some data, though this data is just random gibberish. However, you will notice there are 22 curl requests, this is the length of the flag.
 Each curl request has a mangled TTL value which is a decimal encoded character of the flag. These packets are in order, so once you notice this pattern you can extract all the TTL bytes and convert them from hex to recover the flag.&lt;/p&gt;</description>
