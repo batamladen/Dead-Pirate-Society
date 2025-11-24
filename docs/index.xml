@@ -221,6 +221,7 @@ return ((byte &amp;raquo; n) | ((byte &amp;laquo; (8 - n)) &amp;amp; 0xFF)) &amp
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/vibe_bank_vault/</guid>
       <description>&lt;h2 id=&#34;walkthrough&#34;&gt;Walkthrough&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
 &lt;h3 id=&#34;core-bug&#34;&gt;Core bug&lt;/h3&gt;
 &lt;p&gt;vibe_hash only hashes payload[: len(payload) % 256] and then bcrypt truncates the input to 72 bytes. With the static salt, any two inputs that share the same first min(len(payload) % 256, 72) bytes collide. Lengths that are multiples of 256 hash the empty string.&lt;/p&gt;
 &lt;h3 id=&#34;level-by-level&#34;&gt;Level-by-level&lt;/h3&gt;

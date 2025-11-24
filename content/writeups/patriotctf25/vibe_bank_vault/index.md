@@ -9,6 +9,7 @@ github: "https://pointerpointer.com/"
 
 ## Walkthrough
 
+&nbsp;
 
 ### Core bug
 vibe_hash only hashes payload[: len(payload) % 256] and then bcrypt truncates the input to 72 bytes. With the static salt, any two inputs that share the same first min(len(payload) % 256, 72) bytes collide. Lengths that are multiples of 256 hash the empty string.
