@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>We Go Gym | Dead Pirate Society</title>
+  <title>Kittiez!!! | Dead Pirate Society</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://batamladen.github.io/Dead-Pirate-Society/css/mobile.css">
@@ -230,20 +230,47 @@
 
   <p style="text-align: center;">
     Writeup by 
-    <a href="https://pointerpointer.com/" target="_blank" style="color: var(--link);">
-      Salochi
+    <a href="https://github.com/batamladen/" target="_blank" style="color: var(--link);">
+      Bata Mladen
     </a>
   </p>
 
-  <h1 style="text-align: center;">We Go Gym</h1>
+  <h1 style="text-align: center;">Kittiez!!!</h1>
 
   
-  <h2 id="walkthrough">Walkthrough</h2>
-<p>Within this pcap file there are a series of curl requests.
-Each of these curl requests returns some data, though this data is just random gibberish. However, you will notice there are 22 curl requests, this is the length of the flag.
-Each curl request has a mangled TTL value which is a decimal encoded character of the flag. These packets are in order, so once you notice this pattern you can extract all the TTL bytes and convert them from hex to recover the flag.</p>
-<p>The challenge name is meant to be a hint as CURL and gym go hand in hand, i.e. Bicep Curl exercises.</p>
-<p><a href="https://batamladen.github.io/Dead-Pirate-Society/files/wegogym.7z">The PCAP file</a></p>
+  <p> </p>
+<h2 id="walkthrough">Walkthrough</h2>
+<p>We are provided with a <a href="https://batamladen.github.io/Dead-Pirate-Society/files/Challenge.txt">text file</a> that says:</p>
+<pre tabindex="0"><code>I lost it all in one bad tick—
+my feline Vault, gone *way* too quick.
+A virus on my janky ’puter
+went boom and turned my cats to neuter.
+
+I had so many cats in store,
+but one’s the one my heart longs for.
+If I could see that pic again,
+my nine lives might come back to ten.
+
+For “maximum security” flair,
+I hashed each cat with loving care.
+Couldn’t back up the pics themselves—
+the feds would sniff them off my shelves.
+
+So now I search through bits and trash
+for just one sacred, purring stash.
+If you can find that photo, friend,
+my broken heart might almost mend. &lt;3
+
+The md5 file hash of my beloved picture is:
+
+9c5ca692da8d6e489beecd5b448ddb35
+
+(  The flag is the text in the image - case insensitive. Replace spaces with underscores, i.e. pctf{I_Love_Kitties!}  )
+</code></pre><p>The point of the challenge was to come across <code>https://vx-underground.org/Archive/Cat%20Picture%20Collection</code> and to download each zip file of the cat pics and get hashing to find <code>9c5ca692da8d6e489beecd5b448ddb35</code>.</p>
+<p> </p>
+<p>Kinda a guessy challenge because if you are not in the cybersecurity community for a longer time you would not know this website exists and had to end up there somehow.</p>
+<p>Anyways here is the picture, the flag is the text on the image. 🐱</p>
+<p><img alt="kittiez" loading="lazy" src="https://batamladen.github.io/Dead-Pirate-Society/images/kittiez.webp"></p>
 
 
 </main>

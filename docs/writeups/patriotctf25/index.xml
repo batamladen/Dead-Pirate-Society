@@ -66,6 +66,41 @@ for key in [249, 250]:
 Log messages matching the user’s session ID are read back from /var/log/app/app.log, escaped, and included in the JSON response. This means any string that Log4j writes will be reflected to the client.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Kittiez!!!</title>
+      <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/kittiez/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/kittiez/</guid>
+      <description>&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&#34;walkthrough&#34;&gt;Walkthrough&lt;/h2&gt;
+&lt;p&gt;We are provided with a &lt;a href=&#34;https://batamladen.github.io/Dead-Pirate-Society/files/Challenge.txt&#34;&gt;text file&lt;/a&gt; that says:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;I lost it all in one bad tick—
+my feline Vault, gone *way* too quick.
+A virus on my janky ’puter
+went boom and turned my cats to neuter.
+
+I had so many cats in store,
+but one’s the one my heart longs for.
+If I could see that pic again,
+my nine lives might come back to ten.
+
+For “maximum security” flair,
+I hashed each cat with loving care.
+Couldn’t back up the pics themselves—
+the feds would sniff them off my shelves.
+
+So now I search through bits and trash
+for just one sacred, purring stash.
+If you can find that photo, friend,
+my broken heart might almost mend. &amp;lt;3
+
+The md5 file hash of my beloved picture is:
+
+9c5ca692da8d6e489beecd5b448ddb35
+
+(  The flag is the text in the image - case insensitive. Replace spaces with underscores, i.e. pctf{I_Love_Kitties!}  )
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The point of the challenge was to come across &lt;code&gt;https://vx-underground.org/Archive/Cat%20Picture%20Collection&lt;/code&gt; and to download each zip file of the cat pics and get hashing to find &lt;code&gt;9c5ca692da8d6e489beecd5b448ddb35&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Matrix Reconstruction</title>
       <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/matrix_reconstruction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

@@ -14,4 +14,4 @@ Each curl request has a mangled TTL value which is a decimal encoded character o
 The challenge name is meant to be a hint as CURL and gym go hand in hand, i.e. Bicep Curl exercises.
 
 
-[The PCAP file](/files/capture.pcap)
+[The PCAP file](/files/wegogym.7z)
