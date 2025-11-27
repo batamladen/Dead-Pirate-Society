@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connection Tester | Dead Pirate Society</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/mobile.css">
+  <link rel="icon" type="image/x-icon" href="/images/dps.ico">
+
+
+
+  
+  <style>
+    :root {
+      --bg: #080908;
+      --text: #dbceb4;
+      --link: #b43f26;
+      --link-hover: #ff6347;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      padding-top: 80px; /* space for header */
+      position: relative;
+    }
+
+    h1, h2 {
+      font-family: 'Press Start 2P', cursive;
+      color: var(--text);
+    }
+
+    p, li {
+      font-family: 'Fira Mono', monospace;
+      color: var(--text);
+    }
+
+    h1 {
+      font-size: 1.2rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: 0.9rem;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--link-hover);
+    }
+
+    /* Header with logo on left and nav on right */
+    header {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 0 40px;
+    }
+
+    .logo {
+      width: 80px;
+      height: auto;
+      animation: spin 15s linear infinite;
+    }
+
+    .nav-links {
+      display: flex;
+      margin-top: +6px; /* This pushes the nav links up */
+
+    }
+
+    .nav-links a {
+      margin-left: 19.3px;
+      color: var(--link);
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.7rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--link-hover);
+    }
+
+    main {
+      max-width: 70%;
+      width: 55%;
+      padding: 20px;
+      margin-bottom: 60px; 
+      text-align: left;
+    }
+
+    main img {
+        display: block;
+        max-width: 100%;
+        width: 65%;
+        margin: 15px auto;
+        border-radius: 8px;
+        cursor: zoom-in;
+        transition: 0.2s ease;
+    }
+
+    /* Dark overlay for full-screen mode */
+    #img-lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    /* Expanded image */
+    #img-lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 10px;
+        cursor: zoom-out;
+    }
+
+    footer {
+      text-align: center;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.6rem;
+      width: 100%;
+      padding: 20px 0;
+      margin-top: auto; 
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/" class="logo-link">
+      <img src="/images/DPSlogo.webp" alt="Logo" class="logo">
+    </a>
+    <div class="nav-links">
+      <a href="/about/">ABOUT</a>
+      <a href="/writeups/">WRITEUPS</a>
+      <a href="/members/">MEMBERS</a>
+      <a href="/achievements/">ACHIEVEMENTS</a>
+    </div>
+  </header>
+
+  <main>
+    
+    <p style="text-align: center;">
+        Writeup by 
+        <a href="" style="color: var(--link);">
+            bllry
+        </a>
+    </p>
+
+    <h1 style="text-align: center;">lets go gym</h1>
+    
+    <h2>Description</h2>
+    <p>
+      You are given a pcap file and need to find the flag.
+    </p>
+
+    <h2>Walkthrough</h2>
+    <p>
+    What I noticed when I parsed through the pcap file. 
+    <br>
+      
+     <br>
+      - There are 22 HTTP GET / requests from 192.168.1.235 to 192.168.1.203:8080, using client ports 40000–40021 in order.
+      <br>
+      <br>
+      - The payload responses are base64 “noise.” The real signal is in the IPv4 header.
+      <br>
+      - Reading the TTL field from each of those 22 GET / packets, in port order, gives ASCII:
+      <br>
+      80 67 84 70 123 116 49 109 51 95 116 48 95 103 51 55 95 53 119 48 49 125
+    <br>
+    <br>
+      <h2>Flag</h2>
+      <br>
+      PCTF{t1m3_t0_g37_5w01}
+      <br>
+
+  </main>
+
+  <footer>
+    <p>@ DEAD PIRATE SOCIETY</p>
+  </footer>
+
+    <div id="img-lightbox">
+        <img src="" alt="Expanded Image">
+    </div>
+
+    <script>
+    const images = document.querySelectorAll("main img");
+    const lightbox = document.getElementById("img-lightbox");
+    const lightboxImg = lightbox.querySelector("img");
+
+    images.forEach(img => {
+        img.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightbox.style.display = "flex";
+        });
+    });
+
+    lightbox.addEventListener("click", () => {
+        lightbox.style.display = "none";
+    });
+    </script>
+
+</body>
+</html>
