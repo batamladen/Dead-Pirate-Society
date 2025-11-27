@@ -154,45 +154,24 @@ except UnicodeDecodeError:
     </item>
     <item>
       <title>Space Pirates</title>
-      <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/space_pirates/</link>
+      <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/spacepirates/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/space_pirates/</guid>
-      <description>&lt;h2 id=&#34;walkthrough&#34;&gt;Walkthrough&lt;/h2&gt;
-&lt;p&gt;TARGET = [
-0x5A,0x3D,0x5B,0x9C,0x98,0x73,0xAE,0x32,0x25,0x47,
-0x48,0x51,0x6C,0x71,0x3A,0x62,0xB8,0x7B,0x63,0x57,
-0x25,0x89,0x58,0xBF,0x78,0x34,0x98,0x71,0x68,0x59
-]&lt;/p&gt;
-&lt;p&gt;XOR_KEY = [0x42, 0x73, 0x21, 0x69, 0x37]
-MAGIC_ADD = 0x2A
-FLAG_LEN = 30&lt;/p&gt;
-&lt;h3 id=&#34;step-1-reverse-xor-with-rotating-key&#34;&gt;Step 1 (reverse): XOR with rotating key&lt;/h3&gt;
-&lt;p&gt;for i in range(FLAG_LEN):
-buffer[i] ^= XOR_KEY[i % 5]&lt;/p&gt;
-&lt;h3 id=&#34;step-2-reverse-swap-adjacent-bytes&#34;&gt;Step 2 (reverse): swap adjacent bytes&lt;/h3&gt;
-&lt;p&gt;for i in range(0, FLAG_LEN, 2):
-buffer[i], buffer[i+1] = buffer[i+1], buffer[i]&lt;/p&gt;
-&lt;h3 id=&#34;step-3-reverse-subtract-magic_add-modulo-256&#34;&gt;Step 3 (reverse): subtract MAGIC_ADD modulo 256&lt;/h3&gt;
-&lt;p&gt;buffer = [(b - MAGIC_ADD) % 256 for b in buffer]&lt;/p&gt;</description>
+      <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/spacepirates/</guid>
+      <description></description>
     </item>
     <item>
       <title>Space Pirates 2</title>
-      <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/space_pirates2/</link>
+      <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/spacepirates2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/space_pirates2/</guid>
-      <description>&lt;p&gt;TARGET = [
-0x15, 0x5A, 0xAC, 0xF6, 0x36, 0x22, 0x3B, 0x52,
-0x6C, 0x4F, 0x90, 0xD9, 0x35, 0x63, 0xF8, 0x0E,
-0x02, 0x33, 0xB0, 0xF1, 0xB7, 0x69, 0x42, 0x67,
-0x25, 0xEA, 0x96, 0x63, 0x1B, 0xA7, 0x03, 0x0B
-]&lt;/p&gt;
-&lt;p&gt;XOR_KEY = [0x7E, 0x33, 0x91, 0x4C, 0xA5]
-ROTATION_PATTERN = [1, 3, 5, 7, 2, 4, 6]
-MAGIC_SUB = 0x5D
-CHUNK_SIZE = 5
-LENGTH = 32&lt;/p&gt;
-&lt;p&gt;def rotate_right(byte, n):
-return ((byte &amp;raquo; n) | ((byte &amp;laquo; (8 - n)) &amp;amp; 0xFF)) &amp;amp; 0xFF&lt;/p&gt;</description>
+      <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/spacepirates2/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Space Pirates 3</title>
+      <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/spacepirates3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/spacepirates3/</guid>
+      <description></description>
     </item>
     <item>
       <title>Trust Vault</title>
@@ -214,6 +193,13 @@ return ((byte &amp;raquo; n) | ((byte &amp;laquo; (8 - n)) &amp;amp; 0xFF)) &amp
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Level 1: The secret is 140 chars, but bcrypt only sees the first 72. The first 70 are leaked. Brute-forced the remaining 2 base62 chars (62^2 = 3844 options) with multiprocessing until &lt;code&gt;bcrypt.checkpw&lt;/code&gt; matched the provided hash.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>We Go Gym</title>
+      <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/letsgogym/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/letsgogym/</guid>
+      <description></description>
     </item>
     <item>
       <title>We Go Gym</title>
