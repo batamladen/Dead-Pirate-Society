@@ -3,23 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Space Pirates | Dead Pirate Society</title>
+  <title>Connection Tester | Dead Pirate Society</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://batamladen.github.io/Dead-Pirate-Society/css/mobile.css">
   <link rel="icon" type="image/x-icon" href="https://batamladen.github.io/Dead-Pirate-Society/images/dps.ico">
 
+
+
+  
   <style>
     :root {
       --bg: #080908;
       --text: #dbceb4;
       --link: #b43f26;
       --link-hover: #ff6347;
-      --card-bg: #1a1a1a;
-      --card-border: #333;
     }
-
-    * { box-sizing: border-box; }
 
     body {
       background-color: var(--bg);
@@ -27,42 +26,78 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: flex-start;
       font-family: system-ui, sans-serif;
       margin: 0;
-      text-align: center;
-      padding-top: 80px;
-      min-height: 90vh;
+      padding-top: 80px;  
       position: relative;
     }
 
-    h1, h2 { font-family: 'Press Start 2P', cursive; color: var(--text); }
-    p, li { font-family: 'Fira Mono', monospace; color: var(--text); }
-    h1 { font-size: 1.2rem; line-height: 1.5; margin-bottom: 30px; text-transform: uppercase; }
+    h1, h2 {
+      font-family: 'Press Start 2P', cursive;
+      color: var(--text);
+    }
+
+    p, li {
+      font-family: 'Fira Mono', monospace;
+      color: var(--text);
+    }
+
+    h1 {
+      font-size: 1.2rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: 0.9rem;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--link-hover);
+    }
 
      
     header {
-      position: fixed;
-      top: 0;
+      position: absolute;
+      top: 20px;
       left: 0;
       right: 0;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      background-color: var(--bg);
-      border-bottom: 1px solid #333;
-      z-index: 1000;
-      height: 70px;
+      align-items: flex-start;
+      padding: 0 40px;
     }
 
     .logo {
-      width: 60px;
+      width: 80px;
       height: auto;
       animation: spin 15s linear infinite;
     }
 
-    .nav-links { display: flex; gap: 20px; }
+    .nav-links {
+      display: flex;
+      margin-top: +6px;  
+
+    }
+
     .nav-links a {
+      margin-left: 19.3px;
       color: var(--link);
       text-decoration: none;
       font-weight: bold;
@@ -70,107 +105,52 @@
       font-size: 0.7rem;
       transition: color 0.3s ease;
     }
-    .nav-links a:hover { color: var(--link-hover); }
 
-    .menu-icon {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      padding: 5px;
+    .nav-links a:hover {
+      color: var(--link-hover);
     }
-    .menu-icon span {
-      width: 25px;
-      height: 3px;
-      background: var(--link);
-      margin: 3px 0;
-      transition: 0.3s;
-    }
-
-     
-    .mobile-nav {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 250px;
-      height: 100vh;
-      background: var(--card-bg);
-      border-left: 2px solid var(--card-border);
-      display: flex;
-      flex-direction: column;
-      padding: 80px 30px 30px;
-      transition: right 0.3s ease;
-      z-index: 999;
-    }
-    .mobile-nav.active { right: 0; }
-    .mobile-nav a {
-      color: var(--link);
-      text-decoration: none;
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.8rem;
-      padding: 15px 0;
-      border-bottom: 1px solid #333;
-      transition: color 0.3s ease;
-    }
-    .mobile-nav a:hover { color: var(--link-hover); }
-
-    .close-nav {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      color: var(--text);
-      font-size: 1.5rem;
-      cursor: pointer;
-      font-family: system-ui, sans-serif;
-    }
-
-    .nav-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      display: none;
-      z-index: 998;
-    }
-    .nav-overlay.active { display: block; }
 
     main {
-      width: 100%;
-      max-width: 800px;
+      max-width: 70%;
+      width: 55%;
       padding: 20px;
+      margin-bottom: 60px; 
       text-align: left;
     }
 
     main img {
-      display: block;
-      max-width: 100%;
-      margin: 15px auto;
+        display: block;
+        max-width: 100%;
+        width: 65%;
+        margin: 15px auto;
+        border-radius: 8px;
+        cursor: zoom-in;
+        transition: 0.2s ease;
+    }
+
+     
+    pre.code-block {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.04);
+      padding: 14px;
       border-radius: 8px;
-      cursor: zoom-in;
-      transition: 0.2s ease;
+      font-family: 'Fira Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--text);
+      overflow-x: auto;
+      white-space: pre;
+      line-height: 1.35;
+      margin: 0 0 20px 0;
     }
 
-    code { 
-      background-color: #2d2d2d; 
-      color: #f8f8f2; 
-      padding: 2px 6px; border-radius: 3px; 
+    pre.code-block code {
+      background: transparent;
+      color: inherit;
+      display: block;
+      white-space: pre;
     }
 
-    pre { 
-      background-color: #2d2d2d; 
-      color: #f8f8f2; padding: 15px; 
-      border-radius: 4px; 
-      border-left: 4px solid #ff6347; 
-    
-      white-space: pre-wrap;      
-      word-wrap: break-word;      
-      overflow-wrap: break-word;  
-    }
-
-    pre code { background-color: transparent; padding: 0; }
-
-
+     
     #img-lightbox {
         position: fixed;
         top: 0;
@@ -184,6 +164,7 @@
         z-index: 9999;
     }
 
+     
     #img-lightbox img {
         max-width: 90%;
         max-height: 90%;
@@ -191,129 +172,108 @@
         cursor: zoom-out;
     }
 
-
     footer {
       text-align: center;
       font-family: 'Press Start 2P', cursive;
       font-size: 0.6rem;
       width: 100%;
       padding: 20px 0;
-      margin-top: 100px;
+      margin-top: auto; 
     }
 
-    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-     
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
   </style>
 </head>
 <body>
-
-<header>
-  <a href="https://batamladen.github.io/Dead-Pirate-Society/" class="logo-link">
-    <img src="https://batamladen.github.io/Dead-Pirate-Society/images/DPSlogo.webp" alt="Logo" class="logo">
-  </a>
-
-  
-  <div class="nav-links">
-    <a href="https://batamladen.github.io/Dead-Pirate-Society/about/">ABOUT</a>
-    <a href="https://batamladen.github.io/Dead-Pirate-Society/writeups/">WRITEUPS</a>
-    <a href="https://batamladen.github.io/Dead-Pirate-Society/members/">MEMBERS</a>
-    <a href="https://batamladen.github.io/Dead-Pirate-Society/achievements/">ACHIEVEMENTS</a>
-  </div>
-
-  
-  <div class="menu-icon" id="menu-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</header>
-
-
-<div class="nav-overlay" id="nav-overlay"></div>
-
-
-<div class="mobile-nav" id="mobile-nav">
-  <span class="close-nav" id="close-nav">✕</span>
-  <a href="https://batamladen.github.io/Dead-Pirate-Society/about/">ABOUT</a>
-  <a href="https://batamladen.github.io/Dead-Pirate-Society/writeups/">WRITEUPS</a>
-  <a href="https://batamladen.github.io/Dead-Pirate-Society/members/">MEMBERS</a>
-  <a href="https://batamladen.github.io/Dead-Pirate-Society/achievements/">ACHIEVEMENTS</a>
-</div>
-
-<main>
-
-  <p style="text-align: center;">
-    Writeup by 
-    <a href="" target="_blank" style="color: var(--link);">
-      
+  <header>
+    <a href="https://batamladen.github.io/Dead-Pirate-Society/" class="logo-link">
+      <img src="https://batamladen.github.io/Dead-Pirate-Society/images/DPSlogo.webp" alt="Logo" class="logo">
     </a>
-  </p>
+    <div class="nav-links">
+      <a href="https://batamladen.github.io/Dead-Pirate-Society/about/">ABOUT</a>
+      <a href="https://batamladen.github.io/Dead-Pirate-Society/writeups/">WRITEUPS</a>
+      <a href="https://batamladen.github.io/Dead-Pirate-Society/members/">MEMBERS</a>
+      <a href="https://batamladen.github.io/Dead-Pirate-Society/achievements/">ACHIEVEMENTS</a>
+    </div>
+  </header>
 
-  <h1 style="text-align: center;">Space Pirates</h1>
+  <main>
+    
+    <p style="text-align: center;">
+        Writeup by 
+        <a href="https://github.com/bllryy" style="color: var(--link);">
+            bllry
+        </a>
+    </p>
 
-  
-  
+    <h1 style="text-align: center;">Space Pirates 1</h1>
+    
+    <h2>Description</h2>
+    <p>
+      You are provided binary called challenge
+    </p>
 
-</main>
+    <h2>Walkthrough</h2>
+    <pre class="code-block"><code>TARGET = [
+  0x5A,0x3D,0x5B,0x9C,0x98,0x73,0xAE,0x32,0x25,0x47,
+  0x48,0x51,0x6C,0x71,0x3A,0x62,0xB8,0x7B,0x63,0x57,
+  0x25,0x89,0x58,0xBF,0x78,0x34,0x98,0x71,0x68,0x59
+  ]
 
-<footer>
-  <p>@ DEAD PIRATE SOCIETY</p>
-</footer>
+  XOR_KEY = [0x42, 0x73, 0x21, 0x69, 0x37]
+  MAGIC_ADD = 0x2A
+  FLAG_LEN = 30
 
+  Step 4 (reverse): XOR with position,
+  buffer = [(b ^ i) for i, b in enumerate(TARGET)]
+
+  Step 3 (reverse): subtract MAGIC_ADD modulo 256,
+  buffer = [(b - MAGIC_ADD) % 256 for b in buffer]
+
+  Step 2 (reverse): swap adjacent bytes,
+  for i in range(0, FLAG_LEN, 2):
+    buffer[i], buffer[i+1] = buffer[i+1], buffer[i]
+
+  Step 1 (reverse): XOR with rotating key,
+  for i in range(FLAG_LEN):
+    buffer[i] ^= XOR_KEY[i % 5]
+
+  flag = ''.join(chr(b) for b in buffer)
+  print(flag)
+</code></pre>
+<h2>Flag</h2>
+    <p>PCTF{0x_M4rks_tH3_sp0t_M4t3ys}</p>
+    <p>The flag was also inside of a comment :sob:</p>
+    </main>
+    
+
+  <footer>
+    <p>@ DEAD PIRATE SOCIETY</p>
+  </footer>
 
     <div id="img-lightbox">
         <img src="" alt="Expanded Image">
     </div>
 
-<script>
-  const images = document.querySelectorAll("main img");
-  const lightbox = document.getElementById("img-lightbox");
-  const lightboxImg = lightbox.querySelector("img");
+    <script>
+    const images = document.querySelectorAll("main img");
+    const lightbox = document.getElementById("img-lightbox");
+    const lightboxImg = lightbox.querySelector("img");
 
-  images.forEach(img => {
-      img.addEventListener("click", () => {
-      lightboxImg.src = img.src;
-      lightbox.style.display = "flex";
-      });
-  });
-
-  lightbox.addEventListener("click", () => {
-      lightbox.style.display = "none";
-  });
-
-  
-  const menuIcon = document.getElementById('menu-icon');
-  const mobileNav = document.getElementById('mobile-nav');
-  const closeNav = document.getElementById('close-nav');
-  const navOverlay = document.getElementById('nav-overlay');
-
-  menuIcon.addEventListener('click', () => {
-    mobileNav.classList.add('active');
-    navOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  });
-
-  closeNav.addEventListener('click', () => {
-    mobileNav.classList.remove('active');
-    navOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-  });
-
-  navOverlay.addEventListener('click', () => {
-    mobileNav.classList.remove('active');
-    navOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-  });
-
-  mobileNav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileNav.classList.remove('active');
-      navOverlay.classList.remove('active');
-      document.body.style.overflow = '';
+    images.forEach(img => {
+        img.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightbox.style.display = "flex";
+        });
     });
-  });
-</script>
+
+    lightbox.addEventListener("click", () => {
+        lightbox.style.display = "none";
+    });
+    </script>
 
 </body>
 </html>
