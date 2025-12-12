@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NiteCTF 2025 | Dead Pirate Society</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="https://batamladen.github.io/Dead-Pirate-Society/images/dps.ico">
+  
+  <style>
+    :root {
+      --bg: #080908;
+      --text: #dbceb4;
+      --link: #b43f26;
+      --link-hover: #ff6347;
+      --card-bg: #1a1a1a;
+      --card-border: #333;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      text-align: center;
+      padding-top: 80px;
+      min-height: 90vh;
+      position: relative;
+    }
+
+    h1, h2 {
+      font-family: 'Press Start 2P', cursive;
+      color: var(--text);
+    }
+
+    p, li {
+      font-family: 'Fira Mono', monospace;
+      color: var(--text);
+    }
+
+    h1 {
+      font-size: 1.2rem;
+      line-height: 1.5;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+    }
+
+     
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: var(--bg);
+      border-bottom: 1px solid #333;
+      z-index: 1000;
+      height: 70px;
+    }
+
+    .logo {
+      width: 60px;
+      height: auto;
+      animation: spin 15s linear infinite;
+    }
+
+     
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: var(--link);
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.7rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--link-hover);
+    }
+
+     
+    .menu-icon {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .menu-icon span {
+      width: 25px;
+      height: 3px;
+      background: var(--link);
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+     
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 250px;
+      height: 100vh;
+      background: var(--card-bg);
+      border-left: 2px solid var(--card-border);
+      display: flex;
+      flex-direction: column;
+      padding: 80px 30px 30px;
+      transition: right 0.3s ease;
+      z-index: 999;
+    }
+
+    .mobile-nav.active {
+      right: 0;
+    }
+
+    .mobile-nav a {
+      color: var(--link);
+      text-decoration: none;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.8rem;
+      padding: 15px 0;
+      border-bottom: 1px solid #333;
+      transition: color 0.3s ease;
+    }
+
+    .mobile-nav a:hover {
+      color: var(--link-hover);
+    }
+
+    .close-nav {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+      font-family: system-ui, sans-serif;
+    }
+
+     
+    .nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      z-index: 998;
+    }
+
+    .nav-overlay.active {
+      display: block;
+    }
+
+     
+    .category {
+      background: #1a1a1a;
+      border: 2px solid #333;
+      border-radius: 10px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 800px;
+      padding: 15px;
+      text-align: left;
+      box-sizing: border-box;
+    }
+
+    main {
+      width: 100%;
+      max-width: none;
+    }
+
+    .category h2 {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.9rem;
+      cursor: pointer;
+      color: #dbceb4;
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+    }
+
+    .arrow {
+      transition: transform 0.3s;
+      font-size: 0.8rem;
+    }
+
+    .category.open .arrow {
+      transform: rotate(90deg);
+    }
+
+    .challenges {
+      display: none;
+      margin-top: 15px;
+      padding-left: 10px;
+    }
+
+    .challenges a {
+      display: block;
+      color: #b43f26;
+      text-decoration: none;
+      margin: 10px 0;
+      font-family: 'Fira Mono', monospace;
+      font-size: 0.85rem;
+      padding: 5px 0;
+      word-break: break-word;
+    }
+
+    .challenges a:hover {
+      color: #ff6347;
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.6rem;
+      width: 100%;
+      padding: 20px 0;
+      margin-top: 100px;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+     
+    @media (max-width: 768px) {
+       
+      html, body {
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100vw;
+      }
+
+       
+      body {
+        height: auto;
+        min-height: 100vh;
+        padding: 0 !important;
+        padding-top: 70px !important;
+        display: flex !important;
+      }
+
+       
+      header {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        padding: 15px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        background-color: var(--bg) !important;
+        z-index: 100 !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        gap: 10px !important;
+        flex-wrap: wrap !important;
+        border-bottom: 1px solid #333;
+      }
+
+       
+      .logo {
+        width: 50px !important;
+        height: 50px !important;
+        margin: 0 !important;
+        position: absolute !important;
+        left: 15px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+      }
+
+       
+      .nav-links {
+        display: flex !important;
+        gap: 8px !important;
+        flex-wrap: wrap !important;
+        margin: 0 !important;
+        justify-content: center !important;
+        transform: translateX(-10px) !important;
+      }
+
+      .nav-links a {
+        margin: 0 !important;
+        margin-left: 8px !important;
+        font-size: 0.5rem !important;
+        padding: 5px !important;
+      }
+
+       
+      .menu-icon {
+        display: none !important;
+      }
+
+       
+      .mobile-nav {
+        display: none !important;
+      }
+
+       
+      main {
+        margin-top: 80px !important;
+        margin-bottom: 60px !important;
+        padding: 20px 15px !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+       
+      h1 {
+        font-size: 0.8rem !important;
+        line-height: 1.4 !important;
+        padding: 0 10px !important;
+        word-wrap: break-word;
+        max-width: 100%;
+        margin-bottom: 20px !important;
+      }
+
+      .category {
+        width: 95%;
+        margin: 15px auto;
+        padding: 12px;
+      }
+
+      .category h2 {
+        font-size: 0.8rem;
+        padding: 8px 0;
+      }
+
+      .challenges a {
+        font-size: 0.8rem;
+        margin: 8px 0;
+      }
+
+       
+      footer {
+        position: relative !important;
+        bottom: auto !important;
+        margin-top: 30px !important;
+        padding: 20px 0 !important;
+        font-size: 0.55rem !important;
+        width: 100% !important;
+      }
+
+      footer p {
+        margin: 0 !important;
+      }
+    }
+
+     
+    @media (max-width: 480px) {
+      body {
+        padding-top: 65px !important;
+      }
+
+      header {
+        padding: 10px 12px !important;
+      }
+
+      .logo {
+        width: 40px !important;
+        height: 40px !important;
+      }
+
+      .nav-links a {
+        font-size: 0.45rem !important;
+        margin-left: 6px !important;
+        padding: 4px !important;
+      }
+
+      main {
+        margin-top: 70px !important;
+        padding: 15px 10px !important;
+      }
+
+      h1 {
+        font-size: 0.7rem !important;
+      }
+
+      .category h2 {
+        font-size: 0.7rem;
+      }
+
+      .challenges a {
+        font-size: 0.75rem;
+      }
+
+      footer {
+        font-size: 0.5rem !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="https://batamladen.github.io/Dead-Pirate-Society/" class="logo-link">
+      <img src="https://batamladen.github.io/Dead-Pirate-Society/images/DPSlogo.webp" alt="Logo" class="logo">
+    </a>
+    
+    
+    <div class="nav-links">
+      <a href="https://batamladen.github.io/Dead-Pirate-Society/about/">ABOUT</a>
+      <a href="https://batamladen.github.io/Dead-Pirate-Society/writeups/">WRITEUPS</a>
+      <a href="https://batamladen.github.io/Dead-Pirate-Society/members/">MEMBERS</a>
+      <a href="https://batamladen.github.io/Dead-Pirate-Society/achievements/">ACHIEVEMENTS</a>
+    </div>
+
+    
+    <div class="menu-icon" id="menu-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  
+  <div class="nav-overlay" id="nav-overlay"></div>
+
+  
+  <div class="mobile-nav" id="mobile-nav">
+    <span class="close-nav" id="close-nav">✕</span>
+    <a href="https://batamladen.github.io/Dead-Pirate-Society/about/">ABOUT</a>
+    <a href="https://batamladen.github.io/Dead-Pirate-Society/writeups/">WRITEUPS</a>
+    <a href="https://batamladen.github.io/Dead-Pirate-Society/members/">MEMBERS</a>
+  </div>
+
+  <main>
+    <h1>Nite CTF 2025</h1>
+
+    
+    <div class="category">
+      <h2>AI <span class="arrow">▶</span></h2>
+      <div class="challenges">
+      </div>
+    </div>
+
+    <div class="category">
+      <h2>CRYPTO <span class="arrow">▶</span></h2>
+      <div class="challenges">
+      </div>
+    </div>
+
+    <div class="category">
+      <h2>FORENSICS <span class="arrow">▶</span></h2>
+      <div class="challenges">
+      </div>
+    </div>
+
+    <div class="category">
+      <h2>HARDWARE <span class="arrow">▶</span></h2>
+      <div class="challenges">
+      </div>
+    </div>
+
+    <div class="category">
+      <h2>OSINT <span class="arrow">▶</span></h2>
+      <div class="challenges">
+      </div>
+    </div>
+
+    <div class="category">
+      <h2>PWN <span class="arrow">▶</span></h2>
+      <div class="challenges">
+      </div>
+    </div>
+
+    <div class="category">
+      <h2>REV <span class="arrow">▶</span></h2>
+      <div class="challenges">
+      </div>
+    </div>
+
+    <div class="category">
+      <h2>WEB <span class="arrow">▶</span></h2>
+      <div class="challenges">
+      </div>
+    </div>
+
+    <div class="category">
+      <h2>WEB3 <span class="arrow">▶</span></h2>
+      <div class="challenges">
+      </div>
+    </div>
+
+    
+  </main>
+
+  <footer>
+    <p>@ DEAD PIRATE SOCIETY</p>
+  </footer>
+
+  <script>
+    
+    document.querySelectorAll('.category h2').forEach(header => {
+      header.addEventListener('click', () => {
+        const category = header.parentElement;
+        const content = category.querySelector('.challenges');
+        category.classList.toggle('open');
+        content.style.display = content.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+
+    
+    const menuIcon = document.getElementById('menu-icon');
+    const mobileNav = document.getElementById('mobile-nav');
+    const closeNav = document.getElementById('close-nav');
+    const navOverlay = document.getElementById('nav-overlay');
+
+    menuIcon.addEventListener('click', () => {
+      mobileNav.classList.add('active');
+      navOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    closeNav.addEventListener('click', () => {
+      mobileNav.classList.remove('active');
+      navOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    navOverlay.addEventListener('click', () => {
+      mobileNav.classList.remove('active');
+      navOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+        navOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+  </script>
+</body>
+</html>
