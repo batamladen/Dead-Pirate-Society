@@ -4,26 +4,23 @@
 Dead Pirate Society (DPS) is a community-driven **CTF team** built around curiosity, learning, and a bit of chaos.  
 We believe in sharing knowledge, solving challenges together, and having fun while we do it.  
 
----
 
 ## 🌊 What We Offer
 
 - 🧩 **Weekly CTFs** — Join us every week as we dive into challenges across all categories.  
-- 💬 **Active Discord Community** — A friendly crew of learners, veterans, and the occasional sleep-deprived pentester.  
-- 🏆 **Writeups & Knowledge Sharing** — Whether you host your writeups on your blog, GitHub, or a dusty `.txt` file on your desktop — we’d love to feature them on our website: [deadpiratesociety.club](https://deadpiratesociety.club)  
+- 💬 **Active Discord Community** — A friendly crew of learners & veterans.  
+- 🏆 **Writeups & Knowledge Sharing** — Whether you host your writeups on your blog, GitHub, or a dusty `.txt` file on your desktop — we’d love to feature them on our website: [deadpiratesociety.club](https://deadpiratesociety.club)
+- 🚩 **Hosting a Yearly CTF** - We plan on creating a DPS CTF every year, every member of the team is welcome to contribute with challs, infra, discord support, ideas ...
 - 🧠 **Collaborative Learning** — We help each other grow. Ask questions, share insights, and learn through real problem-solving.
 
----
 
 ## 🏴 Join the Crew
 
 Everyone is welcome — no experience required.  
 Whether you're new to CTFs or a seasoned veteran, grab your gear and hop on board.
-
-- 💬 **Discord:** [Join on Discord](https://discord.gg/jYMuu6Buqe)
+- 🌐 **Website:** [Request to join](https://deadpiratesociety.club/)
 - ⏰ **CTFtime:** [Join on CTFtime](https://ctftime.org/team/411988)
 
----
 
 ## ☠️ Contributing Writeups
 
