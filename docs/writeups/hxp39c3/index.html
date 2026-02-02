@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Writeups | Dead Pirate Society</title>
+  <title>hxp 39C3 CTF | Dead Pirate Society</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://batamladen.github.io/Dead-Pirate-Society/css/mobile-writeups.css">
   <link rel="icon" type="image/x-icon" href="https://batamladen.github.io/Dead-Pirate-Society/images/dps.ico">
-
+  
   <style>
     :root {
       --bg: #080908;
@@ -17,6 +16,10 @@
       --link-hover: #ff6347;
       --card-bg: #1a1a1a;
       --card-border: #333;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
@@ -29,8 +32,8 @@
       margin: 0;
       text-align: center;
       padding-top: 80px;
-      min-height: 90vh;  
-      position: relative;  
+      min-height: 90vh;
+      position: relative;
     }
 
     h1, h2 {
@@ -52,29 +55,33 @@
 
      
     header {
-      position: absolute;
-      top: 20px;
+      position: fixed;
+      top: 0;
       left: 0;
       right: 0;
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      padding: 0 40px;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: var(--bg);
+      border-bottom: 1px solid #333;
+      z-index: 1000;
+      height: 70px;
     }
 
     .logo {
-      width: 80px;
+      width: 60px;
       height: auto;
       animation: spin 15s linear infinite;
     }
 
+     
     .nav-links {
       display: flex;
-      margin-top: +6px;
+      gap: 20px;
     }
 
     .nav-links a {
-      margin-left: 19.3px;
       color: var(--link);
       text-decoration: none;
       font-weight: bold;
@@ -88,123 +95,140 @@
     }
 
      
-    .filter-section {
-      margin-bottom: 30px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: center;
-      align-items: center;
-
-    }
-
-    .filter-section label {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.7rem;
-      margin-right: 10px;
-    }
-
-    .filter-select {
-      background: var(--card-bg);
-      color: var(--text);
-      border: 2px solid var(--card-border);
-      padding: 8px 15px;
-      font-family: 'Fira Mono', monospace;
-      border-radius: 4px;
+    .menu-icon {
+      display: none;
+      flex-direction: column;
       cursor: pointer;
-      margin-left: -25px;
+      padding: 5px;
     }
 
-    .filter-select:focus {
-      outline: none;
-      border-color: var(--link);
+    .menu-icon span {
+      width: 25px;
+      height: 3px;
+      background: var(--link);
+      margin: 3px 0;
+      transition: 0.3s;
     }
 
      
-    .writeups-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 25px;
-      max-width: 1200px;
-      width: 100%;
-      padding: 0 20px;
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 250px;
+      height: 100vh;
+      background: var(--card-bg);
+      border-left: 2px solid var(--card-border);
+      display: flex;
+      flex-direction: column;
+      padding: 80px 30px 30px;
+      transition: right 0.3s ease;
+      z-index: 999;
     }
 
-    .ctf-card {
-      position: relative;
-      background: var(--card-bg);
-      border: 2px solid var(--card-border);
-      border-radius: 8px;
-      padding: 30px;
-      transition: all 0.3s ease;
-      cursor: pointer;
+    .mobile-nav.active {
+      right: 0;
+    }
+
+    .mobile-nav a {
+      color: var(--link);
       text-decoration: none;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.8rem;
+      padding: 15px 0;
+      border-bottom: 1px solid #333;
+      transition: color 0.3s ease;
+    }
+
+    .mobile-nav a:hover {
+      color: var(--link-hover);
+    }
+
+    .close-nav {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+      font-family: system-ui, sans-serif;
+    }
+
+     
+    .nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      z-index: 998;
+    }
+
+    .nav-overlay.active {
       display: block;
     }
 
-    .ctf-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--link);
-      box-shadow: 0 5px 15px rgba(180, 63, 38, 0.3);
+     
+    .category {
+      background: #1a1a1a;
+      border: 2px solid #333;
+      border-radius: 10px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 800px;
+      padding: 15px;
+      text-align: left;
+      box-sizing: border-box;
     }
-
-    .ctf-name {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.8rem;
-      color: var(--text);
-      margin-bottom: 10px;
-      line-height: 1.8px;
-    }
-
-    .ctf-date {
-      font-family: 'Fira Mono', monospace;
-      font-size: 0.8rem;
-      color: var(--link);
-      margin-bottom: 15px;
-    }
-
-    .ctf-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: center;
-    }
-
-    .ctf-tag {
-      background: var(--link);
-      color: var(--bg);
-      padding: 4px 8px;
-      border-radius: 12px;
-      font-family: 'Fira Mono', monospace;
-      font-size: 0.7rem;
-      font-weight: bold;
-    }
-
-    .ctf-difficulty {
-      margin-top: 10px;
-      font-family: 'Fira Mono', monospace;
-      font-size: 0.8rem;
-    }
-
-    .ctf-placement {
-      position: absolute;
-      bottom: 10px;
-      left: 15px;
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.6rem;
-      color: #dbceb4;
-      opacity: 0.8;
-    }
-
-
-    .difficulty-easy { color: #4CAF50; }
-    .difficulty-medium { color: #FF9800; }
-    .difficulty-hard { color: #F44336; }
 
     main {
-      max-width: 1200px;
-      padding: 20px;
-      flex: 1;
+      width: 100%;
+      max-width: none;
+    }
+
+    .category h2 {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.9rem;
+      cursor: pointer;
+      color: #dbceb4;
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+    }
+
+    .arrow {
+      transition: transform 0.3s;
+      font-size: 0.8rem;
+    }
+
+    .category.open .arrow {
+      transform: rotate(90deg);
+    }
+
+    .challenges {
+      display: none;
+      margin-top: 15px;
+      padding-left: 10px;
+    }
+
+    .challenges a {
+      display: block;
+      color: #b43f26;
+      text-decoration: none;
+      margin: 10px 0;
+      font-family: 'Fira Mono', monospace;
+      font-size: 0.85rem;
+      padding: 5px 0;
+      word-break: break-word;
+    }
+
+    .challenges a:hover {
+      color: #ff6347;
+      text-decoration: underline;
     }
 
     footer {
@@ -213,7 +237,7 @@
       font-size: 0.6rem;
       width: 100%;
       padding: 20px 0;
-      margin-top: 200px;
+      margin-top: 100px;
     }
 
     @keyframes spin {
@@ -222,11 +246,172 @@
     }
 
      
-    .no-results {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.8rem;
-      color: var(--link);
-      margin-top: 50px;
+    @media (max-width: 768px) {
+       
+      html, body {
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100vw;
+      }
+
+       
+      body {
+        height: auto;
+        min-height: 100vh;
+        padding: 0 !important;
+        padding-top: 70px !important;
+        display: flex !important;
+      }
+
+       
+      header {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        padding: 15px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        background-color: var(--bg) !important;
+        z-index: 100 !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        gap: 10px !important;
+        flex-wrap: wrap !important;
+        border-bottom: 1px solid #333;
+      }
+
+       
+      .logo {
+        width: 50px !important;
+        height: 50px !important;
+        margin: 0 !important;
+        position: absolute !important;
+        left: 15px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+      }
+
+       
+      .nav-links {
+        display: flex !important;
+        gap: 8px !important;
+        flex-wrap: wrap !important;
+        margin: 0 !important;
+        justify-content: center !important;
+        transform: translateX(-10px) !important;
+      }
+
+      .nav-links a {
+        margin: 0 !important;
+        margin-left: 8px !important;
+        font-size: 0.5rem !important;
+        padding: 5px !important;
+      }
+
+       
+      .menu-icon {
+        display: none !important;
+      }
+
+       
+      .mobile-nav {
+        display: none !important;
+      }
+
+       
+      main {
+        margin-top: 80px !important;
+        margin-bottom: 60px !important;
+        padding: 20px 15px !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+       
+      h1 {
+        font-size: 0.8rem !important;
+        line-height: 1.4 !important;
+        padding: 0 10px !important;
+        word-wrap: break-word;
+        max-width: 100%;
+        margin-bottom: 20px !important;
+      }
+
+      .category {
+        width: 95%;
+        margin: 15px auto;
+        padding: 12px;
+      }
+
+      .category h2 {
+        font-size: 0.8rem;
+        padding: 8px 0;
+      }
+
+      .challenges a {
+        font-size: 0.8rem;
+        margin: 8px 0;
+      }
+
+       
+      footer {
+        position: relative !important;
+        bottom: auto !important;
+        margin-top: 30px !important;
+        padding: 20px 0 !important;
+        font-size: 0.55rem !important;
+        width: 100% !important;
+      }
+
+      footer p {
+        margin: 0 !important;
+      }
+    }
+
+     
+    @media (max-width: 480px) {
+      body {
+        padding-top: 65px !important;
+      }
+
+      header {
+        padding: 10px 12px !important;
+      }
+
+      .logo {
+        width: 40px !important;
+        height: 40px !important;
+      }
+
+      .nav-links a {
+        font-size: 0.45rem !important;
+        margin-left: 6px !important;
+        padding: 4px !important;
+      }
+
+      main {
+        margin-top: 70px !important;
+        padding: 15px 10px !important;
+      }
+
+      h1 {
+        font-size: 0.7rem !important;
+      }
+
+      .category h2 {
+        font-size: 0.7rem;
+      }
+
+      .challenges a {
+        font-size: 0.75rem;
+      }
+
+      footer {
+        font-size: 0.5rem !important;
+      }
     }
   </style>
 </head>
@@ -235,57 +420,73 @@
     <a href="https://batamladen.github.io/Dead-Pirate-Society/" class="logo-link">
       <img src="https://batamladen.github.io/Dead-Pirate-Society/images/DPSlogo.webp" alt="Logo" class="logo">
     </a>
+    
+    
     <div class="nav-links">
       <a href="https://batamladen.github.io/Dead-Pirate-Society/about/">ABOUT</a>
       <a href="https://batamladen.github.io/Dead-Pirate-Society/writeups/">WRITEUPS</a>
       <a href="https://batamladen.github.io/Dead-Pirate-Society/members/">MEMBERS</a>
       <a href="https://batamladen.github.io/Dead-Pirate-Society/achievements/">ACHIEVEMENTS</a>
     </div>
+
+    
+    <div class="menu-icon" id="menu-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </header>
 
+  
+  <div class="nav-overlay" id="nav-overlay"></div>
+
+  
+  <div class="mobile-nav" id="mobile-nav">
+    <span class="close-nav" id="close-nav">✕</span>
+    <a href="https://batamladen.github.io/Dead-Pirate-Society/about/">ABOUT</a>
+    <a href="https://batamladen.github.io/Dead-Pirate-Society/writeups/">WRITEUPS</a>
+    <a href="https://batamladen.github.io/Dead-Pirate-Society/members/">MEMBERS</a>
+  </div>
+
   <main>
-    <h1>CTF WRITEUPS</h1>
+    <h1>hxp 39C3 CTF 2025</h1>
 
     
-    <div class="filter-section">
-      <label for="year-filter">YEAR:</label>
-      <select id="year-filter" class="filter-select">
-        <option value="all">ALL YEARS</option>
-        <option value="2026">2026</option>
-        <option value="2025">2025</option>
-      </select>
 
-      <label for="platform-filter">PLATFORM:</label>
-      <select id="platform-filter" class="filter-select">
-        <option value="all">ALL PLATFORMS</option>
-        <option value="htb">HackTheBox</option>
-        <option value="thm">TryHackMe</option>
-        <option value="ctftime">CTFtime</option>
-        <option value="AmateursCTF">AmateursCTF</option>
-        <option value="PatriotCTF">PatriotCTF</option>
-        <option value="HeroCTF">HeroCTF</option>
-        <option value="NullCTF">NullCTF</option>
-        <option value="NiteCTF">NiteCTF</option>
+    <div class="category">
+      <h2>WEB <span class="arrow">▶</span></h2>
+      <div class="challenges">
 
-      </select>
-
-      <label for="difficulty-filter">DIFFICULTY:</label>
-      <select id="difficulty-filter" class="filter-select">
-        <option value="all">ALL LEVELS</option>
-        <option value="easy">EASY</option>
-        <option value="medium">MEDIUM</option>
-        <option value="hard">HARD</option>
-      </select>
+      </div>
     </div>
 
-    
-    <div class="writeups-grid" id="writeups-container">
+    <div class="category">
+      <h2>MISC <span class="arrow">▶</span></h2>
+      <div class="challenges">
       
+      </div>
     </div>
 
-    <div class="no-results" id="no-results" style="display: none;">
-      NO WRITEUPS FOUND FOR SELECTED FILTERS
+    <div class="category">
+      <h2>PWN <span class="arrow">▶</span></h2>
+      <div class="challenges">
+
+      </div>
     </div>
+
+    <div class="category">
+      <h2>CRYPTO <span class="arrow">▶</span></h2>
+      <div class="challenges">
+      </div>
+    </div>
+
+    <div class="category">
+      <h2>REV <span class="arrow">▶</span></h2>
+      <div class="challenges">
+        
+      </div>
+    </div>
+    
   </main>
 
   <footer>
@@ -294,166 +495,46 @@
 
   <script>
     
-    const ctfData = [
-      {
-        id: "0001",
-        name: "AmateursCTF",
-        date: "2025-11-15",
-        year: "2025",
-        platform: "AmateursCTF",
-        difficulty: "easy",
-        placement: "84/853",
-        tags: ["Misc", "Web", "Pwn", "Crypto" , "Rev"],
-        link: "/writeups/amateursctf25"
-      },
-      {
-        id: "0002",
-        name: "PatriotCTF",
-        date: "2025-11-22",
-        year: "2025",
-        platform: "PatriotCTF",
-        difficulty: "easy",
-        placement: "127/1366",
-        tags: ["Pwn", "OSINT", "Crypto", "Web", "Rev", "Forensics"],
-        link: "/writeups/patriotctf25"
-      },
-      {
-        id: "0003",
-        name: "HeroCTF v7",
-        date: "2025-12-01",
-        year: "2025",
-        platform: "HeroCTF",
-        difficulty: "medium",
-        placement: "112/1052",
-        tags: ["Android", "Crypto", "Forensics", "Misc", "Prog", "Pwn", "Reverse", "System", "Web"],
-        link: "/writeups/heroctfv7"
-      },
-      {
-        id: "0004",
-        name: "NullCTF 2025",
-        date: "2025-12-07",
-        year: "2025",
-        platform: "NullCTF",
-        difficulty: "medium",
-        placement: "48/613",
-        tags: ["Web", "Misc", "Crypto", "Blockchain", "Forensics", "Rev", "OSINT", "Pwn", "Threat Hunting"],
-        link: "/writeups/nullctf25"
-      },
-      {
-        id: "0005",
-        name: "NiteCTF 2025",
-        date: "2025-12-12",
-        year: "2025",
-        platform: "NiteCTF",
-        difficulty: "hard",
-        placement: "185/1611",
-        tags: ["AI", "Crypto", "Forensics", "Hardware", "OSINT", "Pwn", "Rev", "Web", "Web3"],
-        link: "/writeups/nitectf25"
-      },
-      {
-        id: "0006",
-        name: "TSG CTF 2025",
-        date: "2025-12-15",
-        year: "2025",
-        platform: "TSG CTF",
-        difficulty: "hard",
-        placement: "#213/489",
-        tags: ["Pwn", "Web", "Crypto", "Misc", "Rev"],
-        link: "/writeups/tsgctf25"
-      },
-      {
-        id: "0007",
-        name: "hxp 39C3 CTF",
-        date: "2025-12-27",
-        year: "2025",
-        platform: "hxp 39C3 CTF",
-        difficulty: "hard",
-        placement: "#253/1335",
-        tags: ["Rev", "Misc", "Crypto", "Pwn", "Web"],
-        link: "/writeups/hxp39C3"
-      },
-      {
-        id: "0008",
-        name: "Scarlet CTF 2026",
-        date: "2026-01-23",
-        year: "2026",
-        platform: "Scarlet CTF",
-        difficulty: "hard",
-        placement: "#233/762",
-        tags: ["DFIR", "Web", "Rev", "IOT", "Web3", "HW", "OSINT", "Misc", "Crypto"],
-        link: "/writeups/scarletctf26"
-      },
-      {
-        id: "0009",
-        name: "Pascal CTF 2026",
-        date: "2026-01-31",
-        year: "2026",
-        platform: "Pascal CTF",
-        difficulty: "hard",
-        placement: "#343/855",
-        tags: ["Ai", "Crypto", "Web", "Rev", "Pwn", "Misc"],
-        link: "/writeups/pascalctf26"
-      }
-
-    ];
-
-    
-    function renderCTFCards(ctfs) {
-      const container = document.getElementById('writeups-container');
-      const noResults = document.getElementById('no-results');
-      
-      container.innerHTML = '';
-      
-      if (ctfs.length === 0) {
-        noResults.style.display = 'block';
-        return;
-      }
-      
-      noResults.style.display = 'none';
-      
-      ctfs.forEach(ctf => {
-        const card = document.createElement('a');
-        card.href = ctf.link;
-        card.className = 'ctf-card';
-        card.innerHTML = `
-          <div class="ctf-name">${ctf.name}</div>
-          <div class="ctf-date">${new Date(ctf.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
-          <div class="ctf-tags">
-            ${ctf.tags.map(tag => `<span class="ctf-tag">${tag}</span>`).join('')}
-          </div>
-          <div class="ctf-difficulty ${'difficulty-' + ctf.difficulty}">
-            DIFFICULTY: ${ctf.difficulty.toUpperCase()}
-          </div>
-          <div class="ctf-placement">#${ctf.placement}</div>
-
-        `;
-        container.appendChild(card);
+    document.querySelectorAll('.category h2').forEach(header => {
+      header.addEventListener('click', () => {
+        const category = header.parentElement;
+        const content = category.querySelector('.challenges');
+        category.classList.toggle('open');
+        content.style.display = content.style.display === 'block' ? 'none' : 'block';
       });
-    }
+    });
 
     
-    function filterCTFs() {
-      const yearFilter = document.getElementById('year-filter').value;
-      const platformFilter = document.getElementById('platform-filter').value;
-      const difficultyFilter = document.getElementById('difficulty-filter').value;
-      
-      const filteredCTFs = ctfData.filter(ctf => {
-        return (yearFilter === 'all' || ctf.year === yearFilter) &&
-               (platformFilter === 'all' || ctf.platform === platformFilter) &&
-               (difficultyFilter === 'all' || ctf.difficulty === difficultyFilter);
+    const menuIcon = document.getElementById('menu-icon');
+    const mobileNav = document.getElementById('mobile-nav');
+    const closeNav = document.getElementById('close-nav');
+    const navOverlay = document.getElementById('nav-overlay');
+
+    menuIcon.addEventListener('click', () => {
+      mobileNav.classList.add('active');
+      navOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    closeNav.addEventListener('click', () => {
+      mobileNav.classList.remove('active');
+      navOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    navOverlay.addEventListener('click', () => {
+      mobileNav.classList.remove('active');
+      navOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+        navOverlay.classList.remove('active');
+        document.body.style.overflow = '';
       });
-      
-      renderCTFCards(filteredCTFs);
-    }
-
-    
-    document.addEventListener('DOMContentLoaded', () => {
-      renderCTFCards(ctfData);
-      
-      
-      document.getElementById('year-filter').addEventListener('change', filterCTFs);
-      document.getElementById('platform-filter').addEventListener('change', filterCTFs);
-      document.getElementById('difficulty-filter').addEventListener('change', filterCTFs);
     });
   </script>
 </body>
