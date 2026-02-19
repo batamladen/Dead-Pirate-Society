@@ -36,5 +36,6 @@ markup:
       unsafe: true
 
 params:
+  author: "Dead Pirate Society"
   customCSS:
     - css/custom.css
