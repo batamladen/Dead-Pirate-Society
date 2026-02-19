@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lookup | Dead Pirate Society</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://batamladen.github.io/Dead-Pirate-Society/css/mobile.css">
+  <link rel="icon" type="image/x-icon" href="https://batamladen.github.io/Dead-Pirate-Society/images/dps.ico">
+
+  <style>
+    :root {
+      --bg: #080908;
+      --text: #dbceb4;
+      --link: #b43f26;
+      --link-hover: #ff6347;
+      --card-bg: #1a1a1a;
+      --card-border: #333;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      text-align: center;
+      padding-top: 80px;
+      min-height: 90vh;
+      position: relative;
+    }
+
+    h1, h2 { font-family: 'Press Start 2P', cursive; color: var(--text); }
+    p, li { font-family: 'Fira Mono', monospace; color: var(--text); }
+    h1 { font-size: 1.2rem; line-height: 1.5; margin-bottom: 30px; text-transform: uppercase; }
+
+     
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: var(--bg);
+      border-bottom: 1px solid #333;
+      z-index: 1000;
+      height: 70px;
+    }
+
+    .logo {
+      width: 60px;
+      height: auto;
+      animation: spin 15s linear infinite;
+    }
+
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a {
+      color: var(--link);
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.7rem;
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--link-hover); }
+
+    .menu-icon {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 5px;
+    }
+    .menu-icon span {
+      width: 25px;
+      height: 3px;
+      background: var(--link);
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+     
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 250px;
+      height: 100vh;
+      background: var(--card-bg);
+      border-left: 2px solid var(--card-border);
+      display: flex;
+      flex-direction: column;
+      padding: 80px 30px 30px;
+      transition: right 0.3s ease;
+      z-index: 999;
+    }
+    .mobile-nav.active { right: 0; }
+    .mobile-nav a {
+      color: var(--link);
+      text-decoration: none;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.8rem;
+      padding: 15px 0;
+      border-bottom: 1px solid #333;
+      transition: color 0.3s ease;
+    }
+    .mobile-nav a:hover { color: var(--link-hover); }
+
+    .close-nav {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+      font-family: system-ui, sans-serif;
+    }
+
+    .nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      z-index: 998;
+    }
+    .nav-overlay.active { display: block; }
+
+    main {
+      width: 100%;
+      max-width: 800px;
+      padding: 20px;
+      text-align: left;
+    }
+
+    main img {
+      display: block;
+      max-width: 100%;
+      margin: 15px auto;
+      border-radius: 8px;
+      cursor: zoom-in;
+      transition: 0.2s ease;
+    }
+
+    code { 
+      background-color: #2d2d2d; 
+      color: #f8f8f2; 
+      padding: 2px 6px; border-radius: 3px; 
+    }
+
+    pre { 
+      background-color: #2d2d2d; 
+      color: #f8f8f2; padding: 15px; 
+      border-radius: 4px; 
+      border-left: 4px solid #ff6347; 
+    
+      white-space: pre-wrap;      
+      word-wrap: break-word;      
+      overflow-wrap: break-word;  
+    }
+
+    pre code { background-color: transparent; padding: 0; }
+
+
+    #img-lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    #img-lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 10px;
+        cursor: zoom-out;
+    }
+
+
+    footer {
+      text-align: center;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.6rem;
+      width: 100%;
+      padding: 20px 0;
+      margin-top: 100px;
+    }
+
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+     
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="https://batamladen.github.io/Dead-Pirate-Society/" class="logo-link">
+    <img src="https://batamladen.github.io/Dead-Pirate-Society/images/DPSlogo.webp" alt="Logo" class="logo">
+  </a>
+
+  
+  <div class="nav-links">
+    <a href="https://batamladen.github.io/Dead-Pirate-Society/about/">ABOUT</a>
+    <a href="https://batamladen.github.io/Dead-Pirate-Society/writeups/">WRITEUPS</a>
+    <a href="https://batamladen.github.io/Dead-Pirate-Society/members/">MEMBERS</a>
+    <a href="https://batamladen.github.io/Dead-Pirate-Society/achievements/">ACHIEVEMENTS</a>
+  </div>
+
+  
+  <div class="menu-icon" id="menu-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+
+
+<div class="nav-overlay" id="nav-overlay"></div>
+
+
+<div class="mobile-nav" id="mobile-nav">
+  <span class="close-nav" id="close-nav">✕</span>
+  <a href="https://batamladen.github.io/Dead-Pirate-Society/about/">ABOUT</a>
+  <a href="https://batamladen.github.io/Dead-Pirate-Society/writeups/">WRITEUPS</a>
+  <a href="https://batamladen.github.io/Dead-Pirate-Society/members/">MEMBERS</a>
+  <a href="https://batamladen.github.io/Dead-Pirate-Society/achievements/">ACHIEVEMENTS</a>
+</div>
+
+<main>
+
+  <p style="text-align: center;">
+    Writeup by 
+    <a href="https://pointerpointer.com/" target="_blank" style="color: var(--link);">
+      Skye
+    </a>
+  </p>
+
+  <h1 style="text-align: center;">Lookup</h1>
+
+  
+  <h2 id="walkthrough">Walkthrough</h2>
+<p>This event takes place on <a href="http://ctf.0xfun.org/">ctf.0xfun.org</a>, but you can easily find it by searching</p>
+<hr>
+<hr>
+<p>At first I tried looking up stuff online which was pointless.</p>
+<p>Then I used commands on my terminal</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>whois 0xfun.org -&gt;  provide details to a registrar.   
+</span></span><span style="display:flex;"><span>dig ctf.0xfun.org TXT -&gt; a DNS lookup tool
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>└─$ whois 0xfun.org                    
+</span></span><span style="display:flex;"><span>Domain Name: 0xfun.org
+</span></span><span style="display:flex;"><span>Registry Domain ID: REDACTED
+</span></span><span style="display:flex;"><span>Registrar WHOIS Server: http://whois.porkbun.com
+</span></span><span style="display:flex;"><span>Registrar URL: https://porkbun.com
+</span></span><span style="display:flex;"><span>Updated Date: 2025-09-14T14:06:36Z
+</span></span><span style="display:flex;"><span>Creation Date: 2024-07-31T14:05:46Z
+</span></span><span style="display:flex;"><span>Registry Expiry Date: 2026-07-31T14:05:46Z
+</span></span><span style="display:flex;"><span>Registrar: Porkbun LLC
+</span></span><span style="display:flex;"><span>Registrar IANA ID: <span style="color:#ae81ff">1861</span>
+</span></span><span style="display:flex;"><span>Registrar Abuse Contact Email: abuse@porkbun.com
+</span></span><span style="display:flex;"><span>Registrar Abuse Contact Phone: +1.8557675286
+</span></span><span style="display:flex;"><span>Domain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited
+</span></span><span style="display:flex;"><span>Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+</span></span><span style="display:flex;"><span>Name Server: cesar.ns.cloudflare.com
+</span></span><span style="display:flex;"><span>Name Server: dell.ns.cloudflare.com
+</span></span><span style="display:flex;"><span>DNSSEC: unsigned
+</span></span><span style="display:flex;"><span>URL of the ICANN Whois Inaccuracy Complaint Form: https://icann.org/wicf/
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; Last update of WHOIS database: 2026-02-14T06:46:44Z <span style="color:#f92672">&lt;&lt;&lt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>For more information on Whois status codes, please visit https://icann.org/epp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Terms of Use: Access to Public Interest Registry WHOIS information is provided to assist persons in determining the contents of a domain name registration record in the Public Interest Registry registry database. The data in this record is provided by Public Interest Registry <span style="color:#66d9ef">for</span> informational purposes only, and Public Interest Registry does not guarantee its accuracy. This service is intended only <span style="color:#66d9ef">for</span> query-based access. You agree that you will use this data only <span style="color:#66d9ef">for</span> lawful purposes and that, under no circumstances will you use this data to <span style="color:#f92672">(</span>a<span style="color:#f92672">)</span> allow, enable, or otherwise support the transmission by e-mail, telephone, or facsimile of mass unsolicited, commercial advertising or solicitations to entities other than the data recipient<span style="color:#960050;background-color:#1e0010">&#39;</span>s own existing customers; or <span style="color:#f92672">(</span>b<span style="color:#f92672">)</span> enable high volume, automated, electronic processes that send queries or data to the systems of Registry Operator, a Registrar, or Identity Digital except as reasonably necessary to register domain names or modify existing registrations. All rights reserved. Public Interest Registry reserves the right to modify these terms at any time. By submitting this query, you agree to abide by this policy.  The Registrar of Record identified in this output may have an RDDS service that can be queried <span style="color:#66d9ef">for</span> additional information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+</span></span><span style="display:flex;"><span>                                                                                                                            
+</span></span><span style="display:flex;"><span>┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>└─$ dig ctf.0xfun.org TXT
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>; &lt;&lt;&gt;&gt; DiG 9.20.11-4+b1-Debian &lt;&lt;&gt;&gt; ctf.0xfun.org TXT
+</span></span><span style="display:flex;"><span>;; global options: +cmd
+</span></span><span style="display:flex;"><span>;; Got answer:
+</span></span><span style="display:flex;"><span>;; -&gt;&gt;HEADER<span style="color:#e6db74">&lt;&lt;- opco</span>de: QUERY, status: NOERROR, id: <span style="color:#ae81ff">36515</span>
+</span></span><span style="display:flex;"><span>;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>;; OPT PSEUDOSECTION:
+</span></span><span style="display:flex;"><span>; EDNS: version: 0, flags:; udp: <span style="color:#ae81ff">512</span>
+</span></span><span style="display:flex;"><span>;; QUESTION SECTION:
+</span></span><span style="display:flex;"><span>;ctf.0xfun.org.                 IN      TXT
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>;; ANSWER SECTION:
+</span></span><span style="display:flex;"><span>ctf.0xfun.org.          <span style="color:#ae81ff">300</span>     IN      TXT     <span style="color:#e6db74">&#34;0xfun{4ny_1nfo_th4ts_pub1cly_4cc3ss1bl3_1s_0S1NT}&#34;</span>
+</span></span><span style="display:flex;"><span>ctf.0xfun.org.          <span style="color:#ae81ff">300</span>     IN      TXT     <span style="color:#e6db74">&#34;v=spf1 include:mailgun.org ~all&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>;; Query time: <span style="color:#ae81ff">16</span> msec
+</span></span><span style="display:flex;"><span>;; SERVER: 24.200.243.189#53<span style="color:#f92672">(</span>24.200.243.189<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>UDP<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>;; WHEN: Sat Feb <span style="color:#ae81ff">14</span> 01:47:02 EST <span style="color:#ae81ff">2026</span>
+</span></span><span style="display:flex;"><span>;; MSG SIZE  rcvd: <span style="color:#ae81ff">148</span>
+</span></span></code></pre></div><p>Flag:
+0xfun{4ny_1nfo_th4ts_pub1cly_4cc3ss1bl3_1s_0S1NT}</p>
+
+
+</main>
+
+<footer>
+  <p>@ DEAD PIRATE SOCIETY</p>
+</footer>
+
+
+    <div id="img-lightbox">
+        <img src="" alt="Expanded Image">
+    </div>
+
+<script>
+  const images = document.querySelectorAll("main img");
+  const lightbox = document.getElementById("img-lightbox");
+  const lightboxImg = lightbox.querySelector("img");
+
+  images.forEach(img => {
+      img.addEventListener("click", () => {
+      lightboxImg.src = img.src;
+      lightbox.style.display = "flex";
+      });
+  });
+
+  lightbox.addEventListener("click", () => {
+      lightbox.style.display = "none";
+  });
+
+  
+  const menuIcon = document.getElementById('menu-icon');
+  const mobileNav = document.getElementById('mobile-nav');
+  const closeNav = document.getElementById('close-nav');
+  const navOverlay = document.getElementById('nav-overlay');
+
+  menuIcon.addEventListener('click', () => {
+    mobileNav.classList.add('active');
+    navOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+
+  closeNav.addEventListener('click', () => {
+    mobileNav.classList.remove('active');
+    navOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+
+  navOverlay.addEventListener('click', () => {
+    mobileNav.classList.remove('active');
+    navOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+
+  mobileNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.remove('active');
+      navOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+
+</body>
+</html>

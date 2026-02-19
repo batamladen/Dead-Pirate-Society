@@ -94,6 +94,19 @@ Log messages matching the user’s session ID are read back from /var/log/app/ap
       <description></description>
     </item>
     <item>
+      <title>Frog Finder 2</title>
+      <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/zeroxfunctf26/frogfinder2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/zeroxfunctf26/frogfinder2/</guid>
+      <description>&lt;h2 id=&#34;walkthrough&#34;&gt;Walkthrough&lt;/h2&gt;
+&lt;p&gt;A frog has escaped from prison cells of a cybersecurity club and is on the run.&lt;/p&gt;
+&lt;p&gt;Somehow, they&amp;rsquo;ve gained the ability to roam the internet and gain human intellect?&lt;/p&gt;
+&lt;p&gt;His newest adventures are documented online, you need to track them
+down. I&amp;rsquo;m not too sure what platform they&amp;rsquo;ve run off to, but I&amp;rsquo;m sure
+the handle would be somewhat along the lines of &lt;code&gt;@myst3ryfr0gg3r&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;After using google, sherlock and maigret, I still was not able to find any account&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>GPT</title>
       <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/amateursctf25/gpt1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -134,6 +147,69 @@ The md5 file hash of my beloved picture is:
 
 (  The flag is the text in the image - case insensitive. Replace spaces with underscores, i.e. pctf{I_Love_Kitties!}  )
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The point of the challenge was to come across &lt;code&gt;https://vx-underground.org/Archive/Cat%20Picture%20Collection&lt;/code&gt; and to download each zip file of the cat pics and get hashing to find &lt;code&gt;9c5ca692da8d6e489beecd5b448ddb35&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lookup</title>
+      <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/zeroxfunctf26/lookup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/zeroxfunctf26/lookup/</guid>
+      <description>&lt;h2 id=&#34;walkthrough&#34;&gt;Walkthrough&lt;/h2&gt;
+&lt;p&gt;This event takes place on &lt;a href=&#34;http://ctf.0xfun.org/&#34;&gt;ctf.0xfun.org&lt;/a&gt;, but you can easily find it by searching&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt;At first I tried looking up stuff online which was pointless.&lt;/p&gt;
+&lt;p&gt;Then I used commands on my terminal&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;whois 0xfun.org -&amp;gt;  provide details to a registrar.   
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;dig ctf.0xfun.org TXT -&amp;gt; a DNS lookup tool
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┌──&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;kali㉿kali&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;-&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;~&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└─$ whois 0xfun.org                    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Domain Name: 0xfun.org
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Registry Domain ID: REDACTED
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Registrar WHOIS Server: http://whois.porkbun.com
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Registrar URL: https://porkbun.com
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Updated Date: 2025-09-14T14:06:36Z
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Creation Date: 2024-07-31T14:05:46Z
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Registry Expiry Date: 2026-07-31T14:05:46Z
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Registrar: Porkbun LLC
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Registrar IANA ID: &lt;span style=&#34;color:#ae81ff&#34;&gt;1861&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Registrar Abuse Contact Email: abuse@porkbun.com
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Registrar Abuse Contact Phone: +1.8557675286
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Domain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Name Server: cesar.ns.cloudflare.com
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Name Server: dell.ns.cloudflare.com
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;DNSSEC: unsigned
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;URL of the ICANN Whois Inaccuracy Complaint Form: https://icann.org/wicf/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt;&amp;gt;&amp;gt; Last update of WHOIS database: 2026-02-14T06:46:44Z &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;For more information on Whois status codes, please visit https://icann.org/epp
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Terms of Use: Access to Public Interest Registry WHOIS information is provided to assist persons in determining the contents of a domain name registration record in the Public Interest Registry registry database. The data in this record is provided by Public Interest Registry &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; informational purposes only, and Public Interest Registry does not guarantee its accuracy. This service is intended only &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; query-based access. You agree that you will use this data only &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; lawful purposes and that, under no circumstances will you use this data to &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;a&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; allow, enable, or otherwise support the transmission by e-mail, telephone, or facsimile of mass unsolicited, commercial advertising or solicitations to entities other than the data recipient&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;&lt;/span&gt;s own existing customers; or &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;b&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; enable high volume, automated, electronic processes that send queries or data to the systems of Registry Operator, a Registrar, or Identity Digital except as reasonably necessary to register domain names or modify existing registrations. All rights reserved. Public Interest Registry reserves the right to modify these terms at any time. By submitting this query, you agree to abide by this policy.  The Registrar of Record identified in this output may have an RDDS service that can be queried &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; additional information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                                                                                                            
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┌──&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;kali㉿kali&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;-&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;~&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└─$ dig ctf.0xfun.org TXT
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;; &amp;lt;&amp;lt;&amp;gt;&amp;gt; DiG 9.20.11-4+b1-Debian &amp;lt;&amp;lt;&amp;gt;&amp;gt; ctf.0xfun.org TXT
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;;; global options: +cmd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;;; Got answer:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;;; -&amp;gt;&amp;gt;HEADER&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;lt;&amp;lt;- opco&lt;/span&gt;de: QUERY, status: NOERROR, id: &lt;span style=&#34;color:#ae81ff&#34;&gt;36515&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;;; OPT PSEUDOSECTION:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;; EDNS: version: 0, flags:; udp: &lt;span style=&#34;color:#ae81ff&#34;&gt;512&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;;; QUESTION SECTION:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;;ctf.0xfun.org.                 IN      TXT
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;;; ANSWER SECTION:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ctf.0xfun.org.          &lt;span style=&#34;color:#ae81ff&#34;&gt;300&lt;/span&gt;     IN      TXT     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;0xfun{4ny_1nfo_th4ts_pub1cly_4cc3ss1bl3_1s_0S1NT}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ctf.0xfun.org.          &lt;span style=&#34;color:#ae81ff&#34;&gt;300&lt;/span&gt;     IN      TXT     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;v=spf1 include:mailgun.org ~all&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;;; Query time: &lt;span style=&#34;color:#ae81ff&#34;&gt;16&lt;/span&gt; msec
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;;; SERVER: 24.200.243.189#53&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;24.200.243.189&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;UDP&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;;; WHEN: Sat Feb &lt;span style=&#34;color:#ae81ff&#34;&gt;14&lt;/span&gt; 01:47:02 EST &lt;span style=&#34;color:#ae81ff&#34;&gt;2026&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;;; MSG SIZE  rcvd: &lt;span style=&#34;color:#ae81ff&#34;&gt;148&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Flag:
+0xfun{4ny_1nfo_th4ts_pub1cly_4cc3ss1bl3_1s_0S1NT}&lt;/p&gt;</description>
     </item>
     <item>
       <title>Matrix Reconstruction</title>
@@ -259,6 +335,20 @@ except UnicodeDecodeError:
 &lt;p&gt;Within this pcap file there are a series of curl requests.
 Each of these curl requests returns some data, though this data is just random gibberish. However, you will notice there are 22 curl requests, this is the length of the flag.
 Each curl request has a mangled TTL value which is a decimal encoded character of the flag. These packets are in order, so once you notice this pattern you can extract all the TTL bytes and convert them from hex to recover the flag.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Where&#39;s Franklin</title>
+      <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/zeroxfunctf26/where_franklin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/zeroxfunctf26/where_franklin/</guid>
+      <description>&lt;h2 id=&#34;walkthrough&#34;&gt;Walkthrough&lt;/h2&gt;
+&lt;p&gt;This was the image provided:&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;wherefranklin1&#34; loading=&#34;lazy&#34; src=&#34;https://batamladen.github.io/Dead-Pirate-Society/images/material/wherefranklin1.webp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;With google lens I was able to identify this was GTA (yes I did not know)&lt;/p&gt;
+&lt;p&gt;From there it was simple OSINT with &lt;a href=&#34;https://gta-5-map.com/&#34;&gt;https://gta-5-map.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;and &lt;a href=&#34;https://www.gtabase.com/grand-theft-auto-v/map-locations/&#34;&gt;https://www.gtabase.com/grand-theft-auto-v/map-locations/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I looked for a path that continues on but had a branch of kind of white sand coming out of it&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;wherefranklin2&#34; loading=&#34;lazy&#34; src=&#34;https://batamladen.github.io/Dead-Pirate-Society/images/material/wherefranklin2.webp&#34;&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
