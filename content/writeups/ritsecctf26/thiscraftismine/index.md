@@ -14,6 +14,8 @@ python3 -c "from nbt.nbt import NBTFile; f=NBTFile('level.dat'); print(f.pretty_
 
 → Didnt find anything relevant  
 
+<br>
+
 2. Looked through the stats and found a .json file 
 
 ![thiscraft1.webp](/images/material/thiscraft1.webp)
