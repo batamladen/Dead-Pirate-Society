@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>This Craft Is Mine | Dead Pirate Society</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://batamladen.github.io/Dead-Pirate-Society/css/mobile.css">
+  <link rel="icon" type="image/x-icon" href="https://batamladen.github.io/Dead-Pirate-Society/images/dps.ico">
+
+  <style>
+    :root {
+      --bg: #080908;
+      --text: #dbceb4;
+      --link: #b43f26;
+      --link-hover: #ff6347;
+      --card-bg: #1a1a1a;
+      --card-border: #333;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      text-align: center;
+      padding-top: 80px;
+      min-height: 90vh;
+      position: relative;
+    }
+
+    h1, h2 { font-family: 'Press Start 2P', cursive; color: var(--text); }
+    p, li { font-family: 'Fira Mono', monospace; color: var(--text); }
+    h1 { font-size: 1.2rem; line-height: 1.5; margin-bottom: 30px; text-transform: uppercase; }
+
+     
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: var(--bg);
+      border-bottom: 1px solid #333;
+      z-index: 1000;
+      height: 70px;
+    }
+
+    .logo {
+      width: 60px;
+      height: auto;
+      animation: spin 15s linear infinite;
+    }
+
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a {
+      color: var(--link);
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.7rem;
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--link-hover); }
+
+    .menu-icon {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 5px;
+    }
+    .menu-icon span {
+      width: 25px;
+      height: 3px;
+      background: var(--link);
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+     
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 250px;
+      height: 100vh;
+      background: var(--card-bg);
+      border-left: 2px solid var(--card-border);
+      display: flex;
+      flex-direction: column;
+      padding: 80px 30px 30px;
+      transition: right 0.3s ease;
+      z-index: 999;
+    }
+    .mobile-nav.active { right: 0; }
+    .mobile-nav a {
+      color: var(--link);
+      text-decoration: none;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.8rem;
+      padding: 15px 0;
+      border-bottom: 1px solid #333;
+      transition: color 0.3s ease;
+    }
+    .mobile-nav a:hover { color: var(--link-hover); }
+
+    .close-nav {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+      font-family: system-ui, sans-serif;
+    }
+
+    .nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      z-index: 998;
+    }
+    .nav-overlay.active { display: block; }
+
+    main {
+      width: 100%;
+      max-width: 800px;
+      padding: 20px;
+      text-align: left;
+    }
+
+    main img {
+      display: block;
+      max-width: 100%;
+      margin: 15px auto;
+      border-radius: 8px;
+      cursor: zoom-in;
+      transition: 0.2s ease;
+    }
+
+    code { 
+      background-color: #2d2d2d; 
+      color: #f8f8f2; 
+      padding: 2px 6px; border-radius: 3px; 
+    }
+
+    pre { 
+      background-color: #2d2d2d; 
+      color: #f8f8f2; padding: 15px; 
+      border-radius: 4px; 
+      border-left: 4px solid #ff6347; 
+    
+      white-space: pre-wrap;      
+      word-wrap: break-word;      
+      overflow-wrap: break-word;  
+    }
+
+    pre code { background-color: transparent; padding: 0; }
+
+
+    #img-lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    #img-lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 10px;
+        cursor: zoom-out;
+    }
+
+
+    footer {
+      text-align: center;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.6rem;
+      width: 100%;
+      padding: 20px 0;
+      margin-top: 100px;
+    }
+
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+     
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="https://batamladen.github.io/Dead-Pirate-Society/" class="logo-link">
+    <img src="https://batamladen.github.io/Dead-Pirate-Society/images/DPSlogo.webp" alt="Logo" class="logo">
+  </a>
+
+  
+  <div class="nav-links">
+    <a href="https://batamladen.github.io/Dead-Pirate-Society/about/">ABOUT</a>
+    <a href="https://batamladen.github.io/Dead-Pirate-Society/writeups/">WRITEUPS</a>
+    <a href="https://batamladen.github.io/Dead-Pirate-Society/members/">MEMBERS</a>
+    <a href="https://batamladen.github.io/Dead-Pirate-Society/achievements/">ACHIEVEMENTS</a>
+  </div>
+
+  
+  <div class="menu-icon" id="menu-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+
+
+<div class="nav-overlay" id="nav-overlay"></div>
+
+
+<div class="mobile-nav" id="mobile-nav">
+  <span class="close-nav" id="close-nav">✕</span>
+  <a href="https://batamladen.github.io/Dead-Pirate-Society/about/">ABOUT</a>
+  <a href="https://batamladen.github.io/Dead-Pirate-Society/writeups/">WRITEUPS</a>
+  <a href="https://batamladen.github.io/Dead-Pirate-Society/members/">MEMBERS</a>
+  <a href="https://batamladen.github.io/Dead-Pirate-Society/achievements/">ACHIEVEMENTS</a>
+</div>
+
+<main>
+
+  <p style="text-align: center;">
+    Writeup by 
+    <a href="https://pointerpointer.com/" target="_blank" style="color: var(--link);">
+      Skye
+    </a>
+  </p>
+
+  <h1 style="text-align: center;">This Craft Is Mine</h1>
+
+  
+  <h1 id="this-craft-is-mine">This Craft Is Mine</h1>
+<ol>
+<li>I looked at the level.dat</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python3 -c <span style="color:#e6db74">&#34;from nbt.nbt import NBTFile; f=NBTFile(&#39;level.dat&#39;); print(f.pretty_tree())&#34;</span>
+</span></span></code></pre></div><p>→ Didnt find anything relevant</p>
+<ol>
+<li>Looked through the stats and found a .json file</li>
+</ol>
+<p><img alt="thiscraft1.webp" loading="lazy" src="https://batamladen.github.io/Dead-Pirate-Society/images/material/thiscraft1.webp"></p>
+<p>Here we see that blocks were placed, maybe we could find where they were placed. The suspicious blocks were white concrete and black concrete. To do that I used uNmINed, go to the Highlighters tab and click the + button, then entered the id: minecraft:black_concrete</p>
+<p><img alt="thiscraft2.webp" loading="lazy" src="https://batamladen.github.io/Dead-Pirate-Society/images/material/thiscraft2.webp"></p>
+<p>Now we need to extract the coordinates, they are written at the bottom on the b</p>
+<p>/tp 1613 77 1978</p>
+<p>We found morse code</p>
+<p><img alt="thiscraft3.webp" loading="lazy" src="https://batamladen.github.io/Dead-Pirate-Society/images/material/thiscraft3.webp"></p>
+<p>After looking at it more closely, since the dash are not the same size, this might be binary code</p>
+<p><img alt="thiscraft4.webp" loading="lazy" src="https://batamladen.github.io/Dead-Pirate-Society/images/material/thiscraft4.webp"></p>
+<p>Whites are 1 and blacks are 0, I also had to reverse the binary code to get a readable answer (so reading from the end to start)</p>
+<p>The sequence: 0100011000110001010101100011001101100101011011100011010101101001011000110111001100100001</p>
+<p>Flag: <code>F1V3en5ics!</code></p>
+
+
+</main>
+
+<footer>
+  <p>@ DEAD PIRATE SOCIETY</p>
+</footer>
+
+
+    <div id="img-lightbox">
+        <img src="" alt="Expanded Image">
+    </div>
+
+<script>
+  const images = document.querySelectorAll("main img");
+  const lightbox = document.getElementById("img-lightbox");
+  const lightboxImg = lightbox.querySelector("img");
+
+  images.forEach(img => {
+      img.addEventListener("click", () => {
+      lightboxImg.src = img.src;
+      lightbox.style.display = "flex";
+      });
+  });
+
+  lightbox.addEventListener("click", () => {
+      lightbox.style.display = "none";
+  });
+
+  
+  const menuIcon = document.getElementById('menu-icon');
+  const mobileNav = document.getElementById('mobile-nav');
+  const closeNav = document.getElementById('close-nav');
+  const navOverlay = document.getElementById('nav-overlay');
+
+  menuIcon.addEventListener('click', () => {
+    mobileNav.classList.add('active');
+    navOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+
+  closeNav.addEventListener('click', () => {
+    mobileNav.classList.remove('active');
+    navOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+
+  navOverlay.addEventListener('click', () => {
+    mobileNav.classList.remove('active');
+    navOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+
+  mobileNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.remove('active');
+      navOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+
+</body>
+</html>

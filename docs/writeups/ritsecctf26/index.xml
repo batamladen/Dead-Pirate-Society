@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>RITSEC CTF on Dead Pirate Society</title>
+    <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/ritsecctf26/</link>
+    <description>Recent content in RITSEC CTF on Dead Pirate Society</description>
+    <generator>Hugo -- 0.160.0</generator>
+    <language>en-us</language>
+    <atom:link href="https://batamladen.github.io/Dead-Pirate-Society/writeups/ritsecctf26/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>This Craft Is Mine</title>
+      <link>https://batamladen.github.io/Dead-Pirate-Society/writeups/ritsecctf26/thiscraftismine/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://batamladen.github.io/Dead-Pirate-Society/writeups/ritsecctf26/thiscraftismine/</guid>
+      <description>&lt;h1 id=&#34;this-craft-is-mine&#34;&gt;This Craft Is Mine&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;I looked at the level.dat&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python3 -c &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;from nbt.nbt import NBTFile; f=NBTFile(&amp;#39;level.dat&amp;#39;); print(f.pretty_tree())&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;→ Didnt find anything relevant&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Looked through the stats and found a .json file&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img alt=&#34;thiscraft1.webp&#34; loading=&#34;lazy&#34; src=&#34;https://batamladen.github.io/Dead-Pirate-Society/images/material/thiscraft1.webp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Here we see that blocks were placed, maybe we could find where they were placed. The suspicious blocks were white concrete and black concrete. To do that I used uNmINed, go to the Highlighters tab and click the + button, then entered the id: minecraft:black_concrete&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
