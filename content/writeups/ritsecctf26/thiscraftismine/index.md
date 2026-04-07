@@ -5,7 +5,6 @@ layout: "single"
 github: "https://pointerpointer.com/"
 ---
 
-# This Craft Is Mine
 
 1. I looked at the level.dat 
 
@@ -13,9 +12,9 @@ github: "https://pointerpointer.com/"
 python3 -c "from nbt.nbt import NBTFile; f=NBTFile('level.dat'); print(f.pretty_tree())"
 ```
 
-→ Didnt find anything relevant 
+→ Didnt find anything relevant  
 
-1. Looked through the stats and found a .json file 
+2. Looked through the stats and found a .json file 
 
 ![thiscraft1.webp](/images/material/thiscraft1.webp)
 
