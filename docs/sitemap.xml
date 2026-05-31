@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
@@ -41,6 +42,8 @@
     <loc>https://batamladen.github.io/Dead-Pirate-Society/writeups/zeroxfunctf26/frogfinder2/</loc>
   </url><url>
     <loc>https://batamladen.github.io/Dead-Pirate-Society/writeups/amateursctf25/gpt1/</loc>
+  </url><url>
+    <loc>https://batamladen.github.io/Dead-Pirate-Society/writeups/greycatctf26/</loc>
   </url><url>
     <loc>https://batamladen.github.io/Dead-Pirate-Society/writeups/heroctfv7/</loc>
   </url><url>
