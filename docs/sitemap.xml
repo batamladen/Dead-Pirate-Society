@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
@@ -32,6 +31,8 @@
     <loc>https://batamladen.github.io/Dead-Pirate-Society/home/</loc>
   </url><url>
     <loc>https://batamladen.github.io/Dead-Pirate-Society/writeups/amateursctf25/desafe/</loc>
+  </url><url>
+    <loc>https://batamladen.github.io/Dead-Pirate-Society/writeups/diverctf26/</loc>
   </url><url>
     <loc>https://batamladen.github.io/Dead-Pirate-Society/writeups/eh4xctf26/</loc>
   </url><url>
@@ -75,9 +76,13 @@
   </url><url>
     <loc>https://batamladen.github.io/Dead-Pirate-Society/writeups/patriotctf25/</loc>
   </url><url>
+    <loc>https://batamladen.github.io/Dead-Pirate-Society/writeups/riffhackctf26/</loc>
+  </url><url>
     <loc>https://batamladen.github.io/Dead-Pirate-Society/writeups/ritsecctf26/</loc>
   </url><url>
     <loc>https://batamladen.github.io/Dead-Pirate-Society/writeups/scarletctf26/</loc>
+  </url><url>
+    <loc>https://batamladen.github.io/Dead-Pirate-Society/writeups/sekaictf26/</loc>
   </url><url>
     <loc>https://batamladen.github.io/Dead-Pirate-Society/writeups/amateursctf25/snake/</loc>
   </url><url>
